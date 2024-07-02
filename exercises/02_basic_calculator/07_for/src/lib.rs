@@ -1,6 +1,15 @@
 // Rewrite the factorial function using a `for` loop.
+// `for`ループを使用して階乗関数を再記述してください。
 pub fn factorial(n: u32) -> u32 {
-    todo!()
+    if n <= 1 {
+        return 1;
+    }
+    let mut result = 2;
+    for i in 3..=n {
+        result *= i;
+    }
+
+    result
 }
 
 #[cfg(test)]
