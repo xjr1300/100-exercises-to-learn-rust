@@ -1,6 +1,7 @@
 /// Return `true` if `n` is even, `false` otherwise.
+/// `n`が偶数の場合は`true`、そうでない場合は`false`を返してください。
 fn is_even(n: u32) -> bool {
-    todo!()
+    n % 2 == 0
 }
 
 #[cfg(test)]
