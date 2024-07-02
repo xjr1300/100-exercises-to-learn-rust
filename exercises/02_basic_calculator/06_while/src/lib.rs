@@ -1,10 +1,19 @@
 // Rewrite the factorial function using a `while` loop.
-pub fn factorial(n: u32) -> u32 {
+// `while`ループを使用して階乗関数を再記述してください。
+pub fn factorial(mut n: u32) -> u32 {
     // The `todo!()` macro is a placeholder that the compiler
     // interprets as "I'll get back to this later", thus
     // suppressing type errors.
     // It panics at runtime.
-    todo!()
+    // `todo!()`マクロは、「後でこれに戻ります」としてコンパイラーが解釈するプレースホルダーで、型エラーを抑制します。
+    // ランタイムでそれはパニックします。
+    let mut result = 1;
+    while 2 <= n {
+        result *= n;
+        n -= 1;
+    }
+
+    result
 }
 
 #[cfg(test)]
