@@ -4,6 +4,37 @@ struct Ticket {
     status: String,
 }
 
+/// タイトルを検証する。
+fn validate_title(title: &str) {
+    let title = title.trim();
+    if title.is_empty() {
+        panic!("Title cannot be empty");
+    }
+    if 50 < title.as_bytes().len() {
+        panic!("Title cannot be longer than 50 bytes")
+    }
+}
+
+/// 説明を検証する。
+fn validate_description(description: &str) {
+    let description = description.trim();
+    if description.is_empty() {
+        panic!("Description cannot be empty")
+    }
+    if 500 < description.as_bytes().len() {
+        panic!("Description cannot be longer than 500 bytes");
+    }
+}
+
+/// 状態を検証する。
+fn validate_status(status: &str) {
+    if status == "To-Do" || status == "In Progress" || status == "Done" {
+        return;
+    }
+
+    panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
+}
+
 impl Ticket {
     // TODO: implement the `new` function.
     //  The following requirements should be met:
@@ -16,11 +47,24 @@ impl Ticket {
     // You'll have to use what you learned in the previous exercises,
     // as well as some `String` methods. Use the documentation of Rust's standard library
     // to find the most appropriate options -> https://doc.rust-lang.org/std/string/struct.String.html
+    //
+    // `new`関数を実装してください。
+    // 次の要求事項を満たす必要があります。
+    // - `To-Do`、`In Progress`そして`Done`状態のみが許可されます。
+    // - `title`と`description`フィールドは、空であってはなりません。
+    // - `title`は、最大50バイトまででなくてはなりません。
+    // 要求事項を満たさない場合はパニックしてください。
+    //
+    // `String`メソッドと同様に、前の演習で学んだことをしようしなければなりません。
+    // 最も適切な選択肢を見つけるために、Rust標準ライブラリのドキュメントを使用してください。
     fn new(title: String, description: String, status: String) -> Self {
-        todo!();
+        validate_title(&title);
+        validate_status(&status);
+        validate_description(&description);
+
         Self {
-            title,
-            description,
+            title: title.trim().to_string(),
+            description: description.trim().to_string(),
             status,
         }
     }
