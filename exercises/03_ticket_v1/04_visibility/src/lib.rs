@@ -1,5 +1,5 @@
 mod ticket {
-    struct Ticket {
+    pub(crate) struct Ticket {
         title: String,
         description: String,
         status: String,
@@ -34,15 +34,21 @@ mod ticket {
 
 // TODO: **Exceptionally**, you'll be modifying both the `ticket` module and the `tests` module
 //  in this exercise.
+// **例外的に**、この演習では`ticket`モジュールと`tests`モジュールの両方を修正します。
 #[cfg(test)]
 mod tests {
     // TODO: Add the necessary `pub` modifiers in the parent module to remove the compiler
     //  errors about the use statement below.
+    // 次のuse文について、コンパイラーエラーを除くために、親モジュールに必要な`pub`修飾子を追加します。
     use super::ticket::Ticket;
 
     // Be careful though! We don't want this function to compile after you have changed
     // visibility to make the use statement compile!
     // Once you have verified that it indeed doesn't compile, comment it out.
+    // ただし、注意してください！
+    // use文をコンパイルできるように可視性を変更した後で、この関数がコンパイルされないようにします。
+    // 実際にコンパイルできないことを確認したら、それをコメントアウトしてください。
+    /*
     fn should_not_be_possible() {
         let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
 
@@ -55,23 +61,32 @@ mod tests {
         //
         // TODO: Once you have verified that the below does not compile,
         //   comment the line out to move on to the next exercise!
+        // 一旦、次がコンパイルされないことを確認したら、次の演習に進むために行をコメントアウトしてください。
         assert_eq!(ticket.description, "A description");
     }
+     */
 
     fn encapsulation_cannot_be_violated() {
         // This should be impossible as well, with a similar error as the one encountered above.
         // (It will throw a compilation error only after you have commented the faulty line
         // in the previous test - next compilation stage!)
+        // これも、上記で発生したエラーのいずれかで、同様にコンパイル不可能になるべきです。
+        // 前のテストで問題のある行をコメントアウトした後、コンパイルエラーをスローします - 次のコンパイルステージです！
         //
         // This proves that `Ticket::new` is now the only way to get a `Ticket` instance.
         // It's impossible to create a ticket with an illegal title or description!
+        // これは、現在、`Ticket::new`が`Ticket`インスタンスを得るただ1つの方法になったことを証明します。
+        // 誤ったタイトルと説明でチケットを作成することを不可能にします。
         //
         // TODO: Once you have verified that the below does not compile,
         //   comment the lines out to move on to the next exercise!
+        // 一旦、次がコンパイルできないことを確認したら、次の演習に進むために行をコメントアウトしてください。
+        /*
         let ticket = Ticket {
             title: "A title".into(),
             description: "A description".into(),
             status: "To-Do".into(),
         };
+         */
     }
 }

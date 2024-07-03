@@ -1,16 +1,25 @@
-# Visibility
+# Visibility（可視性）
 
 When you start breaking down your code into multiple modules, you need to start thinking about **visibility**.
 Visibility determines which regions of your code (or other people's code) can access a given entity,
 be it a struct, a function, a field, etc.
 
-## Private by default
+> コードを複数のモジュールに分割し始めたとき、**可視性**について考え始める必要があります。
+> 可視性は、コードまたは他の人のコードのどの領域が、構造体、関数、フィールドなどの与えられたエンティティにアクセスできるかを決定します。
+
+## Private by default（デフォルトでプライベート）
 
 By default, everything in Rust is **private**.\
 A private entity can only be accessed:
 
 1. within the same module where it's defined, or
 2. by one of its submodules
+
+> デフォルトで、Rustのすべては**プライベート**です。
+> プライベートなエンティティは、次のいずれかでのみアクセスできます。
+>
+> 1. それが定義された同じモジュール内で、または
+> 2. そのサブモジュールのいずれかによって
 
 We've used this extensively in the previous exercises:
 
@@ -20,7 +29,13 @@ We've used this extensively in the previous exercises:
 - All our unit tests are defined in a submodule of the code they're testing, so they can access everything without
   restrictions.
 
-## Visibility modifiers
+> 前の演習でこれを広範囲に使用しました。
+>
+> - `create_todo_ticket`は、`helpers`が`Ticket`が定義されたクレートルートのサブモジュールのため、一度`use`文を追加すると、機能しました。
+>   よって、`create_todo_ticket`は、`Ticket`がプライベートであるにも関わらず、問題なく`Ticket`にアクセスできます。
+> - すべてのユニットテストは、それらをテストしているコードのサブモジュール内に定義されたため、それらは制限無しですべてにアクセスできます。
+
+## Visibility modifiers（可視性修飾子）
 
 You can modify the default visibility of an entity using a **visibility modifier**.\
 Some common visibility modifiers are:
@@ -31,8 +46,19 @@ Some common visibility modifiers are:
 - `pub(super)`: makes the entity public within the parent module.
 - `pub(in path::to::module)`: makes the entity public within the specified module.
 
+> **可視性修飾子**を使用して、エンティティのデフォルトの可視性を変更できます。
+> いくつか一般的な可視性修飾子を次に示します。
+>
+> - `pub`: エンティティを**パブリック**にします。例えば、それが定義されたもジュルの外からアクセス可能で、他のクレートからも可能です。
+> - `pub(crate)`: 同じ**クレート**内でエンティティをパブリックにしますが、その外部からアクセスできません。
+> - `pub(super)`: 親モジュール内でエンティティをパブリックsにします。
+> - `pub(in path::to::module)`: 指定されたモジュール内でエンティティをパブリックにします。
+
 You can use these modifiers on modules, structs, functions, fields, etc.
 For example:
+
+> これらの修飾子を構造体、関数、フィールドなどに使用できます。
+> 例えば・・・
 
 ```rust
 pub struct Configuration {
@@ -43,3 +69,6 @@ pub struct Configuration {
 
 `Configuration` is public, but you can only access the `version` field from within the same crate.
 The `active` field, instead, is private and can only be accessed from within the same module or one of its submodules.
+
+> `Configuration`はパブリックですが、同じクレート内でのみ`version`フィールドにアクセスできます。
+> 代わりに`active`フィールドはプライベートで、同じモジュールかそのサブモジュールのいずれ内でのみアクセスできます。
