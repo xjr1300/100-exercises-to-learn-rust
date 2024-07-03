@@ -34,6 +34,22 @@ pub mod ticket {
         //  - `title` that returns the `title` field.
         //  - `description` that returns the `description` field.
         //  - `status` that returns the `status` field.
+        // `Ticket`構造体に次の3つのパブリックメソッドを追加してください。
+        // - `title`フィールドを返す`title`
+        // - `description`フィールドを返す`description`
+        // - `status`フィールドを返す`status`
+
+        pub fn title(&self) -> &str {
+            &self.title
+        }
+
+        pub fn description(&self) -> &str {
+            &self.description
+        }
+
+        pub fn status(&self) -> &str {
+            &self.status
+        }
     }
 }
 
