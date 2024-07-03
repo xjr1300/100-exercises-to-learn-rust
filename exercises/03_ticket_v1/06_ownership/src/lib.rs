@@ -2,6 +2,9 @@
 //   are a good fit for our accessor methods.
 //   Change the existing implementation of `Ticket`'s accessor methods take a reference
 //   to `self` as an argument, rather than taking ownership of it.
+//   所有権について学んだことをだけに基づくと、不変参照はアクセッサーメソッドに適しているようです。
+//   ｀Ticket`のアクセッサーメソッドの既存の実装を変更して、その所有権を取るのではなく、引数として`self`への参照を
+//   受け取るようにしてください。
 
 pub struct Ticket {
     title: String,
@@ -34,16 +37,16 @@ impl Ticket {
         }
     }
 
-    pub fn title(self) -> String {
-        self.title
+    pub fn title(&self) -> &str {
+        &self.title
     }
 
-    pub fn description(self) -> String {
-        self.description
+    pub fn description(&self) -> &str {
+        &self.description
     }
 
-    pub fn status(self) -> String {
-        self.status
+    pub fn status(&self) -> &str {
+        &self.status
     }
 }
 
