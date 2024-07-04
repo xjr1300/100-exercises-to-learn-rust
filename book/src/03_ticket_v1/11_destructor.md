@@ -1,14 +1,19 @@
-# Destructors
+# Destructors（デストラクター）
 
 When introducing the heap, we mentioned that you're responsible for freeing the memory you allocate.\
 When introducing the borrow-checker, we also stated that you rarely have to manage memory directly in Rust.
 
+> ヒープを紹介したとき、割り当てたメモリを開放する責任があることを言及しました。
+> 借用チェッカーを紹介したとき、Rustでは、メモリを直接管理する必要がほとんどないことも述べました。
+
 These two statements might seem contradictory at first.
 Let's see how they fit together by introducing **scopes** and **destructors**.
 
-## Scopes
+## Scopes（スコープ）
 
 The **scope** of a variable is the region of Rust code where that variable is valid, or **alive**.
+
+変数の**スコープ**は、その変数が有効または**生きている**Rustコードの領域です。
 
 The scope of a variable starts with its declaration.
 It ends when one of the following happens:
@@ -30,24 +35,39 @@ It ends when one of the following happens:
 
    fn main() {
        let s = "Hello".to_string(); // <-- s's scope starts here...
-                   //                    | 
+                   //                    |
        compute(s); // <------------------- ..and ends here
                    //   because `s` is moved into `compute`
    }
    ```
 
-## Destructors
+> 変数のスコープは、その宣言で始まります。
+> それは、次の打ち1つが発生すると終わります。
+>
+> 1. その変数が宣言された、例えば`{}`の間のコードなどのブロックが終了する。
+> 2. 変数の所有権が、例えば関数または他の変数など、他の誰かに移動した。
+
+## Destructors（デストラクター）
 
 When the owner of a value goes out of scope, Rust invokes its **destructor**.\
 The destructor tries to clean up the resources used by that value—in particular, whatever memory it allocated.
+
+> 値の所有者がスコープ外になると、Rustはその**デストラクター**を呼び出します。
+> デストラクターは、その値によって使用されたリソース、割り当てっられたメモリをクリーンアップすることを試みます。
 
 You can manually invoke the destructor of a value by passing it to `std::mem::drop`.\
 That's why you'll often hear Rust developers saying "that value has been **dropped**" as a way to state that a value
 has gone out of scope and its destructor has been invoked.
 
-### Visualizing drop points
+> 値を`std::mem::drop`にわたすことで、値のデストラクターを手動で呼び出すことができます。
+> Rustの開発者が。値がスコープ外になり、そのデストラクターが呼び出されたことを述べる方法として、「その値は**ドロップ**されました」と言うことを時々聞くでしょう。
+
+### Visualizing drop points（ドロップポイントの可視化）
 
 We can insert explicit calls to `drop` to "spell out" what the compiler does for us. Going back to the previous example:
+
+> コンパイラーがしてくれることを「スペリングを伝える」ために、明示的な`drop`呼び出しを挿入できます。
+> 前の例に戻りましょう。
 
 ```rust
 fn main() {
@@ -65,6 +85,7 @@ fn main() {
    let x = "World".to_string();
    let h = "!".to_string();
    // Variables are dropped in reverse order of declaration
+   // 変数は、宣言の逆順でドロップされます。
    drop(h);
    drop(x);
    drop(y);
@@ -73,9 +94,12 @@ fn main() {
 
 Let's look at the second example instead, where `s`'s ownership is transferred to `compute`:
 
+> 代わりに、`s`の所有権が`compute`移動した、2つ目の例を確認しましょう。
+
 ```rust
 fn compute(s: String) {
    // Do something [...]
+   // なにかします。
 }
 
 fn main() {
@@ -86,12 +110,17 @@ fn main() {
 
 It's equivalent to this:
 
+> それは次と同等です。
+
 ```rust
 fn compute(t: String) {
     // Do something [...]
-    drop(t); // <-- Assuming `t` wasn't dropped or moved 
-             //     before this point, the compiler will call 
+    // なにかします。
+    drop(t); // <-- Assuming `t` wasn't dropped or moved
+             //     before this point, the compiler will call
              //     `drop` here, when it goes out of scope
+             //    この時点まで`t`がドロップされたり移動されていないと仮定して、
+             //    それがスコープ外になったとき、コンパイラーはここで｀drop`を呼び出します。
 }
 
 fn main() {
@@ -104,12 +133,19 @@ Notice the difference: even though `s` is no longer valid after `compute` is cal
 in `main`.
 When you transfer ownership of a value to a function, you're also **transferring the responsibility of cleaning it up**.
 
+> 違いに注意してください。`main`内で`compute`が呼び出された後、`s`はもはや有効ではありませんが、`main`内に`drop(s)`はありません。
+> 関数に値の所有権を移動したとき、**それをクリーンアップする責任も移動**します。
+
 This ensures that the destructor for a value is called **at most[^leak] once**, preventing
 [double free bugs](https://owasp.org/www-community/vulnerabilities/Doubly_freeing_memory) by design.
 
-### Use after drop
+> 値のためのデストラクターは、設計によって二重開放のバグを避けるために、**最大で一度**呼び出されます。
+
+### Use after drop（ドロップのあとで使用する）
 
 What happens if you try to use a value after it's been dropped?
+
+> 値がドロップされた後で、値を使用することを試みると何が発生するでしょうか？
 
 ```rust
 let x = "Hello".to_string();
@@ -118,6 +154,8 @@ println!("{}", x);
 ```
 
 If you try to compile this code, you'll get an error:
+
+> このコードをコンパイルすることを試みると、次のエラーを得ます。
 
 ```rust
 error[E0382]: use of moved value: `x`
@@ -132,10 +170,16 @@ error[E0382]: use of moved value: `x`
 Drop **consumes** the value it's called on, meaning that the value is no longer valid after the call.\
 The compiler will therefore prevent you from using it, avoiding [use-after-free bugs](https://owasp.org/www-community/vulnerabilities/Using_freed_memory).
 
-### Dropping references
+> ドロップは、呼ばれると値を**消費する**ため、呼び出した後、その値はもはや有効ではないことを意味します。
+> よって、コンパイラーは、解放後に使用するバグを回避するために、それを使用することを防ぎます。
+
+### Dropping references（参照のドロップ）
 
 What if a variable contains a reference?\
 For example:
+
+> 変数が参照を含んでいた場合はどうなるでしょうか？
+> 例えば・・・
 
 ```rust
 let x = 42i32;
@@ -146,8 +190,11 @@ drop(y);
 When you call `drop(y)`... nothing happens.\
 If you actually try to compile this code, you'll get a warning:
 
+> `drop(y)`を呼び出したとき・・・何も発生しません。
+> 実際にこのコードをコンパイルすることを試みた場合、警告を得ます。
+
 ```text
-warning: calls to `std::mem::drop` with a reference 
+warning: calls to `std::mem::drop` with a reference
          instead of an owned value does nothing
  --> src/main.rs:4:5
   |
@@ -165,5 +212,12 @@ They would refer to a memory location that's no longer valid: a so-called [**dan
 a close relative of [**use-after-free bugs**](https://owasp.org/www-community/vulnerabilities/Using_freed_memory).
 Rust's ownership system rules out these kinds of bugs by design.
 
+> これは、前述のことに戻ります：デストラクターを一度だけ呼び出したいだけです。
+> 同じ値への複数の参照を持つことができます。それらの1つがスコープ外になったときにその値のデストラクターを呼び出した場合、他に何が発生するでしょうか？
+> それらは、ダングリングポインターとも呼ばれる、もはや有効でないメモリ位置を参照して、開放した後に使用するバグに密接に関連します。
+> Rustの所有権システムは、設計によってこれらの種類のバグを排除します。
+
 [^leak]: Rust doesn't guarantee that destructors will run. They won't, for example, if
 you explicitly choose to [leak memory](../07_threads/03_leak.md).
+Rustは、デストラクターが実行されることを保証しません。
+例えば、メモリリークを明示的に選択した場合、デストラクターの呼び出しはされません。
