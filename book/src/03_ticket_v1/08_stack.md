@@ -86,6 +86,7 @@ assert_eq!(std::mem::size_of::<u8>(), 1);
 it doesn't pop it off until the innermost function returns.
 If you have too many nested function calls, you can run out of stack space—the stack is not infinite!
 That's called a [**stack overflow**](https://en.wikipedia.org/wiki/Stack_overflow).
+
 > ネストされた関数呼び出しがある場合、関数が呼び出されたとき、それぞれの関数はスタックに関数のデータをプッシュしますが、最も内側にある関数が戻るまで、そのデータは取り出されません。
 > 非常に多くネストした関数呼び出しがある場合、スタック領域を使い果たすかもしれません。スタックは無限でありません。
 > これは**スタック・オーバーフロー**と呼ばれます。

@@ -19,6 +19,7 @@ The scope of a variable starts with its declaration.
 It ends when one of the following happens:
 
 1. the block (i.e. the code between `{}`) where the variable was declared ends
+
    ```rust
    fn main() {
       // `x` is not yet in scope here
@@ -27,7 +28,9 @@ It ends when one of the following happens:
       let h = "!".to_string(); //   |
    } //  <-------------- ...and ends here
    ```
+
 2. ownership of the variable is transferred to someone else (e.g. a function or another variable)
+
    ```rust
    fn compute(t: String) {
       // Do something [...]
