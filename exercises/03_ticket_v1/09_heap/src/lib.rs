@@ -6,6 +6,7 @@ pub struct Ticket {
 
 // TODO: based on what you learned in this section, replace `todo!()` with
 //  the correct **stack size** for the respective type.
+// このセクションで学んだことに基づいて、`todo!()`をそれぞれの型の正しい**スタックサイズ**に置き換えてください。
 #[cfg(test)]
 mod tests {
     use super::Ticket;
@@ -13,7 +14,7 @@ mod tests {
 
     #[test]
     fn string_size() {
-        assert_eq!(size_of::<String>(), todo!());
+        assert_eq!(size_of::<String>(), 8 * 3);
     }
 
     #[test]
@@ -23,6 +24,9 @@ mod tests {
         // but, in general, the memory layout of structs is a more complex topic.
         // If you're curious, check out the "Data layout" section of the Rustonomicon
         // https://doc.rust-lang.org/nomicon/data.html for more information.
-        assert_eq!(size_of::<Ticket>(), todo!());
+        // これは難しい問題です！
+        // 今回、「直感的な」答えは正しい答えになりますが、一般的に、構造体のメモリレイアウトはより複雑なトピックです。
+        // 興味がある場合、より詳細はRustonomiconの「データレイアウト」セクションを確認してください。
+        assert_eq!(size_of::<Ticket>(), 8 * 3 * 3);
     }
 }
