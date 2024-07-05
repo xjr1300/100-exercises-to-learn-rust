@@ -1,7 +1,26 @@
 // Define a trait named `IsEven` that has a method `is_even` that returns a `true` if `self` is
 // even, otherwise `false`.
+// `self`が偶数の場合に`true`を、そうでない場合に`false`を返す`is_even`メソッドを持つ`IsEven`と名付けたトレイトを
+// 定義してください。
 //
 // Then implement the trait for `u32` and `i32`.
+// そして、`u32`と`i32`にそのトレイトを実装してください。
+
+trait IsEven {
+    fn is_even(&self) -> bool;
+}
+
+impl IsEven for u32 {
+    fn is_even(&self) -> bool {
+        self % 2 == 0
+    }
+}
+
+impl IsEven for i32 {
+    fn is_even(&self) -> bool {
+        self % 2 == 0
+    }
+}
 
 #[cfg(test)]
 mod tests {
