@@ -3,6 +3,8 @@ use outro_02::Order;
 // Files inside the `tests` directory are only compiled when you run tests.
 // As a consequence, we don't need the `#[cfg(test)]` attribute for conditional compilation—it's
 // implied.
+// `tests`ディレクトリ内のファイルは、テストを実行するときのみコンパイルされます。
+// 結果として、条件付きコンパイルのための`#[cfg(test)]`属性は必要ありません。それは、暗示されています。
 
 #[test]
 fn test_order() {
