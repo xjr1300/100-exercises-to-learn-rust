@@ -3,6 +3,12 @@
 //   There is a method in Rust's standard library that can help with this, but you won't
 //   find it in the documentation for `String`.
 //   Can you figure out where it is defined and how to use it?
+// `title`と`description`がアクセッサーメソッドによって返されるときはいつでも、それらは正規化されるべきです。
+// 例えば、最初と最後のホワイトスペースは削除されるべきです。
+// これを支援するメソッドがRust標準ライブラリにありますが、`String`のドキュメントでそれを見つけれないでしょう。
+// それがどこに定義されていて、またそれをどのように使用するか見つけれるでしょうか？
+//
+// > `str`型のドキュメントに記載された、`str`の`trim`メソッドを利用する。
 
 pub struct Ticket {
     title: String,
@@ -12,11 +18,11 @@ pub struct Ticket {
 
 impl Ticket {
     pub fn title(&self) -> &str {
-        todo!()
+        self.title.trim()
     }
 
     pub fn description(&self) -> &str {
-        todo!()
+        self.description.trim()
     }
 }
 
