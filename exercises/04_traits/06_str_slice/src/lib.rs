@@ -1,4 +1,5 @@
 // TODO: Re-implement `Ticket`'s accessor methods. This time return a `&str` rather than a `&String`.
+// `Ticket`のアクセッサーメソッドを再実装してください。今回は、`&String`ではなく`&str`を返します。
 
 pub struct Ticket {
     title: String,
@@ -31,15 +32,15 @@ impl Ticket {
         }
     }
 
-    pub fn title(&self) -> &String {
+    pub fn title(&self) -> &str {
         &self.title
     }
 
-    pub fn description(&self) -> &String {
+    pub fn description(&self) -> &str {
         &self.description
     }
 
-    pub fn status(&self) -> &String {
+    pub fn status(&self) -> &str {
         &self.status
     }
 }
@@ -54,6 +55,7 @@ mod tests {
     fn test_type() {
         let ticket = Ticket::new(valid_title(), valid_description(), "To-Do".to_string());
         // Some dark magic to verify that you used the expected return types
+        // 期待する戻り値の型を使用したことを確かめるために、いくつかの黒魔法を使用します。
         assert_eq!(TypeId::of::<str>(), ticket.title().type_id());
         assert_eq!(TypeId::of::<str>(), ticket.description().type_id());
         assert_eq!(TypeId::of::<str>(), ticket.status().type_id());
