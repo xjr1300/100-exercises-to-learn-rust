@@ -105,8 +105,8 @@ The `+` symbol is used to require that `T` implements multiple traits. `T: IsEve
 "where `T` implements `IsEven` **and** `Debug`".
 
 > この契約は、`T: IsEven + Debug`という、**トレイト制約**で表現されています。
-> `+`希望は、`T`が複数のトレイトを実装していることを要求するために使用されます。
-> `T: IsEven + Debug`は、「`T`が`IsEven`**と**`Debug`を実装している」と同等です。
+> `+`記号は、`T`が複数のトレイトを実装していることを要求するために使用されます。
+> `T: IsEven + Debug`は、「`T`が`IsEven` **と** `Debug`を実装している」と同等です。
 
 ## Trait bounds（トレイト制約）
 
