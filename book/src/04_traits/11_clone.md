@@ -1,4 +1,4 @@
-# Copying values, pt. 1（値を複製する、その1）
+# Copying values, pt. 1（値をコピーする、その1）
 
 In the previous chapter we introduced ownership and borrowing.\
 We stated, in particular, that:
