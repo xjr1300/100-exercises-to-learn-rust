@@ -1,10 +1,13 @@
 // TODO: add the necessary `Clone` implementations (and invocations)
 //  to get the code to compile.
+// コードがコンパイルできるように、必要な`Clone`の実装と呼び出しを追加してください。
 
 pub fn summary(ticket: Ticket) -> (Ticket, Summary) {
-    (ticket, ticket.summary())
+    let cloned = ticket.clone();
+    (ticket, cloned.summary())
 }
 
+#[derive(Clone)]
 pub struct Ticket {
     pub title: String,
     pub description: String,
