@@ -1,10 +1,14 @@
-# Wrapping up
+# Wrapping up（仕上げ）
 
 We've covered quite a few different traits in this chapter—and we've only scratched the surface!
 It may feel like you have a lot to remember, but don't worry: you'll bump into these traits
 so often when writing Rust code that they'll soon become second nature.
 
-## Closing thoughts
+> このチャプターにおいていくつのまったく異なるトレイトを説明しました。そしてまだ表面を引っ掻いただけです！
+> 覚えておくべき多くのことがあるように感じるかもしれませんが、心配しないでください。
+> これらのトレイトに突き当たるため、Rustコードを書いているとき、それらはすぐに第二の自然になるため、
+
+## Closing thoughts（最後に言っておきたいこと）
 
 Traits are powerful, but don't overuse them.\
 A few guidelines to keep in mind:
@@ -21,7 +25,23 @@ A few guidelines to keep in mind:
   [testing masterclass](https://github.com/mainmatter/rust-advanced-testing-workshop)
   for details on high-fidelity testing.
 
-## Testing your knowledge
+> トレイトは強力ですが、それらを乱用しないでください。
+> 次のいくつかのガイドラインを心に留めておいてください。
+>
+> - 1つの型で関数が常に呼び出される場合はジェネリックにしないでください。
+>   それはコードベースに間接性を導入して、理解することと維持することを難しくします。
+> - 1つの実装しかない場合、トレイトを作成しないでください。それはトレイトが必要にされない兆候です。
+> - `Debug`、`PartialEq`など標準トレイトを型に実装するときはいつでも、意味をなすようにしてください。
+>   それは、型をより慣用的にして、一緒に機能することを容易にして、標準ライブラリやエコシステムクレートによって提供される多くの機能を開放します。
+> - 必要に応じてサードパーティクレイトのトレイトを実装して、それらのエコシステムが持つ機能を開放してください。
+> - テストでモックを使用するためだけにコードをジェネリックにすることに注意してください。
+>   このアプローチの保守性コストは高くなり、時々異なるテスト戦略を使用する方が良いことがあります。
+>   高い忠実度をもつテストについての詳細は、テストマスタークラスを確認してください。
+
+## Testing your knowledge（知識のテスト）
 
 Before moving on, let's go through one last exercise to consolidate what we've learned.
 You'll have minimal guidance this time—just the exercise description and the tests to guide you.
+
+> 次に進む前に、学んだことを固めるために最後の演習を1つ行いましょう。
+> 今回は、単に演習の説明とテストの案内の、最小限の案内があります。
