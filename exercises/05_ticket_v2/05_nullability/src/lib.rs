@@ -1,4 +1,5 @@
 // TODO: Implement `Ticket::assigned_to` using `Option` as the return type.
+// 戻り値の方として`Option`を使用して`Ticket::assigned_to`を実装してください。
 
 #[derive(Debug, PartialEq)]
 struct Ticket {
@@ -36,7 +37,11 @@ impl Ticket {
         }
     }
     pub fn assigned_to(&self) -> Option<&String> {
-        todo!()
+        if let Status::InProgress { assigned_to } = &self.status {
+            Some(assigned_to)
+        } else {
+            None
+        }
     }
 }
 
