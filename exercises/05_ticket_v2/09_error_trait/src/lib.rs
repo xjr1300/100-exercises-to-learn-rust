@@ -2,18 +2,44 @@
 //  When implementing `Display`, you may want to use the `write!` macro from Rust's standard library.
 //  The docs for the `std::fmt` module are a good place to start and look for examples:
 //  https://doc.rust-lang.org/std/fmt/index.html#write
+// `Debug`、`Display`そして`Error`を`TicketNewError`列挙型に実装してください。
+// `Display`を実装するとき、Rust標準ライブラリの`write!`マクロを使用したいかもしれません。
+// `std::fmt`モジュールのドキュメントは、開始そして例を確認する良い場所です。
 
+use std::fmt;
+
+#[derive(Debug)]
 enum TicketNewError {
     TitleError(String),
     DescriptionError(String),
 }
 
+impl fmt::Display for TicketNewError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let message = match &self {
+            Self::TitleError(msg) => msg,
+            Self::DescriptionError(msg) => msg,
+        };
+        write!(f, "{}", message)
+    }
+}
+
+impl std::error::Error for TicketNewError {}
+
 // TODO: `easy_ticket` should panic when the title is invalid, using the error message
 //   stored inside the relevant variant of the `TicketNewError` enum.
 //   When the description is invalid, instead, it should use a default description:
 //   "Description not provided".
+// `easy_ticket`は、タイトルが無効なとき、`TicketNewError`列挙型の関連するバリアント内に保存されたメッセージを使用してパニックします。
+// 説明が無効な場合、代わりに、「Description not provided」というデフォルトの説明を使用します。
 fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
-    todo!()
+    match Ticket::new(title.clone(), description.clone(), status.clone()) {
+        Ok(ticket) => ticket,
+        Err(TicketNewError::TitleError(message)) => panic!("{message}"),
+        Err(TicketNewError::DescriptionError(_)) => {
+            Ticket::new(title, String::from("Description not provided"), status).unwrap()
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Clone)]

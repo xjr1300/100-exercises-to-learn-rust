@@ -36,7 +36,7 @@ let x: u32 = 42;
 
 In the example above, we explicitly constrained the type of `x` to be `u32`.
 
-> 上記の例で、`u32`に`x`の方を明示的に制約しました。
+> 上記の例で、`u32`で`x`の型を明示的に制約しました。
 
 ### Type inference（型推論）
 

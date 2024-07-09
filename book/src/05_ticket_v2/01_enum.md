@@ -28,7 +28,7 @@ In both cases we're using `String` to represent the `status` field.
 has a limited set of possible values. Even worse, the caller of `Ticket::new` will only find out **at runtime**
 if the status they provided is valid or not.
 
-> 両方のケースで、`status`フィールドを表現するために`String`を仕様ています。
+> 両方のケースで、`status`フィールドを表現するために`String`を使用しています。
 > `String`はとても一般的な型で、`status`フィールドが可能な値の制限された集合を持っているという情報をすぐに伝えることができません。
 > さらに悪いことに、`Ticket::new`の呼び出し基は、提供した状態が有効かどうかを**ランタイム**でのみ知ります。
 

@@ -41,7 +41,7 @@ Functions in Rust are defined using the `fn` keyword, followed by the function's
 return type.
 The function's body is enclosed in curly braces `{}`.
 
-> Rustにおける関数は、`fn`キーワードを使用して定義され、関数の名前、その入力パラメーターとして、戻り値の方が続きます。
+> Rustにおける関数は、`fn`キーワードを使用して定義され、関数の名前、その入力パラメーターとして、戻り値の型が続きます。
 > 関数の本体は、波括弧`{}`で囲まれています。
 
 In previous exercise, you saw the `greeting` function:

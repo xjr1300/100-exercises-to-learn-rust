@@ -52,7 +52,7 @@ Fields don't have to be of the same type, as you can see in the `Configuration` 
 > それぞれのフィールドは、コロン`:`で区切られた名前と型を持たなければなりません。
 > 複数のフィールドがある場合、それらはカンマ`,`で区切られます。
 >
-> 下の`Configuration`構造体で確認できるように、フィールドは同じ方である必要はありません。
+> 下の`Configuration`構造体で確認できるように、フィールドは同じ型である必要はありません。
 
 ```rust
 struct Configuration {

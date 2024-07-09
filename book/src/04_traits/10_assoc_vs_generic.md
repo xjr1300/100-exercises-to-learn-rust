@@ -37,7 +37,7 @@ which `Target` type should the compiler choose when you call a `&self` method?
 
 > 参照外し型強制が機能する方法により、与えられた型に対する1つの「目的」の型のみ存在できます。
 > 例えば、`String`は、`str`にのみ参照外しされます。
-> それは曖昧さを避けるためです。ある方に対して複数回`Deref`を実装した場合、`&self`メソッドを呼び出した時、コンパイラーはどの`Target`型を選択するべきでしょうか？
+> それは曖昧さを避けるためです。ある型に対して複数回`Deref`を実装した場合、`&self`メソッドを呼び出した時、コンパイラーはどの`Target`型を選択するべきでしょうか？
 
 That's why `Deref` uses an associated type, `Target`.\
 An associated type is uniquely determined **by the trait implementation**.
@@ -46,7 +46,7 @@ and there won't be any ambiguity.
 
 > それが、`Deref`が関連型`Target`を使用する理由です。
 > 関連型は、**トレイトの実装によって**一意に決定されます。
-> `Deref`を1つ以上実装できないため、与えられた方に対してたった1つの`Target`を指定することができ、曖昧さはありません。
+> `Deref`を1つ以上実装できないため、与えられた型に対してたった1つの`Target`を指定することができ、曖昧さはありません。
 
 ## Generic traits（ジェネリックトレイト）
 
@@ -74,7 +74,7 @@ This works because `From<u16>` and `From<u32>` are considered **different traits
 There is no ambiguity: the compiler can determine which implementation to use based on type of the value being converted.
 
 > `From<u16>`と`From<u32>`は**異なるトレイト**とみなされるため、これは機能します。
-> 曖昧さはありません。コンパイラーは、値が変換される方に基づいて、どの実装を使用するか決定できます。
+> 曖昧さはありません。コンパイラーは、値が変換される型に基づいて、どの実装を使用するか決定できます。
 
 ## Case study: `Add`（事例研究: Add）
 

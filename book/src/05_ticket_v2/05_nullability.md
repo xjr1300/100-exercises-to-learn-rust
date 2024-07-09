@@ -104,4 +104,4 @@ assert_eq!(second.2, 8);
 
 Tuples are a convenient way of grouping values together when you can't be bothered to define a dedicated struct type.
 
-> 戦勝の構造体型を定義することが面倒なときに、値をグループ化する便利な方法です。
+> 専用の構造体型を定義することが面倒なとき、タプルは値をグループ化する便利な方法です。

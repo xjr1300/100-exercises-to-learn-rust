@@ -136,7 +136,7 @@ In [`std`'s documentation](https://doc.rust-lang.org/std/convert/trait.From.html
 you can see which `std` types implement the `From` trait.\
 You'll find that `String` implements `From<&str> for String`. Thus, we can write:
 
-> `std`のドキュメント内で、どの`std`の方が`From`トレイトを実装しているか確認できます。
+> `std`のドキュメント内で、どの`std`の型が`From`トレイトを実装しているか確認できます。
 > `String`が`From<&str>`を実装していることを確認できます。よって、次のように記述できました。
 
 ```rust
@@ -186,7 +186,7 @@ In most cases, the target type is either:
 - Specified by the signature of a function/method (e.g. `Ticket::new` in our example above)
 - Specified in the variable declaration with a type annotation (e.g. `let title: String = "A title".into();`)
 
-> ほとんどの場合、目的の方は次のいずれかです。
+> ほとんどの場合、目的の型は次のいずれかです。
 >
 > - 関数/メソッドのシグネチャーによって指定される（例えば、上記列の`Ticket::new`）
 > - 型注釈を持つ変数宣言で指定される（例えば、`let title: String = "A title".into();`）

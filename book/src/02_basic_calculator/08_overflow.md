@@ -30,7 +30,7 @@ But the _mathematically correct result_ doesn't fit into that integer type!
 > E.g. if `end` is smaller than `start`, `end - start` will underflow the `u32` type since the result is supposed
 > to be negative but `u32` can't represent negative numbers.
 
-> 結果が与えられた整数の方の最小値よりも小さい場合、そのイベントを**整数アンダーフロー**と呼びます。
+> 結果が与えられた整数型の最小値よりも小さい場合、そのイベントを**整数アンダーフロー**と呼びます。
 > 簡潔にするために、このセクションの残りは整数オーバー不ｒ−について話しますが、ここで話すすべてのことは整数アンダーフローにも適用することを心に留めておいてください。
 >
 > 「変数」セクションで記述した`speed`関数は、任意の入力の組み合わせでアンダーフローします。

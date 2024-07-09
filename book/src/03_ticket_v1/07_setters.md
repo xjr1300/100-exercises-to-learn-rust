@@ -98,7 +98,7 @@ let ticket = ticket
 
 The second approach to setters, using `&mut self`, looks like this instead:
 
-> セッターの2つ目の方法は、`&mut self`をしようするもので、次のように見えます。
+> セッターの2つ目の方法は、`&mut self`を使用するもので、次のように見えます。
 
 ```rust
 impl Ticket {

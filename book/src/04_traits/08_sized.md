@@ -55,7 +55,7 @@ In the case of `&str`, it stores the length of the slice it points to.
 We'll see more examples of DSTs in the rest of the course.
 
 > `str`は**動的サイズ型**（DST）です。
-> DSTは、コンパイル時にサイズがわからない方です。
+> DSTは、コンパイル時にサイズがわからない型です。
 > `&str`のような、DSTへの参照を持つときはいつでも、それはそれが指し示すデータについての追加情報を含む必要があります。
 > それは**ファットポインター**です。
 > `&str`の場合、それはそれが指し示すスライスの長さを保存します。
@@ -87,7 +87,7 @@ The mark is then leveraged by the compiler to enable certain behaviors or optimi
 
 > `Sized`は**マーカートレイト**の最初の例です。
 > マーカートレイトは、実装されるメソッドを要求しないトレイトです。それは何の振る舞いも定義しません。
-> それは、特定の属性を持つ方として**マーク**することのみを提供します。
+> それは、特定の属性を持つ型として**マーク**することのみを提供します。
 > そして、マークは特定の振る舞いまたは最適化を有効にするためにコンパイラーによって利用されます。
 
 ### Auto traits（自動トレイト）

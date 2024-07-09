@@ -59,7 +59,7 @@ This makes sense: if Rust can create a new instance of a type _implicitly_, it s
 also be able to create a new instance _explicitly_ by calling `.clone()`.
 
 > まず最初に、それは`Clone`を実装しなくてはならないため、`Copy`は`Clone`のサブトレイトです。
-> これには意味があります。Rustがある方の新しいインスタンスを**暗黙的に**作成できる場合、それは`.clone()`を呼び出すことで**明示的に**新しいインスタンスを作成できるべきです。
+> これには意味があります。Rustがある型の新しいインスタンスを**暗黙的に**作成できる場合、それは`.clone()`を呼び出すことで**明示的に**新しいインスタンスを作成できるべきです。
 
 That's not all, though. A few more conditions must be met:
 
@@ -84,7 +84,7 @@ that performs the bitwise copy.
 `String` is a type that doesn't implement `Copy`.\
 Why? Because it manages an additional resource: the heap-allocated memory buffer that stores the string's data.
 
-> `String`は`Copy`を実装していない方です。
+> `String`は`Copy`を実装していない型です。
 > なぜでしょうか？それは、`String`が文字列のデータを保存したヒープに割り当てられたメモリバッファーを追加リソースとして管理するからです。
 
 Let's imagine that Rust allowed `String` to implement `Copy`.\

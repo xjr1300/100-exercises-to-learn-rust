@@ -23,6 +23,6 @@ We'll need to introduce a few more concepts along the way:
 > - null可能な値をモデル化する`Option`型
 > - 回復可能なエラーをモデル化する`Result`型
 > - 印字するための`Debug`と`Display`トレイト
-> - エラー方を作成する`Error`トレイト
+> - エラー型を作成する`Error`トレイト
 > - 失敗する可能性のある変換用おの`TryFrom`と`TryInto`トレイト
 > - ライブラリとは何か、バインなりとはなにか、どのようにサードパーティのクレートを使用するかを説明するRustのパッケージシステム
