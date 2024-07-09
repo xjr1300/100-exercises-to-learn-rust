@@ -2,11 +2,19 @@
 //   We've changed the enum variants to be more specific, thus removing the need for storing
 //   a `String` field into each variant.
 //   You'll also have to add `thiserror` as a dependency in the `Cargo.toml` file.
+// `thiserror`を使用して、`TicketNewError`に対して`Error`トレイトを実装してください。
+// 列挙型のバリアントをより特殊に変更するため、それぞれのバリアントから`String`を保存する必要をなくしました。
+// また、`Cargo.toml`ファイル内に依存関係として`thiserror`を追加しなくてはなりません。
 
+#[derive(Debug, thiserror::Error)]
 enum TicketNewError {
+    #[error("Title cannot be empty")]
     TitleCannotBeEmpty,
+    #[error("Title cannot be longer than 50 bytes")]
     TitleTooLong,
+    #[error("Description cannot be empty")]
     DescriptionCannotBeEmpty,
+    #[error("Description cannot be longer than 500 bytes")]
     DescriptionTooLong,
 }
 

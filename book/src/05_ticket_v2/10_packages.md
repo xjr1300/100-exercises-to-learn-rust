@@ -10,7 +10,7 @@ We can remove some of the boilerplate by using [`thiserror`](https://docs.rs/thi
 a Rust crate that provides a **procedural macro** to simplify the creation of custom error types.\
 But we're getting ahead of ourselves: `thiserror` is a third-party crate, it'd be our first dependency!
 
-> カスタムエラー型の作成を簡素化する**宣言的マクロ**を提供するRustのクレートである`thiserror`を使用して、いくつかのボイラープレートを削除できます。
+> カスタムエラー型の作成を簡素化する**手続きマクロ**を提供するRustのクレートである`thiserror`を使用して、いくつかのボイラープレートを削除できます。
 > しかし、私たちは先走っています。`thiserror`はサードパーティのクレートであり、これが最初の依存関係になります！
 
 Let's take a step back to talk about Rust's packaging system before we dive into dependencies.
