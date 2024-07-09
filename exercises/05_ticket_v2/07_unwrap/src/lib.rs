@@ -1,8 +1,20 @@
 // TODO: `easy_ticket` should panic when the title is invalid.
 //   When the description is invalid, instead, it should use a default description:
 //   "Description not provided".
+// `easy_ticket`はタイトルが無効の場合パニックするべきです。
+// 説明が無効なとき、代わりにそれはデフォルトの説明「Description not provided」を使用します。
 fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
-    todo!()
+    let ticket = Ticket::new(title.clone(), description.clone(), status.clone());
+    match ticket {
+        Ok(ticket) => ticket,
+        Err(msg) => {
+            if msg.contains("Description") {
+                Ticket::new(title, String::from("Description not provided"), status).unwrap()
+            } sle {
+                panic!({msg})
+            }
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Clone)]
