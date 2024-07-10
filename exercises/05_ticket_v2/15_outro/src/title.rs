@@ -1,8 +1,40 @@
 // TODO: Implement `TryFrom<String>` and `TryFrom<&str>` for the `TicketTitle` type,
 //   enforcing that the title is not empty and is not longer than 50 characters.
 //   Implement the traits required to make the tests pass too.
+// `TicketTitle`型に`TryFrom<String`と`TryFrom<&str>`を実装して、タイトルは空でなく、50文字より
+// 長くならないように強制してください。
+// また、テストにパスするようにトレイトの要求事項を実装してください。
 
+#[derive(Debug, Clone, PartialEq)]
 pub struct TicketTitle(String);
+
+fn title_from_str(s: &str) -> Result<TicketTitle, String> {
+    let s = s.trim();
+    if s.is_empty() {
+        return Err("The title cannot be empty".into());
+    }
+    if 50 < s.chars().count() {
+        return Err("The title cannot be longer than 50 bytes".into());
+    }
+
+    Ok(TicketTitle(s.to_string()))
+}
+
+impl TryFrom<String> for TicketTitle {
+    type Error = String;
+
+    fn try_from(value: String) -> Result<Self, Self::Error> {
+        title_from_str(&value)
+    }
+}
+
+impl TryFrom<&str> for TicketTitle {
+    type Error = String;
+
+    fn try_from(value: &str) -> Result<Self, Self::Error> {
+        title_from_str(value)
+    }
+}
 
 #[cfg(test)]
 mod tests {
