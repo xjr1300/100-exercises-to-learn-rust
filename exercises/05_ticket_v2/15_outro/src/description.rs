@@ -8,22 +8,27 @@
 #[derive(Debug, Clone, PartialEq)]
 pub struct TicketDescription(String);
 
-fn description_from_str(s: &str) -> Result<TicketDescription, String> {
+#[derive(Debug, thiserror::Error)]
+pub enum TicketDescriptionError {
+    #[error("The description cannot be empty")]
+    Empty,
+    #[error("The description cannot be longer than 500 bytes")]
+    TooLong,
+}
+
+fn description_from_str(s: &str) -> Result<TicketDescription, TicketDescriptionError> {
     let s = s.trim();
     if s.is_empty() {
-        return Err(String::from("The description cannot be empty"));
+        Err(TicketDescriptionError::Empty)
+    } else if 500 < s.len() {
+        Err(TicketDescriptionError::TooLong)
+    } else {
+        Ok(TicketDescription(s.to_string()))
     }
-    if 500 < s.len() {
-        return Err(String::from(
-            "The description cannot be longer than 500 bytes",
-        ));
-    }
-
-    Ok(TicketDescription(s.to_string()))
 }
 
 impl TryFrom<String> for TicketDescription {
-    type Error = String;
+    type Error = TicketDescriptionError;
 
     fn try_from(value: String) -> Result<Self, Self::Error> {
         description_from_str(&value)
@@ -31,7 +36,7 @@ impl TryFrom<String> for TicketDescription {
 }
 
 impl TryFrom<&str> for TicketDescription {
-    type Error = String;
+    type Error = TicketDescriptionError;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
         description_from_str(value)

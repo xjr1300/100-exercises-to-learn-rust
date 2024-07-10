@@ -10,18 +10,26 @@ pub enum Status {
     Done,
 }
 
-fn status_from_str(s: &str) -> Result<Status, String> {
+#[derive(Debug, thiserror::Error)]
+#[error("`{invalid_string}` is not a valid status. Use one of: ToDo, InProgress, Done")]
+pub struct ParseStatusError {
+    invalid_string: String,
+}
+
+fn status_from_str(s: &str) -> Result<Status, ParseStatusError> {
     let s = s.to_lowercase();
     match s.as_str() {
         "todo" => Ok(Status::ToDo),
         "inprogress" => Ok(Status::InProgress),
         "done" => Ok(Status::Done),
-        _ => Err(String::from("Invalid status")),
+        _ => Err(ParseStatusError {
+            invalid_string: s.to_string(),
+        }),
     }
 }
 
 impl TryFrom<String> for Status {
-    type Error = String;
+    type Error = ParseStatusError;
 
     fn try_from(value: String) -> Result<Self, Self::Error> {
         status_from_str(&value)
@@ -29,7 +37,7 @@ impl TryFrom<String> for Status {
 }
 
 impl TryFrom<&str> for Status {
-    type Error = String;
+    type Error = ParseStatusError;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
         status_from_str(value)
