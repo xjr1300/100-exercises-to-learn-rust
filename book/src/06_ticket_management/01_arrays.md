@@ -115,5 +115,5 @@ In other words, the size of an array is `std::mem::size_of::<T>() * N`, where `T
 the number of elements.\
 You can access and replace each element in `O(1)` time.
 
-> 言い換えると、配列のサイズは`std::mem::size_of::<T>() * N`であり、`T`は要素の型で、｀N`は要素の数です。
+> 言い換えると、配列のサイズは`std::mem::size_of::<T>() * N`であり、`T`は要素の型で、`N`は要素の数です。
 > `O(1)`時間でそれぞれの要素にアクセスまたは入れ替えできます。
