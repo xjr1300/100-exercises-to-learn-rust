@@ -34,7 +34,7 @@ The similarity should prompt you to ask: "What's the equivalent of `&str` for `V
 `[T]` is a **slice** of a contiguous sequence of elements of type `T`.\
 It's most commonly used in its borrowed form, `&[T]`.
 
-> `[T]`は、型`T`の連続した要素の**スライス**です。`
+> `[T]`は、型`T`の連続した要素の**スライス**です。
 > それは、その借用された形式である`&[T]`として最も一般的に使用されます。
 
 There are various ways to create a slice reference from a `Vec`:
