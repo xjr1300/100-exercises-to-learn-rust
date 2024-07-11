@@ -2,6 +2,10 @@
 //  Implement `IntoIterator` for `&TicketStore`. The iterator should yield immutable
 //  references to the tickets, ordered by their `TicketId`.
 //  Implement additional traits on `TicketId` if needed.
+// 正しい実装で`todo!()`を置き換えてください。
+// `&TicketStore`に対して`IntoIterator`を実装してください。
+// イテレーターは、それらの`TicketId`によって順番にチケットの不変参照を生み出すようにしてください。
+// 必要であれば、`TicketId`に追加のトレイトを実装してください。
 
 use std::collections::BTreeMap;
 use std::ops::{Index, IndexMut};
@@ -13,7 +17,7 @@ pub struct TicketStore {
     counter: u64,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TicketId(u64);
 
 #[derive(Clone, Debug, PartialEq)]
@@ -38,9 +42,10 @@ pub enum Status {
 }
 
 impl TicketStore {
+    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         Self {
-            tickets: todo!(),
+            tickets: BTreeMap::new(),
             counter: 0,
         }
     }
@@ -54,16 +59,17 @@ impl TicketStore {
             description: ticket.description,
             status: Status::ToDo,
         };
-        todo!();
+        self.tickets.insert(id, ticket);
+
         id
     }
 
     pub fn get(&self, id: TicketId) -> Option<&Ticket> {
-        todo!()
+        self.tickets.get(&id)
     }
 
     pub fn get_mut(&mut self, id: TicketId) -> Option<&mut Ticket> {
-        todo!()
+        self.tickets.get_mut(&id)
     }
 }
 
@@ -95,6 +101,15 @@ impl IndexMut<&TicketId> for TicketStore {
     }
 }
 
+impl<'a> IntoIterator for &'a TicketStore {
+    type Item = &'a Ticket;
+    type IntoIter = std::collections::btree_map::Values<'a, TicketId, Ticket>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        self.tickets.values()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::{Status, TicketDraft, TicketId, TicketStore};
@@ -106,7 +121,7 @@ mod tests {
 
         let n_tickets = 5;
 
-        for i in 0..n_tickets {
+        for _i in 0..n_tickets {
             let draft = TicketDraft {
                 title: ticket_title(),
                 description: ticket_description(),
