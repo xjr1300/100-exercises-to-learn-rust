@@ -49,6 +49,7 @@ struct Ticket {
     status: Status,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, PartialEq, Clone)]
 enum Status {
     ToDo,

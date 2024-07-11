@@ -1,4 +1,5 @@
 // TODO: Implement `Index<&TicketId>` and `Index<TicketId>` for `TicketStore`.
+// `TicketStore`に対して、`Index<&TicketId>`と`Index<TicketId>`を実装してください。
 
 use ticket_fields::{TicketDescription, TicketTitle};
 
@@ -33,6 +34,7 @@ pub enum Status {
 }
 
 impl TicketStore {
+    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         Self {
             tickets: Vec::new(),
@@ -55,6 +57,25 @@ impl TicketStore {
 
     pub fn get(&self, id: TicketId) -> Option<&Ticket> {
         self.tickets.iter().find(|&t| t.id == id)
+    }
+}
+
+impl std::ops::Index<TicketId> for TicketStore {
+    type Output = Ticket;
+
+    fn index(&self, id: TicketId) -> &Self::Output {
+        match self.get(id) {
+            Some(ticket) => ticket,
+            None => panic!("Ticket id not found in TicketStore"),
+        }
+    }
+}
+
+impl std::ops::Index<&TicketId> for TicketStore {
+    type Output = Ticket;
+
+    fn index(&self, id: &TicketId) -> &Self::Output {
+        &self[*id]
     }
 }
 
@@ -82,7 +103,7 @@ mod tests {
             description: ticket_description(),
         };
         let id2 = store.add_ticket(draft2);
-        let ticket2 = &store[&id2];
+        let _ticket2 = &store[&id2];
 
         assert_ne!(id1, id2);
     }
