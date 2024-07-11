@@ -1,5 +1,7 @@
 // TODO: Implement the `in_progress` method. It must return an iterator over the tickets in
 //  `TicketStore` with status set to `Status::InProgress`.
+// `in_progress`メソッドを実装してください。
+// それは状態が`Status::InProgress`に設定された`TicketStore`内のチケットのイテレーターを返します。
 use ticket_fields::{TicketDescription, TicketTitle};
 
 #[derive(Clone)]
@@ -30,6 +32,13 @@ impl TicketStore {
 
     pub fn add_ticket(&mut self, ticket: Ticket) {
         self.tickets.push(ticket);
+    }
+
+    pub fn in_progress(&self) -> impl Iterator<Item = &Ticket> {
+        self.tickets
+            .iter()
+            .filter(|t| t.status == Status::InProgress)
+            .into_iter()
     }
 }
 
