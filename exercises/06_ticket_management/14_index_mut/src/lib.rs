@@ -1,6 +1,7 @@
 // TODO: Implement `IndexMut<&TicketId>` and `IndexMut<TicketId>` for `TicketStore`.
+// `TicketStore`に`IndexMut<&TicketId>`と`IndexMut<TicketId>`を実装してください。
 
-use std::ops::Index;
+use std::ops::{Index, IndexMut};
 use ticket_fields::{TicketDescription, TicketTitle};
 
 #[derive(Clone)]
@@ -34,6 +35,7 @@ pub enum Status {
 }
 
 impl TicketStore {
+    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         Self {
             tickets: Vec::new(),
@@ -72,6 +74,18 @@ impl Index<&TicketId> for TicketStore {
 
     fn index(&self, index: &TicketId) -> &Self::Output {
         &self[*index]
+    }
+}
+
+impl IndexMut<TicketId> for TicketStore {
+    fn index_mut(&mut self, id: TicketId) -> &mut Self::Output {
+        self.tickets.iter_mut().find(|t| t.id == id).unwrap()
+    }
+}
+
+impl IndexMut<&TicketId> for TicketStore {
+    fn index_mut(&mut self, id: &TicketId) -> &mut Self::Output {
+        &mut self[*id]
     }
 }
 
