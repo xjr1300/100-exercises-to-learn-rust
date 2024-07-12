@@ -7,27 +7,55 @@ pub mod store;
 
 #[derive(Clone)]
 // TODO: flesh out the client implementation.
-pub struct TicketStoreClient {}
+// クライアントの実装を具体化してください。
+pub struct TicketStoreClient {
+    sender: Sender<Command>,
+}
 
 impl TicketStoreClient {
     // Feel free to panic on all errors, for simplicity.
+    // 簡素化のために、すべてのエラーに対して自由にパニックしてください。
     pub fn insert(&self, draft: TicketDraft) -> TicketId {
-        todo!()
+        let (response_sender, response_receiver) = std::sync::mpsc::channel::<TicketId>();
+        let command = Command::Insert {
+            draft,
+            response_channel: response_sender,
+        };
+        self.sender
+            .send(command)
+            .expect("Did you actually spawn a thread? The channel is closed!");
+
+        response_receiver
+            .recv()
+            .expect("Did you actually spawn a thread? The channel is closed!")
     }
 
     pub fn get(&self, id: TicketId) -> Option<Ticket> {
-        todo!()
+        let (response_sender, response_receiver) = std::sync::mpsc::channel();
+        let command = Command::Get {
+            id,
+            response_channel: response_sender,
+        };
+        self.sender
+            .send(command)
+            .expect("Did you actually spawn a thread? The channel is closed!");
+
+        response_receiver
+            .recv()
+            .expect("Did you actually spawn a thread? The channel is closed!")
     }
 }
 
 pub fn launch() -> TicketStoreClient {
     let (sender, receiver) = std::sync::mpsc::channel();
     std::thread::spawn(move || server(receiver));
-    todo!()
+
+    TicketStoreClient { sender }
 }
 
 // No longer public! This becomes an internal detail of the library now.
-enum Command {
+// もはやパニックしません！現在、これはライブラリの内部的な詳細になります。
+pub enum Command {
     Insert {
         draft: TicketDraft,
         response_channel: Sender<TicketId>,
@@ -59,6 +87,7 @@ pub fn server(receiver: Receiver<Command>) {
             Err(_) => {
                 // There are no more senders, so we can safely break
                 // and shut down the server.
+                // 送信者が存在しないため、安全に閉じて、サーバーをシャットダウンします。
                 break;
             }
         }
