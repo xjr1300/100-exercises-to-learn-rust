@@ -2,11 +2,20 @@
 //  Then split the resulting static slice into two halves and
 //  sum each half in a separate thread.
 //  Hint: check out `Vec::leak`.
+// 与えられた整数のベクターについて、そのヒープ割り当てをリークしてください。
+// そして、静的スライスを二等分に分割して、別々のスレッドでそれぞれの半分を合計してください。
+// ヒント: `Vec::leak`を確認してください。
 
 use std::thread;
 
 pub fn sum(v: Vec<i32>) -> i32 {
-    todo!()
+    let leaked = v.leak();
+    let (s1, s2) = leaked.split_at(leaked.len() / 2);
+
+    let h1 = thread::spawn(|| s1.iter().sum::<i32>());
+    let h2 = thread::spawn(|| s2.iter().sum::<i32>());
+
+    h1.join().unwrap() + h2.join().unwrap()
 }
 
 #[cfg(test)]
