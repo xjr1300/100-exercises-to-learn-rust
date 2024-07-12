@@ -193,6 +193,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "bonus"
+version = "0.1.0"
+dependencies = [
+ "thiserror",
+ "ticket_fields",
+]
+
+[[package]]
 name = "bounded"
 version = "0.1.0"
 dependencies = [
