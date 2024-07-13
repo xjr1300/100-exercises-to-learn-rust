@@ -12,6 +12,7 @@ pub struct TicketStore {
 }
 
 impl TicketStore {
+    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         Self {
             tickets: BTreeMap::new(),
@@ -28,13 +29,16 @@ impl TicketStore {
             description: ticket.description,
             status: Status::ToDo,
         };
-        todo!();
+        let ticket = Arc::new(Mutex::new(ticket));
+        self.tickets.insert(id, ticket);
+
         id
     }
 
     // The `get` method should return a handle to the ticket
     // which allows the caller to either read or modify the ticket.
-    pub fn get(&self, id: TicketId) -> Option<todo!()> {
-        todo!()
+    // `get`メソッドはチケットへのハンドルを返すべきで、それは呼び出し側にチケットの読み込みと修正の両方をさせます。
+    pub fn get(&self, id: TicketId) -> Option<Arc<Mutex<Ticket>>> {
+        self.tickets.get(&id).cloned()
     }
 }
