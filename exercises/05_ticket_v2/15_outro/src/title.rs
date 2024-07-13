@@ -20,8 +20,7 @@ fn title_from_str(s: &str) -> Result<TicketTitle, TicketTitleError> {
     let s = s.trim();
     if s.is_empty() {
         Err(TicketTitleError::Empty)
-    }
-    if 50 < s.chars().count() {
+    } else if 50 < s.chars().count() {
         Err(TicketTitleError::TooLong)
     } else {
         Ok(TicketTitle(s.to_string()))
@@ -37,7 +36,7 @@ impl TryFrom<String> for TicketTitle {
 }
 
 impl TryFrom<&str> for TicketTitle {
-    type Error = String;
+    type Error = TicketTitleError;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
         title_from_str(value)
