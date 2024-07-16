@@ -101,7 +101,7 @@ Both `Sender` and `Receiver` are generic over a type parameter `T`.\
 That's the type of the _messages_ that can travel on our channel.
 
 > `Sender`と`Receiver`は、型パラメーター`T`に対してジェネリックです。
-> それは、チェネルを旅行する_メッセージ_の肩です。
+> それは、チャネルを旅行する_メッセージ_の型です。
 
 It could be a `u64`, a struct, an enum, etc.
 
