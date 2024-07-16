@@ -71,14 +71,11 @@ impl IntoResponse for &Ticket {
 
 impl IntoResponse for TicketStoreError {
     fn into_response(self) -> Response {
-        let (status_code, message) = match self {
-            Self::NotFound => (StatusCode::NOT_FOUND, "Ticket does not exist"),
-            Self::VersionNotMatch => (
-                StatusCode::BAD_REQUEST,
-                "The version of updating ticket is not match",
-            ),
+        let status_code = match self {
+            Self::NotFound => StatusCode::NOT_FOUND,
+            Self::VersionNotMatch => StatusCode::BAD_REQUEST,
         };
-        let body = Json(json!({"error": message}));
+        let body = Json(json!({"error": format!("{self}")}));
 
         (status_code, body).into_response()
     }

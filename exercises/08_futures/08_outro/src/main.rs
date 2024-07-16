@@ -12,7 +12,7 @@
 //! content-length: 33
 //! date: Tue, 16 Jul 2024 01:51:03 GMT
 //!
-//! {"error":"Ticket does not exist"}
+//! {"error":"チケットが見つかりません。"}
 //!
 //! # 1つ目のチケットを登録
 //! $ curl --include -H "Content-Type: application/json" -d '{"title": "吾輩は猫である", "description": "猫の目を通じて人間社会を風刺した作品"}' http://localhost:3000/tickets
@@ -57,7 +57,7 @@
 //! content-length: 55
 //! date: Tue, 16 Jul 2024 02:15:33 GMT
 //!
-//! {"error":"The version of updating ticket is not match"}
+//! {"error":"チケットのバージョンが一致しません。"}
 //! ```
 use ticket_store::server;
 
