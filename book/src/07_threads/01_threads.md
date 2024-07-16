@@ -10,7 +10,7 @@ and why we might want to use them.
 A **thread** is an execution context managed by the underlying operating system.\
 Each thread has its own stack, instruction pointer, and program counter.
 
-> **スレッド**は、オペレーティングシステムの下で、管理された実行コンテキストです。
+> **スレッド**は、オペレーティングシステムの下で、管理された実行文脈です。
 > それぞれのスレッドは独自のスタック、命令ポインターそしてプログラムカウンターを持ちます。
 
 A single **process** can manage multiple threads.

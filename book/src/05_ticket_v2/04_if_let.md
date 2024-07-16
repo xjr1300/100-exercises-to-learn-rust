@@ -1,4 +1,4 @@
-# Concise branching（簡潔な枝分かれ）
+# Concise branching（簡潔なブランチ分かれ）
 
 Your solution to the previous exercise probably looks like this:
 

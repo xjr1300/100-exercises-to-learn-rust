@@ -113,7 +113,7 @@ You can think of `'_` as a **placeholder** for the lifetime of the `&self` refer
 See the [References](#references) section for a link to the official documentation on lifetime elision.\
 In most cases, you can rely on the compiler telling you when you need to add explicit lifetime annotations.
 
-> ライフタイムの省略に関する公式ドキュメントへのリンクについては、参照セクションを参照してください。
+> ライフタイムの省略に関する公式ドキュメントへのリンクについては、参照節を参照してください。
 > 殆どの場合、明示的なライフタイム注釈を追加する必要があるときは、コンパイラーからの通知に頼ることができます。
 
 ## References

@@ -96,7 +96,7 @@ from, therefore it shouldn't depend on any local data that may be de-allocated
 after the spawning context is destroyed.
 
 > `'static`制約は、`std::thread::spawn`の`'static`制約と同じ論理的根拠に従っています。
-> 生み出されたタスクは、それが生み出されたコンテキストよりも長生きするかもしれず、そのため、それは生み出したコンテキストが破壊された後で、開放されてしまうかもしれない任意のローカルデータに依存するべきではありません。
+> 生み出されたタスクは、それが生み出された文脈よりも長生きするかもしれず、そのため、それは生み出したコンテキストが破壊された後で、開放されてしまうかもしれない任意のローカルデータに依存するべきではありません。
 
 ```rust
 fn spawner() {

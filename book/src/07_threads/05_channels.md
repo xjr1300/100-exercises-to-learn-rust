@@ -36,7 +36,7 @@ So far we've only had very limited parent-child communication:
 
 > これまで、とても限定された親と子のコミュニケーションしかありませんでした。
 >
-> - 生み出したスレッドは、親コンテキストからのデータを借用／消費しました。
+> - 生み出したスレッドは、親文脈からのデータを借用／消費しました。
 > - 生み出したスレッドは、結合されたとき、親にデータを返しました。
 
 This isn't enough for a client-server design.\

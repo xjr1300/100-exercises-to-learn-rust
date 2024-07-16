@@ -4,7 +4,7 @@ Throughout the previous chapters you've seen quite a few **string literals** bei
 like `"To-Do"` or `"A ticket description"`.
 They were always followed by a call to `.to_string()` or `.into()`. It's time to understand why!
 
-> 前のチャプターを通じて、コード内で使用された`"To-Do"`または`"A ticket description"`のような、**文字列リテラル**をいくつか見てきました。
+> 前の章を通じて、コード内で使用された`"To-Do"`または`"A ticket description"`のような、**文字列リテラル**をいくつか見てきました。
 > それらは常に、`to_string()`または`into()`の呼び出しで続きました。それがなぜなのかを理解する時がきました！
 
 ## String literals（文字列リテラル）

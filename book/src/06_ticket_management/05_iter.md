@@ -65,4 +65,4 @@ It's idiomatic to provide both options:
 
 The former is convenient in `for` loops, the latter is more explicit and can be used in other contexts.
 
-前者は`for`ループで便利で、後者はより明示的で他のコンテキストで使用されます。
+前者は`for`ループで便利で、後者はより明示的で他の文脈で使用されます。

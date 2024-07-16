@@ -3,8 +3,9 @@
 Having to manually increment a counter variable is somewhat tedious. The pattern is also extremely common!\
 To make this easier, Rust provides a more concise way to iterate over a range of values: the `for` loop.
 
-> 手動でカウンター変数をインクリメントしなければならないことは、なにか面倒です。このパターンはとても一般的です！
-> これを簡単にするために、Rustは、値の範囲を反復処理するためのより簡潔な方法を提供しています。それは`for`ループです。
+> 手動でカウンター変数をインクリメントしなければならないことは、なにかと面倒です。
+> また、このパターンはとても一般的です！
+> これを簡単にするために、Rustは値の範囲を反復処理する、より簡潔な方法を提供しています。それは`for`ループです。
 
 ## The `for` loop（forループ）
 
@@ -58,9 +59,9 @@ is explicitly specified. The last two range types are used in other contexts, th
 The extreme values of a range don't have to be integer literals—they can be variables or expressions too!
 For example:
 
-> レンジの最初の3種類を`for`ループで使用でき、開始値源は明示的に指定されています。
-> 最後の2つのレンジタイプは、他のコンテキストで使用され、それを後で説明します。
-> レンジの極端な値は、整数リテラルである必要はなく、それらは変数や式でもかのうです！
+> レンジの最初の3種類を`for`ループで使用でき、開始値は明示的に指定されています。
+> 最後の2つのレンジタイプは、他の文脈で使用されますが、それは後で説明します。
+> レンジの極端な値は、整数リテラルである必要はなく、それらは変数や式でも可能です！
 
 ```rust
 let end = 5;
@@ -77,7 +78,7 @@ for i in 1..(end + 1) {
 
 [^iterator]: Later in the course we'll give a precise definition of what counts as an "iterator".
 For now, think of it as a sequence of values that you can loop over.
-コースの後の方で、「イテレーター」とは何を示すか、正確な定義を与えます。
+コースの後半で、「イテレーター」とは何を示すか、正確な定義を与えます。
 現時点では、それをループ可能な値のシーケンスと考えてください。
 
 [^weird-ranges]: You can use ranges with other types too (e.g. characters and IP addresses),

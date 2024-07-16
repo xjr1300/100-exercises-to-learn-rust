@@ -5,8 +5,8 @@ basic control flow constructs.\
 In this chapter we'll go one step further and cover what makes Rust truly unique: **ownership**.\
 Ownership is what enables Rust to be both memory-safe and performant, with no garbage collector.
 
-> 最初のチャプターは、Rustのプリミティブ型、演算子そして基本的な制御フローの構築についての良い理解を与えるはずです。
-> このチャプターは、先にステップを進めて、Rustを本当にユニークにする**所有権**について説明します。
+> 最初の章は、Rustのプリミティブ型、演算子そして基本的な制御フローの構築についての良い理解を与えるはずです。
+> この章は、先にステップを進めて、Rustを本当にユニークにする**所有権**について説明します。
 > 所有権は、メモリセーフと性能の両方を有効にするもので、ガベージコレクターを持ちません。
 
 As our running example, we'll use a (JIRA-like) ticket, the kind you'd use to track bugs, features, or tasks in
@@ -22,7 +22,7 @@ To move forward you'll have to pick up several new Rust concepts, such as:
 - Strings
 
 > 実行する例として、ソフトウェアプロジェクトのバグ、機能またはタスクを追跡するために使用する、JIRAのようなチケットを使用します。
-> Rustでモデリングします。それは最初のイテレーションで、チャプターの最後でもそれは完全で理想的ではありません。
+> Rustでモデリングします。それは最初のイテレーションで、章の最後でもそれは完全で理想的ではありません。
 > しかし、それは挑戦するには十分です！
 > 先に進むために、次のようなRustの新しい概念を取り上げなければなりません。
 >

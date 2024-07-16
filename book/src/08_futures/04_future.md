@@ -19,7 +19,7 @@ It implies, as we saw in the previous section, that whatever value it captures f
 spawning environment has to be `Send`. But it goes further than that.
 
 > `F`が`Send`であるとは_実際に_何を意味しているのでしょうか？
-> それは、前のセクションで確認した通り、生み出した環境からキャプチャーされた値が`Send`でなければならないことを暗示しています。
+> それは、前の節で確認した通り、生み出した環境からキャプチャーされた値が`Send`でなければならないことを暗示しています。
 > しかし、それはそれ以上のことを意味しています。
 
 Any value that's _held across a .await point_ has to be `Send`.\
@@ -229,4 +229,4 @@ schedule another task for execution, thus making progress on multiple fronts con
 
 We'll come back to the importance of yielding in a later section.
 
-> 後の方のセクションで、移譲することの重要性に戻ります。
+> 後半の節で、移譲することの重要性に戻ります。

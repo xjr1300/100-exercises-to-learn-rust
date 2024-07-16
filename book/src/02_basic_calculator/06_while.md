@@ -5,12 +5,12 @@ This may feel natural to you, especially if you're coming from a functional prog
 Or it may feel strange, if you're used to more imperative languages like C or Python.
 
 > `factorial`の実装は、再帰を使用するように強制されました。
-> 特に関数プログラミングをバックグラウンドに保つ場合、これは自然に感じるかもしれません。
-> また、CやPythonのようなより命令的な言語をより使用してきた場合、奇妙に感じたかもしれません。
+> 特に関数プログラミングをバックグラウンドに持っている場合、これは自然に感じるかもしれません。
+> また、CやPythonのような命令的な言語を使用してきた場合、奇妙に感じたかもしれません。
 
 Let's see how you can implement the same functionality using a **loop** instead.
 
-> 代わりに**ループ**を使用して同じ機能を実装する方法を見ましょう。
+> 代わりに**ループ**を使用して同じ機能を実装する方法を確認しましょう。
 
 ## The `while` loop（whileループ）
 
@@ -51,7 +51,7 @@ This will keep adding 1 to `i` and `i` to `sum` until `i` is no longer less than
 
 The example above won't compile as is. You'll get an error like:
 
-> 上記例はコンパイルされません。次のようなエラーを得ます。
+> 上記例はコンパイルされません。次のようなエラーが発生します。
 
 ```text
 error[E0384]: cannot assign twice to immutable variable `sum`
@@ -82,12 +82,12 @@ error[E0384]: cannot assign twice to immutable variable `i`
 This is because variables in Rust are **immutable** by default.\
 You can't change their value once it has been assigned.
 
-> これは、デフォルトでRustの変数が**不変（イミュータブル）**であるためです。
+> これは、デフォルトでRustの変数が**不変**であるためです。
 > 一度、変数が値を割り当てられると、それらの値を変更できません。
 
 If you want to allow modifications, you have to declare the variable as **mutable** using the `mut` keyword:
 
-> 変更を許可したい場合、`mut`キーワードを使用して、**可変（ミュータブル）**として変数を宣言しなくてはなりません。
+> 変更を許可したい場合、`mut`キーワードを使用して、**可変**として変数を宣言しなくてはなりません。
 
 ```rust
 // `sum` and `i` are mutable now!
@@ -103,7 +103,7 @@ while i <= 5 {
 
 This will compile and run without errors.
 
-> これはコンパイルされ、エラー無しで実行されます。
+> これはコンパイルされ、エラーなしで実行されます。
 
 ## Further reading（参考資料）
 

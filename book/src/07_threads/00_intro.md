@@ -16,7 +16,7 @@ We'll have the opportunity to touch most of Rust's core concurrency features, in
 - Shared state, using `Arc`, `Mutex` and `RwLock`
 - `Send` and `Sync`, the traits that encode Rust's concurrency guarantees
 
-> このチャプターにおいて、マルチスレッドなチケットストアを作成します。
+> この章において、マルチスレッドなチケットストアを作成します。
 > 次のようなRustの主要な同時並行機能の殆どに触れる機会を持ちます。
 >
 > - `std::thread`モジュールを使用したスレッド

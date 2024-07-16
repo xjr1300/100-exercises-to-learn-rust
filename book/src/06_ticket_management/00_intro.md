@@ -5,9 +5,9 @@ how to best represent them in Rust, but we didn't consider how `Ticket` fits int
 We'll use this chapter to build a simple workflow around `Ticket`, introducing a (rudimentary) management system to
 store and retrieve tickets.
 
-> 前のチャプターにおいて、世間から孤立して`Ticket`をモデリングしました。
+> 前の章において、世間から孤立して`Ticket`をモデリングしました。
 > そのフィールドとそれらの制約を定義して、Rustでそれらを表現する最良の方法を学びましたが、大きなシステムに`Ticket`を適用する方法を考えていません。
-> チケットを保存そして取得するための基本的な管理システムを導入して、`Ticket`まわりの単純なワークフローを構築するためにこのチャプターを使用します。
+> チケットを保存そして取得するための基本的な管理システムを導入して、`Ticket`まわりの単純なワークフローを構築するためにこの章を使用します。
 
 The task will give us an opportunity to explore new Rust concepts, such as:
 

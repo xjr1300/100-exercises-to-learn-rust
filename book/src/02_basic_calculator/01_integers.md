@@ -3,7 +3,7 @@
 In the ["Syntax" section](../01_intro/01_syntax.md) `compute`'s input parameters were of type `u32`.\
 Let's unpack what that _means_.
 
-> 構文セクションにおいて、`compute`の入力パラメーターは`u32`型でした。
+> 「構文」節において、`compute`の入力パラメーターは`u32`型でした。
 > それが何を意味するか解説しましょう。
 
 ## Primitive types（プリミティブ型）
@@ -17,7 +17,7 @@ They're built into the language itself—i.e. they are not defined in terms of o
 
 You can combine these primitive types to create more complex types. We'll see how soon enough.
 
-> より複雑な型を作成するために、これらのプリミティブ型を組み合わせできます。
+> より複雑な型を作成するために、これらのプリミティブ型を組み合わせれます。
 > すぐにその方法を確認します。
 
 ## Integers（整数）
@@ -28,7 +28,7 @@ You can combine these primitive types to create more complex types. We'll see ho
 
 An integer is a number that can be written without a fractional component. E.g. `1` is an integer, while `1.2` is not.
 
-> 整数は、小数部分無しで記述できる数値です。
+> 整数は、小数部分なしで記述できる数値です。
 > 例えば、`1`は整数ですが、`1.2`は整数ではありません。
 
 ### Signed vs. unsigned（符号付きと符号なし）
@@ -46,7 +46,7 @@ The equivalent type for signed integer is `i32`, where the `i` stands for intege
 negative).
 
 > `u32`の`u`は**符号なし**に由来します。
-> 符号付き整数と同等の可はは`i32`で、`i`は整数（例えば、正または負の任意の整数）に由来します。
+> 符号付き整数と同等の型は`i32`で、`i`は整数（例えば、正または負の任意の整数）に由来します。
 
 ### Bit width（ビット幅）
 
@@ -58,7 +58,7 @@ The more bits, the larger the range of numbers that can be represented.
 
 Rust supports multiple bit widths for integers: `8`, `16`, `32`, `64`, `128`.
 
-> Rustは、整数に対して複数のビット幅をサポートしています：`8`、`16`、`32`、`64`、`128`。
+> Rustは、整数に対して`8`、`16`、`32`、`64`、`128`の複数のビット幅をサポートしています。
 
 With 32 bits, `u32` can represent numbers from `0` to `2^32 - 1` (a.k.a. [`u32::MAX`](https://doc.rust-lang.org/std/primitive.u32.html#associatedconstant.MAX)).\
 With the same number of bits, a signed integer (`i32`) can represent numbers from `-2^31` to `2^31 - 1`
@@ -71,7 +71,7 @@ representation for more details on how signed integers are represented in memory
 > 32ビット幅の場合、`u32`は`0`から`2^32 - 1`（`u32::MAX`として知られる）までの数値を表現できます。
 > 同じビット数の場合、符号付き整数（`i32`）は`-2^31`から`2^31 - 1`（`i32::MIN`から`i32::MAX`）までの数値を表現できます。
 > `i32`の最大値は`u32`の最大値よりも小さいです。なぜなら、1ビットが数値の符号を表現するために使用されるからです。
-> メモリ内で符号付き整数がどのように表現されるかの詳細については、`2の補数`表現を参照してください。
+> メモリ内で符号付き整数を表現する方法の詳細は、`2の補数`表現を参照してください。
 
 ### Summary（まとめ）
 
@@ -92,13 +92,14 @@ Combining the two variables (signed/unsigned and bit width), we get the followin
 A **literal** is a notation for representing a fixed value in source code.\
 For example, `42` is a Rust literal for the number forty-two.
 
-> **リテラル**は、ソースコード内の固定された値を表現するための表記法です。
+> **リテラル**は、ソースコード内で固定された値を表現するための表記法です。
+> 例えば、`42`は数値42のRustのリテラルです。
 
 ### Type annotations for literals（リテラルの型注釈）
 
 But all values in Rust have a type, so... what's the type of `42`?
 
-> しかし、Rustにおいてすべての値は型を持つため、`42`の型はなんでしょうか？
+> しかし、Rustにおけるすべての値は型を持つため、`42`の型は何でしょうか？
 
 The Rust compiler will try to infer the type of a literal based on how it's used.\
 If you don't provide any context, the compiler will default to `i32` for integer literals.\
@@ -106,8 +107,8 @@ If you want to use a different type, you can add the desired integer type as a s
 explicitly typed as a `u64`.
 
 > Rustのコンパイラーは、それが使用される方法に基づいてリテラルの型を推論することを試みます。
-> なんらかのコンテキストを提供しない場合、コンパイラーは整数リテラルに対してデフォルトで`i32`を与えます。
-> 異なる型を使用したい場合、接尾辞として望ましい整数の型を追加できます。
+> 何らかの文脈を提供しない場合、コンパイラーは整数リテラルに対してデフォルトで`i32`を与えます。
+> 異なる型を使用したい場合、接尾辞として望ましい整数型を追加できます。
 > 例えば、`2u64`は、`u64`として明示的に型付けられた2です。
 
 ### Underscores in literals（リテラル内のアンダースコア）
@@ -130,11 +131,11 @@ Rust supports the following arithmetic operators[^traits] for integers:
 
 > Rustは整数のために次の算術演算子をサポートしています。
 >
-> `+`: 加算
-> `-`: 減算
-> `*`: 乗算
-> `/`: 除算
-> `%`: 剰余
+> - `+`: 加算
+> - `-`: 減算
+> - `*`: 乗算
+> - `/`: 除算
+> - `%`: 剰余
 
 Precedence and associativity rules for these operators are the same as in mathematics.\
 You can use parentheses to override the default precedence. E.g. `2 * (3 + 4)`.
@@ -168,7 +169,7 @@ even if the conversion is lossless. You have to do it explicitly.
 For example, you can't assign a `u8` value to a variable with type `u32`, even though all `u8` values are valid `u32`
 values:
 
-> 例えば、すべての`u8`値は有効な`u32`値にも関わらず、`u32`型である変数に`u8`値を割当てることはできません。
+> 例えば、すべての`u8`値は有効な`u32`値にも関わらず、`u32`型である変数に`u8`値を割り当てることはできません。
 
 ```rust
 let b: u8 = 100;
@@ -191,13 +192,13 @@ error[E0308]: mismatched types
 
 We'll see how to convert between types [later in this course](../04_traits/09_from.md).
 
-> 型の変換方法はこのコースの後の方で確認します。
+> 型の変換方法はこのコースの後半で確認します。
 
 ## Further reading（参考文献）
 
 - [The integer types section](https://doc.rust-lang.org/book/ch03-02-data-types.html#integer-types) in the official Rust book
 
-> - 整数型セクション: 公式Rustブック
+> - 整数型節: 公式Rustブック
 
 [^bit]: A bit is the smallest unit of data in a computer. It can only have two values: `0` or `1`.コンピューター内の最も小さなデータ単位です。それは`0`または`1`の2つの値しか持つことができません。
 
@@ -205,7 +206,7 @@ We'll see how to convert between types [later in this course](../04_traits/09_fr
 behave.
 We'll talk about operator overloading [later in the course](../04_traits/03_operator_overloading.md), after we've covered traits.
 Rustは独自の演算子を定義することを許可しませんが、組み込み演算子の振る舞いを制御する事ができます。
-コースの後の方のトレイトを説明した後で、演算子のオーバーローロに付いて話します。
+コースの後半でトレイトを説明した後、演算子のオーバーロードについて話します。
 
 [^coercion]: There are some exceptions to this rule, mostly related to references, smart pointers and ergonomics. We'll
 cover those [later on](../04_traits/07_deref.md).

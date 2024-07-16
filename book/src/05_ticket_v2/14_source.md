@@ -22,7 +22,7 @@ The `source` method allows you to "walk" the full chain of errors, often used wh
 > `source`メソッドは、もしある場合、**エラーの原因**にアクセスする方法です。
 > 時々、エラーは連鎖され、それは1つのエラーは他の原因になることを意味します。
 > 例えばデータベースのホスト名を解決できないなど、低水準のエラーによって引き起こされた、例えばデータベースに接続できないなどの高水準なエラーがあります。
-> `source`メソッドは、エラーの完全なつながりを「横断」させて、時々ログでエラーのコンテキストをキャプチャーするときに使用されます。
+> `source`メソッドは、エラーの完全なつながりを「横断」させて、時々ログでエラーの文脈をキャプチャーするときに使用されます。
 
 ## Implementing `source`（sourceの実装）
 
@@ -84,7 +84,7 @@ and is valid for the entire program execution.
 
 Don't worry too much about either of these concepts for now. We'll cover them in more detail in future chapters.
 
-> 今のところ、これらの概念についてあまり心配しないでください。将来のチャプターでより詳細にそれらを説明します。
+> 今のところ、これらの概念についてあまり心配しないでください。将来の章でより詳細にそれらを説明します。
 
 ## Implementing `source` using `thiserror`（thiserrorを使用してsourceを実装する）
 

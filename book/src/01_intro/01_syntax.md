@@ -8,7 +8,7 @@ It's located in `exercises/01_intro/00_welcome`, in the [course GitHub's reposit
 Use [`wr`](00_welcome.md#wr-the-workshop-runner) to start the course and verify your solutions.
 
 > 進みすぎないでください！
-> これを始める前に、前のセクションの演習を完成してください。
+> これを始める前に、前の節の演習を完成してください。
 > それは、GitHubリポジトリのコース内の`exercises/01_intro/00_welcome`にあります。
 > コースを開始して解答を確認するために`wr`を使用してください。
 

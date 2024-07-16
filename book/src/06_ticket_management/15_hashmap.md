@@ -159,6 +159,6 @@ There is an implicit contract between `Eq` and `Hash`: if two keys are equal, th
 This is crucial for `HashMap` to work correctly. If you break this contract, you'll get nonsensical results
 when using `HashMap`.
 
-> 暗黙的な契約が`Eq`と`Hash`感にあります。2つのキーが等しい場合、それらのハッシュも等しくならなければ成りません。
+> 暗黙的な契約が`Eq`と`Hash`感にあります。2つのキーが等しい場合、それらのハッシュも等しくならなければなりません。
 > これが、`HashMap`が正確に動作するために極めて重要です。
 > この契約を破った場合、`HashMap`を使用したとき、無意味な結果が得られます。

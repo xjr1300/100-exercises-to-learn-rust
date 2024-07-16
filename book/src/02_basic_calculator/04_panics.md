@@ -3,7 +3,7 @@
 Let's go back to the `speed` function you wrote for the ["Variables" section](02_variables.md).
 It probably looked something like this:
 
-> 「変数」セクションで記述した`speed`関数に戻りましょう。
+> 「変数」節で記述した`speed`関数に戻りましょう。
 > それはおそらく次のように見えたでしょう。
 
 ```rust
@@ -21,7 +21,7 @@ You can try it
 out [on the Rust playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=36e5ddbe3b3f741dfa9f74c956622bac)!\
 The program will exit with the following error message:
 
-> Rust playgroundで試すことができます！
+> `Rust playground`で試すことができます！
 > プログラムは、次のエラーメッセージで終了します。
 
 ```text
@@ -40,7 +40,7 @@ the program can't continue executing, it's an **unrecoverable error**[^catching]
 error.
 
 > これは**パニック**として知られています。
-> パニックは、プログラムが実行を継続できないなにか悪い状態になったことを示すRustの方法です。
+> パニックは、プログラムが実行を継続できない何か悪い状態になったことを示すRustの方法です。
 > それは**回復不能なエラー**です。
 > ゼロ割りはそのようなエラーに分類されます。
 
@@ -48,7 +48,7 @@ error.
 
 You can intentionally trigger a panic by calling the `panic!` macro[^macro]:
 
-> `panic!`マクロを呼び出すことで、意図的にパニックを発することができます。
+> `panic!`マクロを呼び出すことで、意図的にパニックを起こせます。
 
 ```rust
 fn main() {
@@ -80,4 +80,4 @@ circumstances.
 cover them in more detail later in the course.
 それに`!`が続く場合、それはマクロ呼び出しです。
 現段階では、スパイシーな関数としてマクロを考えてください。
-コースの後の方で詳細にそれらを説明します。
+コースの後半で詳細にそれらを説明します。

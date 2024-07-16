@@ -136,7 +136,7 @@ let is_open = ticket.is_open();
 This is the same calling syntax you used to perform saturating arithmetic operations on `u32` values
 in [the previous chapter](../02_basic_calculator/09_saturating.md).
 
-> これは、前のチャプターで飽和算術演算するために使用した呼び出し構文と同じです。
+> これは、前の章で飽和算術演算するために使用した呼び出し構文と同じです。
 
 ### Static methods（静的メソッド）
 

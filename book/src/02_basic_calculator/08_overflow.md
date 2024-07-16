@@ -31,10 +31,10 @@ But the _mathematically correct result_ doesn't fit into that integer type!
 > to be negative but `u32` can't represent negative numbers.
 
 > 結果が与えられた整数型の最小値よりも小さい場合、そのイベントを**整数アンダーフロー**と呼びます。
-> 簡潔にするために、このセクションの残りは整数オーバー不ｒ−について話しますが、ここで話すすべてのことは整数アンダーフローにも適用することを心に留めておいてください。
+> 簡潔にするために、この節の残りは整数オーバーフローについて話しますが、ここで話すすべてのことは整数アンダーフローにも適用することを心に留めておいてください。
 >
-> 「変数」セクションで記述した`speed`関数は、任意の入力の組み合わせでアンダーフローします。
-> 例えば、`end`が`start`よりも小さい場合、`end - start`は`u32`型でアンダーフローするため、その結果は負が想定されますが、`u32`は負数を表現できません。
+> 「変数」節で記述した`speed`関数は、任意の入力の組み合わせでアンダーフローします。
+> 例えば、`end`が`start`よりも小さい場合、`end - start`は、その結果は負が想定されますが、`u32`は負数を表現できないため、`u32`型でアンダーフローします。
 
 ## No automatic promotion（自動昇格はありません）
 
@@ -73,7 +73,7 @@ That's done via a panic, the mechanism we've already seen in the ["Panics" secti
 
 > これは最も保守的なアプローチです。
 > 整数オーバーフローが発生したときプログラムを停止します。
-> これはパニックを介して行われ、そのメカニズムは、「パニック」セクションですでに確認しました。
+> これはパニックを介して行われ、そのメカニズムは、「パニック」節ですでに確認しました。
 
 ### Come up with a "sensible" result（【良識ある」結果を考える）
 
@@ -109,8 +109,8 @@ If `overflow-checks` is set to `false`, Rust will **wrap around** when an intege
 
 You may be wondering—what is a profile setting? Let's get into that!
 
-> プロファイル設置がなにか困惑しているかもしれません？
-> それについて説明しましょう？
+> 困惑しているかもしれません。プロファイル設定とは何でしょうか？
+> それについて説明しましょう！
 
 ## Profiles（プロファイル）
 
@@ -129,7 +129,7 @@ to explicitly request via the `--release` flag—e.g. `cargo build --release` or
 > Cargoは、`dev`と`release`の2つの組み込みプロファイルを提供します。
 > `dev`プロファイルは、`cargo build`、`cargo run`または`cargo test`を実行するたびに使用されます。
 > それはローカル開発を目的としているため、それは短いコンパイル時間とより良いデバッグ体験を得るために、ランタイムの性能を犠牲にしています。
-> 代わりに、`release`プロファイルはランタイム性能のために最適化されますが、より長いコンパイル時間を招きます。
+> 代わりに、`release`プロファイルはランタイム性能のために最適化されますが、より長いコンパイル時間が必要です。
 > 明示的に`--release`フラグを要求する必要があります。
 > 例えば、`cargo build --release`または`cargo run --release`です。
 
@@ -139,7 +139,7 @@ to explicitly request via the `--release` flag—e.g. `cargo build --release` or
 > release mode.
 
 > 「リリースモードでプロジェクトをビルドしましたか？」は、Rustコミュニティでほぼミーム（文化の中で人から人に広がっていく行動やアイデアのこと）です。
-> それは、Rustに慣れていない開発者が、リリースモードでプロジェクトをビルドしていないことに気づく前に、Redditやツイッターなどのソーシャルメディアでその性能について不満をいうことを示します。
+> それは、Rustに慣れていない開発者が、リリースモードでプロジェクトをビルドしていないことに気づく前に、Redditやツイッターなどのソーシャルメディアでその性能について不満を言うことを示します。
 
 You can also define custom profiles or customize the built-in ones.
 
@@ -173,9 +173,9 @@ application, you can run benchmarks to decide if it's something you can afford.
 
 > 同時に、2つのプロファイルで異なる振る舞いを持つことで、些細なバグを招く可能性があります。
 > 推奨は、両方のプロファイルで`overflow-checks`を有効にすることです。
-> それは、静かに誤った結果を制し得するよりも、クラッすしたほうが良いからです。
+> それは、静かに誤った結果を生産するよりも、クラッシュしたほうが良いからです。
 > ランタイム性能の影響は、ほとんどの場合で無視できます。
-> パフォーマンスが重要なアプリケーションで作業している場合、ベンチマークを実行して、許容できるか決定できます。
+> パフォーマンスが重要なアプリケーションで作業している場合、ベンチマークを実行して、それが許容できるか決定できます。
 
 ## Further reading（参考資料）
 

@@ -6,7 +6,7 @@ We stated, in particular, that:
 - Every value in Rust has a single owner at any given time.
 - When a function takes ownership of a value ("it consumes it"), the caller can't use that value anymore.
 
-> 前のチャプターにおいて、所有権と借用を証入しました。
+> 前の章において、所有権と借用を証入しました。
 > 特に、次のことを述べました。
 >
 > - Rustにおけるすべての値は、任意の時点で単独の所有者を持ちます。

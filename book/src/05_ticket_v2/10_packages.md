@@ -22,12 +22,12 @@ Let's take a step back to talk about Rust's packaging system before we dive into
 A Rust package is defined by the `[package]` section in a `Cargo.toml` file, also known as its **manifest**.
 Within `[package]` you can set the package's metadata, such as its name and version.
 
-> Rustパッケージは、`Cargo.toml`ファイル内の`[package]`セクションによって定義され、**マニフェスト**としても知られています。
+> Rustパッケージは、`Cargo.toml`ファイル内の`[package]`節によって定義され、**マニフェスト**としても知られています。
 > `[package]`内で、パッケージの名前やバージョンなどを、メタデータも設定できます。
 
 Go check the `Cargo.toml` file in the directory of this section's exercise!
 
-> このセクションの演習ディレクトリ内の`Cargo.toml`ファイルを確認してください。
+> この節の演習ディレクトリ内の`Cargo.toml`ファイルを確認してください。
 
 ## What is a crate?（クレートとは？）
 

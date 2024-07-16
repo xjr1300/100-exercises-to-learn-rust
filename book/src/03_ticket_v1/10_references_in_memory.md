@@ -66,5 +66,5 @@ They just point to a memory location, which _may_ be on the heap, but doesn't ha
 [^fat]: [Later in the course](../04_traits/06_str_slice.md) we'll talk about **fat pointers**,
 i.e. pointers with additional metadata. As the name implies, they are larger than
 the pointers we discussed in this chapter, also known as **thin pointers**.
-コースの後の方で、例えば追加のメタデータを持つポインターである、**ファットポインター**について話します。
-名前が暗に意味する通り、それらはこのチャプターで議論して、**シンポインター**としても知られているポインターよりも大きいです。
+コースの後半で、例えば追加のメタデータを持つポインターである、**ファットポインター**について話します。
+名前が暗に意味する通り、それらはこの章で議論して、**シンポインター**としても知られているポインターよりも大きいです。

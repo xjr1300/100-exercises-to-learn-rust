@@ -5,8 +5,8 @@ It often happens that you want to handle integer overflows differently depending
 wrapping is the right choice, other times panicking is preferable.
 
 > `overflow-checks`は遠慮のないツールです。
-> それは、プログラム全体に影響を与えるグローバルな設定せす。
-> コンテキストによって異なる整数オーバーフローを処理したいことがよくあります。
+> それは、プログラム全体に影響を与えるグローバルな設定です。
+> 文脈によって異なる整数オーバーフローを処理したいことがよくあります。
 > 時々、包み込みは正しい選択で、他のときはパニックが好ましいです。
 
 ## `wrapping_` methods（wrapping_メソッド）
@@ -14,7 +14,7 @@ wrapping is the right choice, other times panicking is preferable.
 You can opt into wrapping arithmetic on a per-operation basis by using the `wrapping_` methods[^method].\
 For example, you can use `wrapping_add` to add two integers with wrapping:
 
-> `wrapping_`メソッドを使用して、操作ごとを基本にして包み込み算術を選択することができます。
+> `wrapping_`メソッドを使用して、操作ごとに包み込み算術を選択することができます。
 > 例えば、包み込みを使用して2つの整数を加算するために、`wrapping_add`を使用できます。
 
 ```rust
@@ -56,4 +56,4 @@ when performing the arithmetic operation.
 [^method]: You can think of methods as functions that are "attached" to a specific type.
 We'll cover methods (and how to define them) in the next chapter.
 特定の型に「付属した」関数としてメソッドを考えることができます。
-次のチャプターでメソッド（およびそれらを定義する方法）について説明します。
+次の章でメソッド（およびそれらを定義する方法）について説明します。

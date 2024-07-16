@@ -41,7 +41,7 @@ Whenever a client wants to update a ticket, they must first acquire a lock on it
 no other client can modify the ticket.
 
 > また、**ロック**を導入することで、競合状態を修正することもできます。
-> クライアントがチケットを更新したいときはいつでも、それら（クライアント）は、最初にそれ（チケット）のロックを取得しなければ成りません。
+> クライアントがチケットを更新したいときはいつでも、それら（クライアント）は、最初にそれ（チケット）のロックを取得しなければなりません。
 > ロックが有効な間、他のクライアントはチケットを修正できません。
 
 Rust's standard library provides two different locking primitives: `Mutex<T>` and `RwLock<T>`.\

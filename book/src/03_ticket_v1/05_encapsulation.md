@@ -26,7 +26,7 @@ their type. You can't rule out that a ticket might have an empty title or a stat
 that doesn't make sense.
 
 > すべてのフィールドをパブリックにする場合、カプセル化はありません。
-> いつでもフィールドが変更され、それらの型に従って任意な値を設定されることを想定しなければ成りません。
+> いつでもフィールドが変更され、それらの型に従って任意な値を設定されることを想定しなければなりません。
 > チケットが、意味のない空のタイトルや状態を持つかもしれず、それを除外できません。
 
 To enforce stricter rules, we must keep the fields private[^newtype].

@@ -3,7 +3,7 @@
 A package can depend on other packages by listing them in the `[dependencies]` section of its `Cargo.toml` file.\
 The most common way to specify a dependency is by providing its name and version:
 
-> パッケージは、その`Cargo.toml`ファイルの`[dependencies]`セクション内にリストすることで、他のパッケージに依存できます。
+> パッケージは、その`Cargo.toml`ファイルの`[dependencies]`節内にリストすることで、他のパッケージに依存できます。
 > 依存関係を指定する最も一般的な方法は、その名前とバージョンを提供することです。
 
 ```toml

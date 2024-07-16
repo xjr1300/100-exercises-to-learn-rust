@@ -309,7 +309,7 @@ fn main() {
     // `b`は、`config`の`version`フィールドへの参照です。
     // `b`は`u32`値への参照を含むため、`b`の型は`&u32`です。
     // `&`演算子を使用して`config.version`を借用することで、参照を作成しました。
-    // 同じシンボル（`&`）ですが、コンテキストに依存して異なる意味を持ちます！
+    // 同じシンボル（`&`）ですが、文脈に依存して異なる意味を持ちます！
     let b: &u32 = &config.version;
     //     ^ The type annotation is not necessary,
     //       it's just there to clarify what's going on
@@ -340,17 +340,17 @@ and truly understand how they work.
 
 > Rustの所有権システムは、最初は少し打ちのめされられるかもしれません。
 > しかし、心配しないでください。それは実践により自然になります。
-> そして、コースの残りと同様に、このチャプターの残りで多くの実践を行います。
+> そして、コースの残りと同様に、この章の残りで多くの実践を行います。
 > それらに慣れることを確実にするために、何回もそれぞれの概念を再訪して、それらがどのように機能するかを本当に理解します。
 
 Towards the end of this chapter we'll explain _why_ Rust's ownership system is designed the way it is.
 For the time being, focus on understanding the _how_. Take each compiler error as a learning opportunity!
 
-> このチャプターの最後に、Rustの所有権システムが、そのように設計された理由を説明します。
+> この章の最後に、Rustの所有権システムが、そのように設計された理由を説明します。
 > 現時点では、*どのように*理解するかに焦点を当ててください。
 > 学ぶ機会として、それぞれのコンパイルエラーを受け入れてください！
 
 [^refine]: This is a great mental model to start out, but it doesn't capture the _full_ picture.
 We'll refine our understanding of references [later in the course](../07_threads/06_interior_mutability.md).
 これは始めるための素晴らしいメンタルモデルですが、*完全な*姿を捉えていません。
-コースの後の方で、参照の理解を洗練させます。
+コースの後半で、参照の理解を洗練させます。

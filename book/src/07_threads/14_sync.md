@@ -2,7 +2,7 @@
 
 Before we wrap up this chapter, let's talk about another key trait in Rust's standard library: `Sync`.
 
-> このチャプターを仕上げる前に、Rust標準ライブラリにある他の主要なトレイトである`Sync`について話しましょう。
+> この章を仕上げる前に、Rust標準ライブラリにある他の主要なトレイトである`Sync`について話しましょう。
 
 `Sync` is an auto trait, just like `Send`.\
 It is automatically implemented by all types that can be safely **shared** between threads.

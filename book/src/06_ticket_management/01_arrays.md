@@ -94,7 +94,7 @@ assert_eq!(numbers.get(3), None);
 Since the size of an array is known at compile-time, the compiler can allocate the array on the stack.
 If you run the following code:
 
-> 配列のサイズはコンパイル時にわかっているため、コンパイラーはスタックに配列を割当てることができます。
+> 配列のサイズはコンパイル時にわかっているため、コンパイラーはスタックに配列を割り当てることができます。
 > 次のコードを実行すると・・・
 
 ```rust

@@ -4,7 +4,7 @@ We've covered quite a few different traits in this chapter—and we've only scra
 It may feel like you have a lot to remember, but don't worry: you'll bump into these traits
 so often when writing Rust code that they'll soon become second nature.
 
-> このチャプターにおいていくつのまったく異なるトレイトを説明しました。そしてまだ表面を引っ掻いただけです！
+> この章においていくつのまったく異なるトレイトを説明しました。そしてまだ表面を引っ掻いただけです！
 > 覚えておくべき多くのことがあるように感じるかもしれませんが、心配しないでください。
 > これらのトレイトに突き当たるため、Rustコードを書いているとき、それらはすぐに第二の自然になるため、
 

@@ -193,4 +193,4 @@ In most cases, the target type is either:
 
 `.into()` will work out of the box as long as the compiler can infer the target type from the context without ambiguity.
 
-> `.into()`は、コンパイラーが曖昧なくコンテキストから目的の型を推測できる限り、そのまま機能します。
+> `.into()`は、コンパイラーが曖昧なく文脈から目的の型を推測できる限り、そのまま機能します。

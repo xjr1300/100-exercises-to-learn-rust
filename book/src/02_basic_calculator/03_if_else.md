@@ -3,7 +3,7 @@
 All our programs so far have been pretty straightforward.\
 A sequence of instructions is executed from top to bottom, and that's it.
 
-> これまで、すべての私達のプログラムは、とても単純でした。
+> これまで、すべてのプログラムは、とても単純でした。
 > 命令のシーケンスは、上から下に実行され、それだけです。
 
 It's time to introduce some **branching**.
@@ -54,7 +54,7 @@ The condition in an `if` expression must be of type `bool`, a **boolean**.\
 Booleans, just like integers, are a primitive type in Rust.
 
 > `if`式内の条件は**ブーリアン**である`bool`型にならなくてはなりません。
-> ちょうど整数のようなブーリアンは、Rustにおけるプリミティブ型です。
+> ちょうど整数のように、ブーリアンはRustにおけるプリミティブ型です。
 
 A boolean can have one of two values: `true` or `false`.
 
@@ -65,7 +65,7 @@ A boolean can have one of two values: `true` or `false`.
 If the condition in an `if` expression is not a boolean, you'll get a compilation error.
 For example, the following code will not compile:
 
-> `if`式内の条件がブーリアンでない場合、コンパイルエラーを得ます。
+> `if`式内の条件がブーリアンでない場合、コンパイルエラーが発生します。
 > 例えば、次のコードはコンパイルされません。
 
 ```rust
@@ -77,7 +77,7 @@ if number {
 
 You'll get the following compilation error:
 
-> 次のコンパイルエラーが得られます。
+> 次のコンパイルエラーが発生します。
 
 ```text
 error[E0308]: mismatched types
@@ -93,7 +93,7 @@ You have to be explicit about the condition you want to check.
 
 > これは、Rustの型強制まわりの哲学に従っています。
 > 非ブーリアン型からブーリアンへの自動変換はありません。
-> JavaScriptまたはPythonのように、Rustは**真のような**または**偽のような**値の概念を持っていません。
+> JavaScriptまたはPythonのように、Rustは**真のような**または**偽のような**値の概念がありません。
 > 確認したい条件について明示的でなければなりません。
 
 ### Comparison operators（比較演算子）
@@ -109,7 +109,7 @@ Here are the comparison operators available in Rust when working with integers:
 - `>=`: greater than or equal to
 
 > `if`式の条件を構築するために比較演算子を使用することは、とても一般的です。
-> ここに、整数と一緒に機能する、Rustにおいて利用できる比較演算子を示します。
+> ここに、整数と一緒に機能する、Rustで利用できる比較演算子を示します。
 >
 > - `==`: 等しい
 > - `!=`: 等しくない
@@ -124,7 +124,7 @@ In Rust, `if` expressions are **expressions**, not statements: they return a val
 That value can be assigned to a variable or used in other expressions. For example:
 
 > Rustで、`if`式は**式**で、文ではありません。それらは値を返します。
-> その値は変数に割当てる、または他の式の中で使用できます。
+> その値は変数に割り当てる、または他の式の中で使用できます。
 > 例えば・・・
 
 ```rust
@@ -140,5 +140,5 @@ In the example above, each branch of the `if` evaluates to a string literal,
 which is then assigned to the `message` variable.\
 The only requirement is that both `if` branches return the same type.
 
-> 上記例で、`if`のそれぞれの枝は、文字列リテラルに評価され、それは`message`変数に割り当てられます。
-> 唯一の要求事項は、両方の`if`枝が同じ型を返すことです。
+> 上記例で、`if`のそれぞれのブランチは、文字列リテラルに評価され、それは`message`変数に割り当てられます。
+> 唯一の要求事項は、両方の`if`ブランチが同じ型を返すことです。

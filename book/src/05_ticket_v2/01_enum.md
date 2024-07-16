@@ -5,7 +5,7 @@ there are only a few valid statuses for a ticket: `To-Do`, `InProgress` and `Don
 This is not obvious if we look at the `status` field in the `Ticket` struct or at the type of the `status`
 parameter in the `new` method:
 
-> 前のチャプターで記述した検証ロジックに基づいて、チケットの有効な状態は、`To-Do`、`InProgress`そして`Done`のみがあります。
+> 前の章で記述した検証ロジックに基づいて、チケットの有効な状態は、`To-Do`、`InProgress`そして`Done`のみがあります。
 > `Ticket`奥蔵帯の`status`フィールドや`new`メソッドの`status`の型を見ても、これは明確ではありません。
 
 ```rust

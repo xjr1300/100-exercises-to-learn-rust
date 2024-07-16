@@ -3,7 +3,7 @@
 In the previous section, we saw how `impl Trait` can be used to return a type without specifying its name.\
 The same syntax can also be used in **argument position**:
 
-> 前のセクションにおいて、その名前を指定しないで型を返すために`impl Trait`を使用する方法を確認しました。
+> 前の節において、その名前を指定しないで型を返すために`impl Trait`を使用する方法を確認しました。
 > 同じ構文は、**引数の位置**でも使用できます。
 
 ```rust

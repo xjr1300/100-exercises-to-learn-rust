@@ -3,7 +3,7 @@
 In the previous chapter we covered the basics of Rust's type and ownership system.\
 It's time to dig deeper: we'll explore **traits**, Rust's take on interfaces.
 
-> 前のチャプターで、Rustの型と所有権システムの基本を説明しました。
+> 前の章で、Rustの型と所有権システムの基本を説明しました。
 > より深く掘り下げる時間です。Rustのインターフェイスを引き受ける**トレイト**を探求します。
 
 Once you learn about traits, you'll start seeing their fingerprints all over the place.\
@@ -11,7 +11,7 @@ In fact, you've already seen traits in action throughout the previous chapter, e
 as operators like `==` and `+`.
 
 > 一度、トレイトについて学ぶと、その指紋があらゆる場所で見えるようになります。
-> 事実、前のチャプターを通じて実際にトレイトを見ました。例えば、`.into()`呼び出しと同様に`==`や`+`のような演算子です。
+> 事実、前の章を通じて実際にトレイトを見ました。例えば、`.into()`呼び出しと同様に`==`や`+`のような演算子です。
 
 On top of traits as a concept, we'll also cover some of the key traits that are defined in Rust's standard library:
 
@@ -27,5 +27,5 @@ On top of traits as a concept, we'll also cover some of the key traits that are 
 Since we'll be talking about conversions, we'll seize the opportunity to plug some of the "knowledge gaps"
 from the previous chapter—e.g. what is `"A title"`, exactly? Time to learn more about slices too!
 
-> 変換について話すため、前のチャプターからのいくつかの「知識の乖離」を埋めるために機械を握ります。
+> 変換について話すため、前の章からのいくつかの「知識の乖離」を埋めるために機械を握ります。
 > 例えば、正確に「`"A title"`」とは何でしょうか？またスライスについてより学ぶ時です！

@@ -61,9 +61,9 @@ On the left side of the screen, you can see that the course is divided into sect
 Each section introduces a new concept or feature of the Rust language.\
 To verify your understanding, each section is paired with an exercise that you need to solve.
 
-> 画面の左側で、コースがセクションに分割されていることを確認できます。
-> それぞれのセクションは、Rust言語の新しい概念または機能を導入します。
-> 理解を確認するために、それぞれのセクションは、解決しなくてはならない演習とペアになっています。
+> 画面の左側で、コースが節に分割されていることを確認できます。
+> それぞれの節は、Rust言語の新しい概念または機能を導入します。
+> 理解を確認するために、それぞれの節は、解決しなくてはならない演習とペアになっています。
 
 You can find the exercises in the
 [companion GitHub repository](https://github.com/mainmatter/100-exercises-to-learn-rust).\
@@ -127,7 +127,7 @@ wr
 Don't move on to the next section until you've solved the exercise for the current one.
 
 > `wr`は現在の演習の解答を検証します。
-> 現在の演習を解決するまで、次のセクションに進まないでください。
+> 現在の演習を解決するまで、次の節に進まないでください。
 
 > We recommend committing your solutions to Git as you progress through the course,
 > so you can easily track your progress and "restart" from a known point if needed.

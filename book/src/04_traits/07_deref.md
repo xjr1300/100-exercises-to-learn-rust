@@ -131,4 +131,4 @@ is defined on both `T` and `U`, which one will be called?
 
 We'll examine later in the course the "safest" use cases for deref coercion: smart pointers.
 
-> このコースの後の方で、参照外し型強制の「最も安全な」ユースケースを調査します。それはスマートポインターです。
+> このコースの後半で、参照外し型強制の「最も安全な」ユースケースを調査します。それはスマートポインターです。

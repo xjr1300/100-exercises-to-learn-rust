@@ -3,7 +3,7 @@
 The `Ticket` struct we worked on in the previous chapters is a good start,
 but it still screams "I'm a beginner Rustacean!".
 
-> 前のチャプターで作業した`Ticket`構造体は、良いスタートですが、それでも「私は初心者のRustaceanです！」と叫んでいます。
+> 前の章で作業した`Ticket`構造体は、良いスタートですが、それでも「私は初心者のRustaceanです！」と叫んでいます。
 
 We'll use this chapter to refine our Rust domain modelling skills.
 We'll need to introduce a few more concepts along the way:
@@ -16,7 +16,7 @@ We'll need to introduce a few more concepts along the way:
 - The `TryFrom` and `TryInto` traits, for fallible conversions
 - Rust's package system, explaining what's a library, what's a binary, how to use third-party crates
 
-> Rustとメインモデリング技術を洗練するためにこのチャプターを使用します。
+> Rustとメインモデリング技術を洗練するためにこの章を使用します。
 > トチュウでいくつかの概念を紹介する必要があります。
 >
 > - Rustのデータモデリングの最も強力な機能の1つである`enum`

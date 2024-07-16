@@ -12,7 +12,7 @@ to the pointer: the length of the slice it points to. Going back to the example 
 > 前のメモリレイアウトで議論した内容から、それは`&str`がスタック上の単一の`usize`、つまりポインターとして表現されることを期待することは理由があります。
 > しかし、この場合は違い、`&str`はポインターの隣にいくつかの**メタデータ**を保存しています。
 > それが指し示すスライスの長さです。
-> 前のセクションの例に戻ります。
+> 前の節の例に戻ります。
 
 ```rust
 let mut s = String::with_capacity(5);
