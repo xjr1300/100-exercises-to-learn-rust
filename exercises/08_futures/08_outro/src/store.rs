@@ -3,6 +3,7 @@ use std::collections::BTreeMap;
 use crate::dto::{TicketDraft, TicketPatch};
 use crate::models::{Ticket, TicketId};
 
+/// チケットストア
 #[derive(Debug, Default)]
 pub struct TicketStore {
     tickets: BTreeMap<TicketId, Ticket>,
@@ -28,7 +29,7 @@ impl TicketStore {
         id
     }
 
-    /// チケットIDを指定してチケットの参照を取得する。
+    /// チケットIDを指定して、チケットの参照を取得する。
     ///
     /// # 引数
     ///
@@ -56,12 +57,10 @@ impl TicketStore {
 
     /// チケットを更新する。
     ///
-    /// 引数で指定されたチケットのパッチのチケットIDと一致するチケットを更新する。
-    ///
     /// # 引数
     ///
     /// * `id` - 更新するチケットのチケットID
-    /// * `patch` - チケットを更新する情報を格納したパッチ
+    /// * `patch` - チケットのパッチ
     ///
     /// # 戻り値
     ///

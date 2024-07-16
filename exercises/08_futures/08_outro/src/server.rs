@@ -50,7 +50,7 @@ async fn retrieve_ticket(
     }
 }
 
-/// チケットに登録されているチケットを更新する。
+/// チケットストアに登録されているチケットを更新する。
 async fn update_ticket(
     State(state): State<SharedState>,
     Path((ticket_id,)): Path<(u64,)>,

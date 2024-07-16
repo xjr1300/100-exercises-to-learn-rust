@@ -62,7 +62,7 @@ impl TryFrom<&str> for TicketTitle {
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct TicketDescription(pub String);
 
-/// チケットの説明の西田文字数
+/// チケットの説明の最大文字数
 pub const TICKET_DESCRIPTION_MAX_CHARS: usize = 500;
 
 /// チケット説明エラー
