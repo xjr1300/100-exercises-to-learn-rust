@@ -27,7 +27,7 @@ if number < 5 {
 
 This program will print `number is smaller than 5` because the condition `number < 5` is true.
 
-> 個のプログラムは、条件`number < 5`はtrueであるため、`number is smaller than 5`を表示します。
+> このプログラムは、条件`number < 5`はtrueであるため、`number is smaller than 5`を表示します。
 
 ### `else` clauses（else節）
 

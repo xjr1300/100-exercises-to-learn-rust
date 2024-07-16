@@ -210,5 +210,5 @@ Rustは独自の演算子を定義することを許可しませんが、組み�
 [^coercion]: There are some exceptions to this rule, mostly related to references, smart pointers and ergonomics. We'll
 cover those [later on](../04_traits/07_deref.md).
 A mental model of "all conversions are explicit" will serve you well in the meantime.
-個のルールにはいくつかの例外があり、多くは参照、スマートポインターそして人間工学に関連します。それらは後で説明します。
+このルールにはいくつかの例外があり、多くは参照、スマートポインターそして人間工学に関連します。それらは後で説明します。
 「すべての変換は明示的である」というメンタルモデルは、それまでの間に役立ちます。
