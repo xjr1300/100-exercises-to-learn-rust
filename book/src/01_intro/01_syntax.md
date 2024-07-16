@@ -8,7 +8,7 @@ It's located in `exercises/01_intro/00_welcome`, in the [course GitHub's reposit
 Use [`wr`](00_welcome.md#wr-the-workshop-runner) to start the course and verify your solutions.
 
 > 進みすぎないでください！
-> これを始める前に前のセクションの演習を完成してください。
+> これを始める前に、前のセクションの演習を完成してください。
 > それは、GitHubリポジトリのコース内の`exercises/01_intro/00_welcome`にあります。
 > コースを開始して解答を確認するために`wr`を使用してください。
 
@@ -20,8 +20,8 @@ Instead, we'll cover _just enough_ to keep going without getting stuck in the de
 One step at a time!
 
 > 前のタスクは演習としての資格すらありませんが、すでにそれはRust**構文**のかなりの部分を公開しています。
-> 前の演習で使用されたRustの構文のすべての詳細をカバーしていません。
-> 代わりに、詳細に行き詰まることなしに進み続けるために*ちょうど十分な*説明をしました。
+> 前の演習で使用されたRustの構文のすべての詳細をカバーしません。
+> 代わりに、詳細に行き詰まることなしに進み続けるために_ちょうど十分な_説明をする予定です。
 > 1度に1つずつ！
 
 ## Comments（コメント）
@@ -41,7 +41,7 @@ Functions in Rust are defined using the `fn` keyword, followed by the function's
 return type.
 The function's body is enclosed in curly braces `{}`.
 
-> Rustにおける関数は、`fn`キーワードを使用して定義され、関数の名前、その入力パラメーターとして、戻り値の型が続きます。
+> Rustにおける関数は、`fn`キーワードを使用して定義され、関数の名前、その入力パラメーター、そして戻り値の型が続きます。
 > 関数の本体は、波括弧`{}`で囲まれています。
 
 In previous exercise, you saw the `greeting` function:
@@ -58,7 +58,7 @@ fn greeting() -> &'static str {
 
 `greeting` has no input parameters and returns a reference to a string slice (`&'static str`).
 
-`greeting`は入力パラメーターを持たす、文字列のスライスへの参照（`&'static str`）を返します。
+> `greeting`は入力パラメーターを持たず、文字列スライスへの参照（`&'static str`）を返します。
 
 ### Return type（戻り値の型）
 
@@ -66,7 +66,7 @@ The return type can be omitted from the signature if the function doesn't return
 Rust's unit type).
 That's what happened with the `test_welcome` function:
 
-> 戻り値の型は、例えば、Rustのユニット型である`()`を返す場合など、関数が何も返さないとき、シグネチャーから省略できます。
+> 戻り値の型は、例えば、Rustのユニット型である`()`を返す場合など、関数が何も返さないとき、そのシグネチャーから省略できます。
 > それが、`test_welcome`関数で発生したことです。
 
 ```rust
@@ -114,14 +114,14 @@ fn greeting() -> &'static str {
 
 It is considered idiomatic to omit the `return` keyword when possible.
 
-> 可能なとき`return`キーワードを省略することは、慣用的に考えられています。
+> 可能なとき`return`キーワードを省略することは、慣用的である考えられています。
 
 ### Input parameters（入力パラメーター）
 
 Input parameters are declared inside the parentheses `()` that follow the function's name.\
 Each parameter is declared with its name, followed by a colon `:`, followed by its type.
 
-> 入力パラメーターは、関数名のあとに続く括弧`()`内で宣言されます。
+> 入力パラメーターは、関数名の後に続く括弧`()`内で宣言されます。
 > それぞれのパラメーターは、その名前、コロン`:`、その型を続けて宣言されます。
 
 For example, the `greet` function below takes a `name` parameter of type `&str` (a "string slice"):
@@ -145,9 +145,9 @@ If there are multiple input parameters, they must be separated with commas.
 Since we've been mentioned "types" a few times, let's state it clearly: Rust is a **statically typed language**.\
 Every single value in Rust has a type and that type must be known to the compiler at compile-time.
 
-> 数回「型」について言及したため、明確に述べましょう。
+> 数回「型」について言及したため、それを明確に述べましょう。
 > Rustは**静的型付け言語**です。
-> Rustにおけるすべての単独の値は肩を持ち、その型はコンパイル時にコンパイラーによって理解されなければなりません。
+> Rustにおけるすべての単独の値は型を持ち、その型はコンパイル時にコンパイラーによって理解されなければなりません。
 
 Types are a form of **static analysis**.\
 You can think of a type as a **tag** that the compiler attaches to every value in your program. Depending on the
@@ -155,8 +155,8 @@ tag, the compiler can enforce different rules—e.g. you can't add a string to a
 together.
 If leveraged correctly, types can prevent whole classes of runtime bugs.
 
-> 型は**静的解析**のいち形骸です。
-> 型を、コンパイラーがプログラム内のすべての値に付随する**タグ**と考えることができます。
-> タグに依存して、コンパイラは異なるルールを矯正することができます。
+> 型は**静的解析**の1つの形態です。
+> 型を、コンパイラーがプログラム内のすべての値に添付する**タグ**と考えることができます。
+> タグに依存して、コンパイラは異なるルールを強制することができます。
 > 例えば、文字列と数値を足すことはできませんが、2つの数値同士であれば足せれます。
-> 正確に利用されれば、型はランタイムで発生するバグの全体の種類を避けれます。
+> 正確に利用されれば、型はランタイムで発生するバグの種類の全体を避けれます。
