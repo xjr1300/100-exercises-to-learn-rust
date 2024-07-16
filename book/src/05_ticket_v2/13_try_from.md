@@ -43,7 +43,7 @@ This allows each implementation to specify its own error type, ideally the most 
 being attempted.
 
 > `TryFrom`と`TryInto`両方は、関連型`Error`があります。
-> これは、それぞれの実装に、変換の試みに対して理想的に最も適切な独自のエラー方を指定させます。
+> これは、それぞれの実装に、変換の試みに対して理想的に最も適切な独自のエラー型を指定させます。
 
 `Self::Error` is a way to refer to the `Error` associated type defined in the trait itself.
 

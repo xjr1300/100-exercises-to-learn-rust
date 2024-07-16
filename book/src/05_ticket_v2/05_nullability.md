@@ -28,7 +28,7 @@ This is a significant improvement over "implicit" nullability in other languages
 for `null` and thus trigger a runtime error.
 
 > `Option`は、値が存在する（`Some(T)`）、または存在しない（`None`）の考えを符号化します。
-> また、それは、**明示的に両方のケースを処理**することを矯正します。
+> また、それは、**明示的に両方のケースを処理**することを強制します。
 > null可能な値で作業して、`None`ケースを処理することを忘れた場合、コンパイルエラーが発生します。
 > これは、他の言語の「暗黙的なnull可能性」を大幅に改善して、他の言語では、`null`チェックを忘れた箇所で、ランタイムエラーを発します。
 
