@@ -32,10 +32,10 @@ pub async fn run() {
 async fn register_ticket(
     State(state): State<SharedState>,
     Json(payload): Json<TicketDraft>,
-) -> Json<TicketId> {
+) -> impl IntoResponse {
     let id = state.write().unwrap().add_ticket(payload);
 
-    Json(id)
+    Json(json!({"id": id})).into_response()
 }
 
 /// チケットストアからチケットを取得する。
