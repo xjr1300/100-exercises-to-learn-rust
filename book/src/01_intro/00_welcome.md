@@ -33,7 +33,7 @@ feel comfortable working on small to medium-sized Rust projects.
 This course is based on the "learn by doing" principle.\
 It has been designed to be interactive and hands-on.
 
-> 個のコースは、「実践で学ぶ」という原則に基づいています。
+> このコースは、「実践で学ぶ」という原則に基づいています。
 > それは、対話的で実践的になるように設計されています。
 
 [Mainmatter](https://mainmatter.com/rust-consulting/) developed this course
@@ -45,14 +45,14 @@ bring this course to your company, please [get in touch](https://mainmatter.com/
 
 > Mainmatterは、クラスルームで4日間にわたって提供されるようにこのコースを設計しました。
 > それぞれの参加者は、自分のペースでレッスンを進め、必要に応じて経験豊富なインストラクターがガイダンスを提供して、質問に回答して、トピックに深煎りします。
-> トレーニングセッションに参加する興味がある場合、または個のコースを会社に持ち込みたい場合は、連絡を取ってください。
+> トレーニングセッションに参加する興味がある場合、またはこのコースを会社に持ち込みたい場合は、連絡を取ってください。
 
 You can also follow the course on your own, but we recommend you find a friend or
 a mentor to help you along the way should you get stuck. You can
 also find solutions to all exercises in the
 [`solutions` branch of the GitHub repository](https://github.com/mainmatter/100-exercises-to-learn-rust/tree/solutions).
 
-> また、独自でコースをフォローすることもできますが、行き詰まった場合に助けてくれる友人やメンターを探すことをおすすめします。
+> また、独自でコースをフォローすることもできますが、行き詰まった場合に助けてくれる友人やメンターを探すことをお勧めします。
 > また、GitHubリポジトリの`solutions`ブランチに、すべての演習の解答を見つけることもできます。
 
 ## Structure（構造）
@@ -106,7 +106,7 @@ It is the `wr` CLI (short for "workshop runner").
 Install it with:
 
 > 解答を確認するために、コースをガイドするツールを提供しています。
-> それは、`wr`CLI（"workshop runner"の略）です。
+> それは、`wr`CLI（「workshop runner」の略）です。
 > それを次の通りインストールしてください。
 
 ```bash
@@ -149,7 +149,7 @@ He is also the author and maintainer of a variety of open-source Rust projects, 
 [`cargo-chef`](https://github.com/LukeMathWalker/cargo-chef),
 [Pavex](https://pavex.dev) and [`wiremock`](https://github.com/LukeMathWalker/wiremock-rs).
 
-> 個のコースは、`Mainmatter`の主任エンジニアコンサルタントの`Luca Palmieri`によって記述されました。
-> Lucaは2018年からRustを死傷しており、最初はTrueLayerで、その後はAWSで働いています。
+> このコースは、`Mainmatter`の主任エンジニアコンサルタントの`Luca Palmieri`によって記述されました。
+> Lucaは2018年からRustで作業しており、最初はTrueLayerで、その後はAWSで働いています。
 > Lucaは、Rustでバックエンドアプリケーションを構築する方法を学ぶためのリソースである`Zero to Production in Rust`の著者です。
 > また、彼は、`cargo-chef`、`Pavex`、`wiremock`などのさまざまなオープンソースのRustプロジェクトの著者およびメンテナーでもあります。
