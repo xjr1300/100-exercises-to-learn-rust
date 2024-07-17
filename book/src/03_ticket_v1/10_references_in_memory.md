@@ -54,17 +54,18 @@ It's a pointer to a pointer to the heap-allocated data, if you will.
 The same goes for `&mut String`.
 
 > もし、それをした場合、それはヒープに割り当てられたデータを指し示すポインターのポインターです。
+> 同じことは`&mut String`にも当てはまります。
 
-## Not all pointers point to the heap（捨ててのポインターがヒープを指し示すわけではない）
+## Not all pointers point to the heap（すべてのポインターがヒープを指し示すわけではない）
 
 The example above should clarify one thing: not all pointers point to the heap.\
 They just point to a memory location, which _may_ be on the heap, but doesn't have to be.
 
 > 上記例は、明確に1つのことを説明しています。すべてのポインターがヒープを指し示すわけではありません。
-> それらは、単にメモリの位置を指し示しており、それはヒープ上にある*かもしれません*が、そうである必要はありません。
+> それらは、単にメモリの位置を指し示しており、それはヒープ上にある_かもしれません_が、そうである必要はありません。
 
 [^fat]: [Later in the course](../04_traits/06_str_slice.md) we'll talk about **fat pointers**,
 i.e. pointers with additional metadata. As the name implies, they are larger than
 the pointers we discussed in this chapter, also known as **thin pointers**.
 コースの後半で、例えば追加のメタデータを持つポインターである、**ファットポインター**について話します。
-名前が暗に意味する通り、それらはこの章で議論して、**シンポインター**としても知られているポインターよりも大きいです。
+名前が暗に意味する通り、それらはこの章で議論した**シンポインター**としても知られているポインターよりも大きいです。

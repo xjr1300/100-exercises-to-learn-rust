@@ -18,7 +18,7 @@ If the allocation succeeds, the allocator will give you a **pointer** to the sta
 
 > 大きなメモリの塊、巨大な配列としてヒープを可視化できます。
 > ヒープにデータを保存する必要があるときはいつでも、ヒープの部分集合を予約するために**アロケーター**という特別なプログラムに依頼します。
-> 割り当てが作成した場合、アロケーターは予約されたブロックの開始を指す**ポインター**を与えます。
+> 割り当てが成功した場合、アロケーターは予約されたブロックの開始を指す**ポインター**を与えます。
 
 ## No automatic de-allocation（自動開放なし）
 
@@ -38,9 +38,8 @@ It's the allocator's job to keep track of which parts of the heap are in use and
 The allocator won't automatically free the memory you allocated, though: you need to be deliberate about it,
 calling the allocator again to **free** the memory you no longer need.
 
-> ヒープのどの部分が歯悠桜され、また空いているのか追跡し続けることは、アロケーターの仕事です。
-> アロケーターは、割り当てられたメモリを自動的に開放しませんが、それについて意図的にしなければなりません。
-> 再度アロケーターを呼び出して、もはや必要のないメモリを**開放**することを、意図的にしなければなりません。
+> ヒープのどの部分が使用中で、どこが空いているのかを追跡することは、アロケーターの仕事です。
+> アロケーターは、割り当てられたメモリを自動的に開放しませんが、再度アロケーターを呼び出して、もはや必要のないメモリを**開放**することを、意図的にしなければなりません。
 
 ## Performance（性能）
 
@@ -50,8 +49,8 @@ If you read articles about performance optimization you'll often be advised to m
 and prefer stack-allocated data whenever possible.
 
 > ヒープの柔軟性はコストが掛かります。ヒープ割り当てはスタック割り当てよりも**遅い**です。
-> これらは、多くのブックキーピング（簿記）が関係しています。
-> パフォーマンス最適化の記事を読んだ場合、ときどきヒープ割り当ての最小にして、可能なときはいつでもスタック割り当てを選ぶように進められます。
+> これらは、多くのブックキーピングが関係しています。
+> パフォーマンス最適化の記事を読んだ場合、ときどきヒープ割り当てを最小にして、可能なときはいつでもスタック割り当てを選ぶように勧められます。
 
 ## `String`'s memory layout（Stringのメモリレイアウト）
 
@@ -66,7 +65,7 @@ But a `String` is not _entirely_ heap-allocated, it also keeps some data on the 
 
 > `String`型のローカル変数を作成したとき、Rustはヒープの割り当てを強制されます。
 > 変数にどれだけのテキストをいれるか事前に知ることはできないため、それはスタックに正しい量の領域を予約することができません。
-> しかし、`String`は*完全に*ヒープ割り当てではなく、それはスタックにもいくつかデータを保持しています。特に・・・
+> しかし、`String`は_完全に_ヒープ割り当てではなく、スタックにもいくつかデータを保持しています。特に・・・
 >
 > - 予約したヒープ領域への**ポインター**
 > - 文字列の**長さ**、つまり文字列にあるバイト数
@@ -105,10 +104,10 @@ the length and the capacity: this `String` can hold up to 5 bytes, but it curren
 actual text.
 
 > 5バイトのテキストを保持できる`String`を要求しました。
-> `String::with_capacity`はアロケーターに向かい、ヒープメモリの５バイトを要求します。
+> `String::with_capacity`はアロケーターに対して、ヒープメモリの５バイトを要求します。
 > アロケーターは、そのメモリブロックの開始を指すポインターを返します。
 > しかし、`String`は空です。
-> スタック上に、長さと容量を区別することでこの情報を追跡し続けます。
+> スタックで長さと容量を区別することでこの情報を追跡します。
 > この`String`は5バイトまで保持できますが、現在、実際のテキストの0バイトを保持します。
 
 If you push some text into the `String`, the situation will change:
@@ -153,16 +152,16 @@ Depending on the maximum size of the address space (i.e. how much memory your ma
 this integer can have a different size. Most modern machines use either a 32-bit or a 64-bit address space.
 
 > マシン上のそれぞれのメモリ位置は**アドレス**で、一般的に符号なし整数で表現されます。
-> アドレス空間の最大サイズに依存して（つまり、マシンがアドレス可能なメモリ量）、この整数はさまざまなサイズになります。
+> アドレス空間の最大サイズに依存して（つまり、マシンが処理できるメモリの量）、この整数はさまざまなサイズになります。
 > 最も現代的なマシンは、32ビットまたは64ビットのアドレス空間のどちらかを使用します。
 
 Rust abstracts away these architecture-specific details by providing the `usize` type:
 an unsigned integer that's as big as the number of bytes needed to address memory on your machine.
 On a 32-bit machine, `usize` is equivalent to `u32`. On a 64-bit machine, it matches `u64`.
 
-> Rustは、`usize`型を提供することで、3つのアーキテクチャ特有の詳細を抽象化します。
-> マシン上のメモリを指し示すために必要なほど大きなバイト数をもつ符号なし整数です。
-> 32ビットマシン上で、`usize`は`u32`と同等です。64ビットマシン上で、それは`u64`と一致します。
+> Rustは、`usize`型を提供することで、これらアーキテクチャ特有の詳細を抽象化します。
+> `usize`は、マシン上のメモリを指し示すために必要なほど大きなバイト数をもつ符号なし整数です。
+> 32ビットマシンで`usize`は`u32`と同等です。64ビットマシンでそれは`u64`と一致します。
 
 Capacity, length and pointers are all represented as `usize`s in Rust[^equivalence].
 
@@ -173,7 +172,7 @@ Capacity, length and pointers are all represented as `usize`s in Rust[^equivalen
 `std::mem::size_of` returns the amount of space a type would take on the stack,
 which is also known as the **size of the type**.
 
-> `std::mem::size_of`は、スタック上に取る型のスペースの量を返し、それは**型のサイズ**としても知られています。
+> `std::mem::size_of`は型がスタックに獲得する領域の量を返し、それは**型のサイズ**としても知られています。
 
 > What about the memory buffer that `String` is managing on the heap? Isn't that
 > part of the size of `String`?
@@ -187,14 +186,14 @@ It's not considered to be part of the `String` type by the compiler.
 
 > いいえ！
 > ヒープ割り当ては、`String`が管理している**リソース**です。
-> それは、コンパイラーによって`String`型の一部として考えられません。
+> それは、コンパイラーによって`String`型の一部として考えられていません。
 
 `std::mem::size_of` doesn't know (or care) about additional heap-allocated data
 that a type might manage or refer to via pointers, as is the case with `String`,
 therefore it doesn't track its size.
 
-> `std::mem::size_of`は、ポインターを介して型が管理または参照するヒープに割り当てられた追加データについて、知らないし、また気にしません。
-> よって、それはそのサイズを追跡しません。
+> `std::mem::size_of`は、ポインターを介して型が管理または参照するヒープに割り当てられた追加データを知らないし、気にしていません。
+> よって、`std::mem::size_of`はそのサイズを追跡しません。
 
 Unfortunately there is no equivalent of `std::mem::size_of` to measure the amount of
 heap memory that a certain value is allocating at runtime. Some types might
@@ -204,12 +203,12 @@ You can, however, use a memory profiler tool (e.g. [DHAT](https://valgrind.org/d
 or [a custom allocator](https://docs.rs/dhat/latest/dhat/)) to inspect the heap usage of your program.
 
 > 不運にも、ランタイムである値が割り当てられたヒープメモリの量を計測する`std::mem::size_of`と同等なモノはありません。
-> ある型は、それらのヒープ使用を調査するためのメソッド（例えば、`String`の`capacity`メソッド）を提供していますが、Rustに置いてラインタイムのヒープｐしようを取得する一般目的の「API」はありません。
-> しかし、メモリプロファイラーツールを使用するか、プログラムのヒープ使用を調査するカスタムアロケーターを使用できます。
+> ある型は、それらのヒープ使用を調査するためのメソッド（例えば、`String`の`capacity`メソッド）を提供していますが、Rustではラインタイムでヒープ使用を取得する一般的な目的の「API」はありません。
+> しかし、メモリプロファイラーツールを使用するか、プログラムのヒープ使用を調査する、例えば`DHAT`またはカスタムアロケーターを使用できます。
 
 [^empty]: `std` doesn't allocate if you create an **empty** `String` (i.e. `String::new()`).
 Heap memory will be reserved when you push data into it for the first time.
-例えば`String::new()`などで**空**の`String`を作成した場合、`std`は割り当てられません。
+例えば`String::new()`などで**空**の`String`を作成した場合、`std`は割り当てしません。
 最初にヒープにデータを入れたとき、ヒープメモリは予約されます。
 
 [^equivalence]: The size of a pointer depends on the operating system too.

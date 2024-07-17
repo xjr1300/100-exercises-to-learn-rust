@@ -6,7 +6,7 @@ We need to keep track of three pieces of information for each ticket:
 - A description
 - A status
 
-> それぞれのチケットの3つの情報を追跡し続ける必要があります。
+> それぞれのチケットの3つの情報を追跡する必要があります。
 >
 > - タイトル
 > - 説明
@@ -16,14 +16,14 @@ We can start by using a [`String`](https://doc.rust-lang.org/std/string/struct.S
 to represent them. `String` is the type defined in Rust's standard library to represent
 [UTF-8 encoded](https://en.wikipedia.org/wiki/UTF-8) text.
 
+> それらを表現するために`String`を使用することから始めます。
+> `String`は、`UTF-8エンコード`テキストを表現するために、Rustの標準ライブラリに定義された型です。
+
 But how do we **combine** these three pieces of information into a single entity?
 
-> それらを表現するために`String`を使用することから始めることができます。
-> `String`は、`UTF-8エンコード`テキストを表現するために、Rustの標準ライブラリに定義された型です。
->
-> しかし、どのようにこれら3つの情報を単一のエントリに**組み合わせる**のでしょうか？
+> しかし、どのようにこれら3つの情報の断片を、単一のエントリに**組み合わせ**するのでしょうか？
 
-## Defining a `struct`（`struct`の定義）
+## Defining a `struct`（structの定義）
 
 A `struct` defines a **new Rust type**.
 
@@ -39,19 +39,19 @@ struct Ticket {
 
 A struct is quite similar to what you would call a class or an object in other programming languages.
 
-> 構造体は、他のプログラミング言語で暮らすまたはオブジェクトと呼ぶものにとても似ています。
+> 構造体は、他のプログラミング言語でクラスまたはオブジェクトと呼んでいるものに、とても似ています。
 
 ## Defining fields（フィールドの定義）
 
 The new type is built by combining other types as **fields**.\
 Each field must have a name and a type, separated by a colon, `:`. If there are multiple fields, they are separated by a comma, `,`.
 
-Fields don't have to be of the same type, as you can see in the `Configuration` struct below:
-
 > 新しい型は、**フィールド**として他の型を組み合わせることによって構築されます。
 > それぞれのフィールドは、コロン`:`で区切られた名前と型を持たなければなりません。
 > 複数のフィールドがある場合、それらはカンマ`,`で区切られます。
->
+
+Fields don't have to be of the same type, as you can see in the `Configuration` struct below:
+
 > 下の`Configuration`構造体で確認できるように、フィールドは同じ型である必要はありません。
 
 ```rust
@@ -116,7 +116,7 @@ Methods are pretty similar to functions, with two key differences:
 2. methods may use `self` as their first parameter.
    `self` is a keyword and represents the instance of the struct the method is being called on.
 
-> メソッドは、2つの主要な違いを持ちますが、関数ととても似ています。
+> メソッドは、2つの主要な違いを持ちますが、関数にとても似ています。
 >
 > 1. メソッドは、**`impl`ブロック**内に定義されなければなりません。
 > 2. メソッドは、それらの最初の引数として`self`を使用することができます。
@@ -136,7 +136,7 @@ let is_open = ticket.is_open();
 This is the same calling syntax you used to perform saturating arithmetic operations on `u32` values
 in [the previous chapter](../02_basic_calculator/09_saturating.md).
 
-> これは、前の章で飽和算術演算するために使用した呼び出し構文と同じです。
+> これは、前の章で`u32`値に対して飽和算術演算するために使用した呼び出し構文と同じです。
 
 ### Static methods（静的メソッド）
 

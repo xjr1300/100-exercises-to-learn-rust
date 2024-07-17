@@ -2,7 +2,7 @@
 
 Let's go back to our ticket definition:
 
-> チケットの定義にもどりましょう。
+> チケットの定義に戻りましょう。
 
 ```rust
 struct Ticket {
@@ -17,8 +17,8 @@ This means that users can create a ticket with an empty title, a suuuuuuuper lon
 a nonsensical status (e.g. "Funny").\
 We can do better than that!
 
-> `Ticket`構造体のフィールドには「生」の型を使用しています。
-> これは、空のタイトルで、とても長い説明で、または意味のない状態（例えば、「面白い」）でチケットを作成できることを意味します。
+> `Ticket`構造体のフィールドに「生」の型を使用しています。
+> これは、空のタイトル、とても長い説明、または意味のない状態（例えば、「面白い」）でチケットを作成できることを意味します。
 > もっと良い方法があります！
 
 ## Further reading（参考資料）

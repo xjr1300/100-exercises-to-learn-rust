@@ -5,7 +5,7 @@ implicit type conversions for integers.\
 How do you perform _explicit_ conversions then?
 
 > Rustは整数の暗黙的な型変換を行わないことを何度も繰り返し説明しました。
-> では、どの用に*明示的に*変換を行うのでしょうか？
+> では、どの用に_明示的に_変換を行うのでしょうか？
 
 ## `as`
 
@@ -112,8 +112,8 @@ To convert from a larger to smaller integer type, rely on the
 explore later in the course.
 
 > 経験則として、`as`キャストの使用はとても注意して行ってください。
-> それは、小さな型から大きな型に変換するために*排他的に*使用してください。
-> *失敗しない変換機械*についてコースの後半で探求します。
+> それは、小さな型から大きな型に変換するために_排他的に_使用してください。
+> _失敗しない変換機械_についてコースの後半で探求します。
 
 ### Limitations（制限事項）
 
@@ -127,11 +127,11 @@ and [infallible](../04_traits/09_from.md)), which we'll explore later on.
 > 驚くべき振る舞いは、`as`キャストの唯一の欠点ではありません。
 > また、それはかなり制限されています。
 > `as`キャストは、プリミティブな型といくつかの他の特別な場面にのみ依存しています。
-> 複合型で作業しているとき、後で探求する*失敗する*と*失敗しない*の異なる変換メカニズムに依存しなければなりません。
+> 複合型で作業しているとき、後で探求する_失敗する_と_失敗しない_の異なる変換メカニズムに依存しなければなりません。
 
 ## Further reading（参考資料）
 
 - Check out [Rust's official reference](https://doc.rust-lang.org/reference/expressions/operator-expr.html#numeric-cast)
   to learn the precise behaviour of `as` casting for each source/target combination,
   as well as the exhaustive list of allowed conversions.
-  変換を許可する網羅的なリストと同様に、それそれのソース/ターゲットの組み合わせに対する`as`キャストの正確な動作を学ぶために、*Rustの公式リファレンス*を参照してください。
+  変換を許可する網羅的なリストと同様に、それそれのソース/ターゲットの組み合わせに対する`as`キャストの正確な動作を学ぶために、_Rustの公式リファレンス_を参照してください。

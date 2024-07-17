@@ -24,16 +24,16 @@ A sprinkle of `&` here and there did the trick!\
 We now have a way to access the fields of a `Ticket` instance without consuming it in the process.
 Let's see how we can enhance our `Ticket` struct with **setter methods** next.
 
-> `&`を振りかけることで、うまくいきました！
-> 現在、処理で`Ticket`インスタンスを消費しないで、`Ticket`インスタンスのフィールドにアクセスする方法を持つように成りました。
-> 次に、**セッターメソッド**で｀Ticket`構造体を強化する方法を確認しましょう。
+> ここに`&`を振りかけることで、それらはうまくいきました！
+> 現在、処理で`Ticket`インスタンスを消費しないで、`Ticket`インスタンスのフィールドにアクセスする方法を持つようになりました。
+> 次に、**セッターメソッド**で`Ticket`構造体を強化する方法を確認しましょう。
 
 ## Setters（セッター）
 
 Setter methods allow users to change the values of `Ticket`'s private fields while making sure that its invariants
 are respected (i.e. you can't set a `Ticket`'s title to an empty string).
 
-> セッターメソッドは、`Ticket`の不変性を尊重する一方で、`Ticket`のプライベートフィールドの値を変更できるようにします（例えば、`Ticket`のタイトルに空の文字列を設定できない）。
+> セッターメソッドは、例えば、`Ticket`のタイトルに空の文字列を設定できないなど、`Ticket`の不変性を尊重することを確実にする一方で、`Ticket`のプライベートフィールドの値を変更できるようにします。
 
 There are two common ways to implement setters in Rust:
 
@@ -42,19 +42,20 @@ There are two common ways to implement setters in Rust:
 
 > Rustにおいてセッターを実装する2つの一般的な方法があります。
 >
-> 入力として`self`を受け取る。
-> 入力として`&mut self`を受け取る。
+> - 入力として`self`を受け取る。
+> - 入力として`&mut self`を受け取る。
 
 ### Taking `self` as input（入力としてselfを受け取る）
 
 The first approach looks like this:
 
-> 最初の方法は次のように見えます。
+> 最初の方法は次のようになります。
 
 ```rust
 impl Ticket {
     pub fn set_title(mut self, new_title: String) -> Self {
         // Validate the new title [...]
+        // 新しいタイトルを検証します。
         self.title = new_title;
         self
     }
@@ -65,7 +66,7 @@ It takes ownership of `self`, changes the title, and returns the modified `Ticke
 This is how you'd use it:
 
 > それは、`self`の所有権を取得して、タイトルを変更した後、変更された`Ticket`インスタンスを返します。
-> これが、それを使用する方法です。
+> 次はそれを使用する方法です。
 
 ```rust
 let ticket = Ticket::new("Title".into(), "Description".into(), "To-Do".into());
@@ -78,14 +79,14 @@ you declare a new variable with the same name as an existing one, the new variab
 is a common pattern in Rust code.
 
 > `set_title`が`self`の所有権を取得して、**それを消費する**ため、変数に結果を再割り当てする必要があります。
-> 上記例において、任意の変数の名前を再利用する**変数のシャドーイング*を利用しています。
-> 存在する同じ名前ので新しい変数を宣言したとき、新しい変数は古いものを**隠します**。
+> 上記例において、変数の名前を再利用する_変数のシャドーイング_を利用しています。
+> 存在する同じ名前で新しい変数を宣言したとき、新しい変数は古いものを**隠します**。
 > Rustのコードで、これは一般的なパターンです。
 
 `self`-setters work quite nicely when you need to change multiple fields at once: you can chain multiple calls together!
 
 > 一度に複数のフィールドを変更する必要があるときも、`self`セッターはとても良く機能します。
-> 複数の呼び出しを一緒につなげることができます。
+> 複数の呼び出しを一緒に繋げれます。
 
 ```rust
 let ticket = ticket
@@ -98,12 +99,13 @@ let ticket = ticket
 
 The second approach to setters, using `&mut self`, looks like this instead:
 
-> セッターの2つ目の方法は、`&mut self`を使用するもので、次のように見えます。
+> `&mut self`を使用するセッターの2つ目の方法は、次のようになります。
 
 ```rust
 impl Ticket {
     pub fn set_title(&mut self, new_title: String) {
         // Validate the new title [...]
+        // 新しいタイトルを検証します。
 
         self.title = new_title;
     }
@@ -139,7 +141,7 @@ We need to mark `ticket` as mutable though, because we're taking a mutable refer
 Since they don't return the modified `Ticket` instance, you can't call another setter on the result of the first one.
 You have to call each setter separately:
 
-> `&mut`セッターは欠点があります。複数の呼び出しを一緒につなげることができません。
+> `&mut`セッターは欠点があります。複数の呼び出しを一緒に繋げれません。
 > 変更された`ticket`インスタンスを返さないため、最初の結果で他のセッターを呼び出しできません。
 
 ```rust

@@ -45,7 +45,7 @@ immutable) is valid.\
 The lifetime of a reference is constrained by the scope of the value it refers to. Rust always makes sure, at compile-time,
 that references are not used after the value they refer to has been dropped, to avoid dangling pointers and use-after-free bugs.
 
-> ライフタイムは、可変または不変参照が有効な長さを追跡し続けるためにRustコンパイラーによってい使用されます。
+> ライフタイムは、可変または不変参照が有効な長さを追跡するためにRustコンパイラーによってい使用されます。
 > 参照のライフタイムは、それが参照する値のスコープによって制限されます。
 > Rustは、ダングリングポインターと開放された後に使用するバグを避けるために、コンパイル時に、参照している値がドロップされた後で、参照が使用されないことを常に確認します。
 

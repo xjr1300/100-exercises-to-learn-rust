@@ -9,11 +9,14 @@ When introducing the borrow-checker, we also stated that you rarely have to mana
 These two statements might seem contradictory at first.
 Let's see how they fit together by introducing **scopes** and **destructors**.
 
+> 最初は、2つの文が矛盾しているように見えるかもしれません。
+> **スコープ**と**デストラクター**を導入して、それらがどのように適合するか確認しましょう。
+
 ## Scopes（スコープ）
 
 The **scope** of a variable is the region of Rust code where that variable is valid, or **alive**.
 
-変数の**スコープ**は、その変数が有効または**生きている**Rustコードの領域です。
+> 変数の**スコープ**は、その変数が有効または**生きている**Rustコードの領域です。
 
 The scope of a variable starts with its declaration.
 It ends when one of the following happens:
@@ -45,10 +48,10 @@ It ends when one of the following happens:
    ```
 
 > 変数のスコープは、その宣言で始まります。
-> それは、次の打ち1つが発生すると終わります。
+> それは、次のうち1つが発生すると終わります。
 >
-> 1. その変数が宣言された、例えば`{}`の間のコードなどのブロックが終了する。
-> 2. 変数の所有権が、例えば関数または他の変数など、他の誰かに移動した。
+> 1. その変数が宣言された、例えば`{}`間のコードなどのブロックが終了する。
+> 2. 変数の所有権が、例えば関数または他の変数など、他の誰かに移動される。
 
 ## Destructors（デストラクター）
 
@@ -56,20 +59,20 @@ When the owner of a value goes out of scope, Rust invokes its **destructor**.\
 The destructor tries to clean up the resources used by that value—in particular, whatever memory it allocated.
 
 > 値の所有者がスコープ外になると、Rustはその**デストラクター**を呼び出します。
-> デストラクターは、その値によって使用されたリソース、割り当てっられたメモリをクリーンアップすることを試みます。
+> デストラクターは、その値によって使用されたリソース、特に割り当てられたメモリをクリーンアップすることを試みます。
 
 You can manually invoke the destructor of a value by passing it to `std::mem::drop`.\
 That's why you'll often hear Rust developers saying "that value has been **dropped**" as a way to state that a value
 has gone out of scope and its destructor has been invoked.
 
-> 値を`std::mem::drop`にわたすことで、値のデストラクターを手動で呼び出すことができます。
-> Rustの開発者が。値がスコープ外になり、そのデストラクターが呼び出されたことを述べる方法として、「その値は**ドロップ**されました」と言うことを時々聞くでしょう。
+> 値を`std::mem::drop`に渡すことで、値のデストラクターを手動で呼び出すことができます。
+> Rustの開発者が、値がスコープ外になり、そのデストラクターが呼び出されたことを述べる方法として、「その値は**ドロップ**されました」と言うことをよく聞くでしょう。
 
 ### Visualizing drop points（ドロップポイントの可視化）
 
 We can insert explicit calls to `drop` to "spell out" what the compiler does for us. Going back to the previous example:
 
-> コンパイラーがしてくれることを「スペリングを伝える」ために、明示的な`drop`呼び出しを挿入できます。
+> コンパイラーがしてくれることを「記述して伝える」ために、明示的な`drop`呼び出しを挿入できます。
 > 前の例に戻りましょう。
 
 ```rust
@@ -81,6 +84,8 @@ fn main() {
 ```
 
 It's equivalent to:
+
+> 上記は次と等価です。
 
 ```rust
 fn main() {
@@ -97,7 +102,7 @@ fn main() {
 
 Let's look at the second example instead, where `s`'s ownership is transferred to `compute`:
 
-> 代わりに、`s`の所有権が`compute`移動した、2つ目の例を確認しましょう。
+> 代わりに、`s`の所有権が`compute`に移動した、2つ目の例を確認しましょう。
 
 ```rust
 fn compute(s: String) {
@@ -113,7 +118,7 @@ fn main() {
 
 It's equivalent to this:
 
-> それは次と同等です。
+> それは次と等価です。
 
 ```rust
 fn compute(t: String) {
@@ -158,7 +163,7 @@ println!("{}", x);
 
 If you try to compile this code, you'll get an error:
 
-> このコードをコンパイルすることを試みると、次のエラーを得ます。
+> このコードをコンパイルすることを試みると、次のエラーが発生します。
 
 ```rust
 error[E0382]: use of moved value: `x`
@@ -173,7 +178,7 @@ error[E0382]: use of moved value: `x`
 Drop **consumes** the value it's called on, meaning that the value is no longer valid after the call.\
 The compiler will therefore prevent you from using it, avoiding [use-after-free bugs](https://owasp.org/www-community/vulnerabilities/Using_freed_memory).
 
-> ドロップは、呼ばれると値を**消費する**ため、呼び出した後、その値はもはや有効ではないことを意味します。
+> ドロップは、それが呼ばれた値を**消費する**ため、呼び出した後、その値はもはや有効ではないことを意味します。
 > よって、コンパイラーは、解放後に使用するバグを回避するために、それを使用することを防ぎます。
 
 ### Dropping references（参照のドロップ）
@@ -194,7 +199,7 @@ When you call `drop(y)`... nothing happens.\
 If you actually try to compile this code, you'll get a warning:
 
 > `drop(y)`を呼び出したとき・・・何も発生しません。
-> 実際にこのコードをコンパイルすることを試みた場合、警告を得ます。
+> 実際にこのコードをコンパイルすることを試みた場合、警告が発生します。
 
 ```text
 warning: calls to `std::mem::drop` with a reference
