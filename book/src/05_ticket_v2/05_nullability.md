@@ -36,7 +36,7 @@ for `null` and thus trigger a runtime error.
 
 `Option`'s definition uses a Rust construct that you haven't seen before: **tuple-like variants**.
 
-> `Option`の定義は、**タプルのようなバリアント**という前に見ていないRustの構成概念を使用します。
+> `Option`の定義は、**タプルのようなバリアント**という、前に確認していないRustの構造物を使用します。
 
 ### Tuple-like variants（タプルのようなバリアント）
 
@@ -49,7 +49,7 @@ for `null` and thus trigger a runtime error.
 Tuple-like variants are often used when there is a single field to store, especially when we're looking at a
 "wrapper" type like `Option`.
 
-> タプルのようなバリアントは、保存するために1つのフィールドがあるとき、特に`Option`のような「ラッパー」型を見ているときに、よく使用されます。
+> タプルのようなバリアントは、保存するために1つのフィールドがあるとき、特に`Option`のような「ラッパー」型を確認しているときに、よく使用されます。
 
 ### Tuple-like structs（タプルのような構造体）
 
@@ -77,9 +77,9 @@ It's weird to say that something is tuple-like when we haven't seen tuples yet!\
 Tuples are another example of a primitive Rust type.
 They group together a fixed number of values with (potentially different) types:
 
-> まだタプルを見ていないときに、何かがタプルのようだと言うことは奇妙です！
+> まだタプルを確認していないときに、何かがタプルのようだと言うことは奇妙です！
 > タプルは、プリミティブなRustの型の別の例です。
-> それらは、異なる可能性のある型の値の固定数をグループ化します。
+> それらは、潜在的に異なる型の値の固定数をグループ化します。
 
 ```rust
 // Two values, same type
@@ -93,8 +93,8 @@ let second: (i32, u32, u8) = (-42, 3, 8);
 The syntax is simple: you list the types of the values between parentheses, separated by commas.
 You can access the fields of a tuple using the dot notation and the field index:
 
-> 構文は単純です。カッコの間に、間まで区切られた値の型をリストします。
-> ドット記法とフィールドのインデックスを衣装して、タプルのフィールドにアクセスできます。
+> 構文は単純です。カッコの間にカンマで区切られた値の型をリストします。
+> ドット記法とフィールドのインデックスを使用して、タプルのフィールドにアクセスできます。
 
 ```rust
 assert_eq!(second.0, -42);

@@ -112,7 +112,7 @@ In particular, at least one of the following must be true:
 - The trait is defined in the current crate
 - The implementor type is defined in the current crate
 
-> 複数のクレートが巻き込まれると、モノはより微妙な差異がでてきます。
+> 複数のクレートが巻き込まれると、ものはより微妙な差異がでてきます。
 > 特に、次の内、少なくとも1つは成立しなくてはなりません。
 >
 > - トレイトが、現在のクレートで定義されている。
@@ -142,7 +142,7 @@ Which implementation should be used? The one defined in `B`? Or the one defined 
 There's no good answer, therefore the orphan rule was defined to prevent this scenario.
 Thanks to the orphan rule, neither crate `B` nor crate `C` would compile.
 
-> どちらの実装が使用されるべきでしょうか？`B`で定義されたモノでしょうか？それとも`C`で定義されたものでしょうか？
+> どちらの実装が使用されるべきでしょうか？`B`で定義されたものでしょうか？それとも`C`で定義されたものでしょうか？
 > 良い答えはありません。従って、孤立ルールはこのシナリオを避けるために定義されました。
 > 孤立ルールのおかげで、`B`クレートと`C`クレートはどちらもコンパイルされません。
 

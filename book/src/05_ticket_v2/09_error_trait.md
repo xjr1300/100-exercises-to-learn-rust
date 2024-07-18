@@ -24,7 +24,7 @@ There are no constraints on the type of the `Err` variant in a `Result`, but it'
 that implements the `Error` trait.
 `Error` is the cornerstone of Rust's error handling story:
 
-> `Result`の`Err`バリアントの型には成約がありませんが、`Error`トレイトを実装する型を使用することは良い実践です。
+> `Result`の`Err`バリアントの型に制約はありませんが、`Error`トレイトを実装する型を使用することは良い実践です。
 > `Error`は、Rustのエラー処理の基本理念です。
 
 ```rust
@@ -73,6 +73,6 @@ while `Debug` provides a low-level representation that's more suitable to develo
 That's why `Debug` can be automatically implemented using the `#[derive(Debug)]` attribute, while `Display`
 **requires** a manual implementation.
 
-> 違いはそれらの_目的_です。
+> 違いはそれらの _目的_ です。
 > `Display`は「エンドユーザー」を意図した表現を返しますが、`Debug`は開発者やサービスオペレーターにより適した低水準な表現を提供します。
 > それが、`Debug`が`#[derive(Debug)]`属性を使用して自動的に実装できる一方で、`Display`は手動の実装を**要求する**理由です。

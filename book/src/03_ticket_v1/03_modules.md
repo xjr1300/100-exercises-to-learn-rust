@@ -35,7 +35,7 @@ mod tests {
 The `tests` module above is an example of an **inline module**: the module declaration (`mod tests`) and the module
 contents (the stuff inside `{ ... }`) are next to each other.
 
-> 上記`tests`モジュールは、**インラインモジュール**の例で、そのモジュールの定義（`mod tests`）とそのモジュールのコンテンツ（`{ ... }`の内部のモノ）は隣り合っています。
+> 上記`tests`モジュールは、**インラインモジュール**の例で、そのモジュールの定義（`mod tests`）とそのモジュールのコンテンツ（`{ ... }`の内部のもの）は隣り合っています。
 
 ## Module tree（モジュールツリー）
 

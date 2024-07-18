@@ -154,6 +154,6 @@ If a method returns a `&String`, you're promising that there is heap-allocated U
 If a method returns a `&str`, instead, you have a lot more freedom: you're just saying that _somewhere_ there's a
 bunch of text data and that a subset of it matches what you need, therefore you're returning a reference to it.
 
-> メソッドが`&String`を返す場合、参照を返すモノと**完全に一致する**、ヒープに割り当てられたUTF-8テキストがどこかにあることを約束しています。
+> メソッドが`&String`を返す場合、参照を返すものと**完全に一致する**、ヒープに割り当てられたUTF-8テキストがどこかにあることを約束しています。
 > 代わりにメソッドが`&str`を返す場合、より自由度が高くなります。
 > どこかにテキストデータの束があり、そのサブセットが必要なものと一致しているので、その参照を返すだけであることを単に言っています。

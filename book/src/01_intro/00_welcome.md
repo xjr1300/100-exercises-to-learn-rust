@@ -44,7 +44,7 @@ If you're interested in attending one of our training sessions, or if you'd like
 bring this course to your company, please [get in touch](https://mainmatter.com/contact/).
 
 > Mainmatterは、クラスルームで4日間にわたって提供されるようにこのコースを設計しました。
-> それぞれの参加者は、自分のペースでレッスンを進め、必要に応じて経験豊富なインストラクターがガイダンスを提供して、質問に回答して、トピックに深煎りします。
+> それぞれの参加者は、自分のペースでレッスンを進め、必要に応じて経験豊富なインストラクターがガイダンスを提供して、質問に回答して、トピックに深入りします。
 > トレーニングセッションに参加する興味がある場合、またはこのコースを会社に持ち込みたい場合は、連絡を取ってください。
 
 You can also follow the course on your own, but we recommend you find a friend or

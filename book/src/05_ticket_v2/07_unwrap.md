@@ -6,7 +6,7 @@ What does this mean for the caller?
 > 現在、`Ticket::new`は、無効な入力に対して`Result`を返します。
 > これは呼び出し側にとって何を意味するのでしょうか？
 
-## Failures can't be (implicitly) ignored（逃れられない失敗は、暗黙的に無視できない）
+## Failures can't be (implicitly) ignored（失敗は暗黙的に無視できない）
 
 Unlike exceptions, Rust's `Result` forces you to **handle errors at the call site**.\
 If you call a function that returns a `Result`, Rust won't allow you to implicitly ignore the error case.
@@ -27,7 +27,7 @@ fn parse_int(s: &str) -> Result<i32, ParseIntError> {
 let number = parse_int("42") + 2;
 ```
 
-## You got a `Result`. Now what?（Resultを得ました。ここで何をすればいいのでしょうか？）
+## You got a `Result`. Now what?（Resultを得ました。では、何をすればいいのでしょうか？）
 
 When you call a function that returns a `Result`, you have two key options:
 

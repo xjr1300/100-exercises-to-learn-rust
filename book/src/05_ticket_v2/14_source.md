@@ -2,7 +2,7 @@
 
 There's one more thing we need to talk about to complete our coverage of the `Error` trait: the `source` method.
 
-> `Error`トレイトの範囲を完了するために、話す必要があることがもう1つあります。それは`source`メソッドです。
+> `Error`トレイトの説明を完了するために、話す必要があることがもう1つあります。それは`source`メソッドです。
 
 ```rust
 // Full definition this time!
@@ -20,8 +20,8 @@ cannot connect to the database) that is caused by a lower-level error (e.g. can'
 The `source` method allows you to "walk" the full chain of errors, often used when capturing error context in logs.
 
 > `source`メソッドは、もしある場合、**エラーの原因**にアクセスする方法です。
-> 時々、エラーは連鎖され、それは1つのエラーは他の原因になることを意味します。
-> 例えばデータベースのホスト名を解決できないなど、低水準のエラーによって引き起こされた、例えばデータベースに接続できないなどの高水準なエラーがあります。
+> 時々、エラーは連鎖され、それは1つのエラーが他の原因になることを意味します。
+> 例えばデータベースのホスト名を解決できないなどの低水準のエラーによって引き起こされた、例えばデータベースに接続できないなどの高水準なエラーがあります。
 > `source`メソッドは、エラーの完全なつながりを「横断」させて、時々ログでエラーの文脈をキャプチャーするときに使用されます。
 
 ## Implementing `source`（sourceの実装）
@@ -148,7 +148,7 @@ When used in a function that returns a `Result`, it will return early with an er
 
 For example:
 
-> `?`演算子はエラーを伝播するための少ｙ楽系です。
+> `?`演算子はエラーを伝播するための省略記法です。
 > `Result`を返す関数内で使用したとき、`Result`が`Err`である場合、エラーで早期リターンします。
 >
 > 例えば・・・

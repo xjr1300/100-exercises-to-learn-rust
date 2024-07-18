@@ -10,7 +10,7 @@ But what if the conversion is not guaranteed to succeed?
 We now know enough about errors to discuss the **fallible** counterparts of `From` and `Into`:
 `TryFrom` and `TryInto`.
 
-> これで、`From`と`Into`の**失敗する可能性がある**に対応する`TryFrom`と`TryInto`について議論できるほど、エラーを十分に理解しています。
+> 現在、`From`と`Into`の**失敗する可能性がある**に対応する`TryFrom`と`TryInto`について議論できるほど、エラーを十分に理解しています。
 
 ## `TryFrom` and `TryInto`（TryFromとTryInto）
 

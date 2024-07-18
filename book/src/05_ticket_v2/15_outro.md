@@ -16,8 +16,8 @@ as long as they have a `TicketTitle`, they know it's valid **by construction**.
 
 > `Ticket`モデルの最後の改良で章を終了しましょう。
 > それぞれの制約をカプセル化するために`Ticket`内のそれぞれのフィールドに対して新しい型を導入します。
-> 誰かが`Ticket`のフィールドにアクセスするたびに、それらは有効と保証された値、例えば`String`の代わりに`TicketTitle`を返します。
-> コードの何処かでタイトルがからであることを心配する必要はありません。
+> 誰かが`Ticket`のフィールドにアクセスするたびに、それらは有効であることを保証された値、例えば`String`の代わりに`TicketTitle`を返します。
+> コードの何処かでタイトルが空であることを心配する必要はありません。
 > `TicketTitle`がある限り、**構築によって**有効であることがわかります。
 
 This is just an example of how you can use Rust's type system to make your code safer and more expressive.

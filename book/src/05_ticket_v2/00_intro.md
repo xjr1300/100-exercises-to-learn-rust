@@ -16,13 +16,13 @@ We'll need to introduce a few more concepts along the way:
 - The `TryFrom` and `TryInto` traits, for fallible conversions
 - Rust's package system, explaining what's a library, what's a binary, how to use third-party crates
 
-> Rustとメインモデリング技術を洗練するためにこの章を使用します。
-> トチュウでいくつかの概念を紹介する必要があります。
+> Rustドメインモデリング技術を洗練するためにこの章を使用します。
+> 途中でいくつかの概念を紹介する必要があります。
 >
 > - Rustのデータモデリングの最も強力な機能の1つである`enum`
 > - null可能な値をモデル化する`Option`型
 > - 回復可能なエラーをモデル化する`Result`型
 > - 印字するための`Debug`と`Display`トレイト
 > - エラー型を作成する`Error`トレイト
-> - 失敗する可能性のある変換用おの`TryFrom`と`TryInto`トレイト
-> - ライブラリとは何か、バインなりとはなにか、どのようにサードパーティのクレートを使用するかを説明するRustのパッケージシステム
+> - 失敗する可能性のある変換用のための`TryFrom`と`TryInto`トレイト
+> - Rustのパッケージシステム、ライブラリとは何か、バイナリとは何か、サードパーティのクレートを使用方法の説明

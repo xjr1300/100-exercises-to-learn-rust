@@ -84,7 +84,7 @@ You must either read the function's documentation or look at its implementation 
 > 例外は、理由を知ることが難しくなる分離した制御フローのパスを作成します。
 > 関数が例外を投げるか投げないかは、関数のシグネチャーを見てもわかりまっせん。
 > 関数がどの例外を投げるかは、関数のシグネチャーを見てもわかりません。
-> 理由を見つけるために、関数のドキュメントまたはその実装のどちらかをよまなくてはなりません。
+> 理由を見つけるために、関数のドキュメントまたはその実装のどちらかを読まなくてはなりません。
 
 Exception handling logic has very poor locality: the code that throws the exception is far removed from the code
 that catches it, and there's no direct link between the two.

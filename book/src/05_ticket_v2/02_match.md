@@ -40,6 +40,7 @@ There's one key detail here: `match` is **exhaustive**. You must handle all enum
 If you forget to handle a variant, Rust will stop you **at compile-time** with an error.
 
 > ここに1つの重要な詳細があります。`match`は**網羅的**です。すべての列挙型のバリアントを処理しなければなりません。
+> バリアントを処理することを忘れた場合、Rustは**コンパイル時に**エラーで停止します。
 
 E.g. if we forget to handle the `ToDo` variant:
 
@@ -71,7 +72,7 @@ That's why Rust developers often sing the praises of "compiler-driven refactorin
 what to do next, you just have to fix what it reports.
 
 > これは大問題です！
-> コードベースは時間とともに進化します。例えば`Blocked`など、将来に新しい状態を追加するかもしれません。
+> コードベースは時間とともに進化します。例えば`Blocked`など、将来、新しい状態を追加するかもしれません。
 > Rustコンパイラーは、新しいバリアントに対してロジックが不足していることを、それぞれの単一の`match`文に対してエラーを出力します。
 > それが、Rustの開発者が時々「コンパイラー駆動のリファクタリング」を称賛する理由です。
 > コンパイラーは次に何をするか伝え、単に報告されたものを修正しなければならないだけです。

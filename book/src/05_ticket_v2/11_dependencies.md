@@ -54,6 +54,8 @@ my-library = { path = "../my-library" }
 
 The path is relative to the `Cargo.toml` file of the package that's declaring the dependency.
 
+> パスは、依存関係を宣言したパッケージの`Cargo.toml`ファイルに対して相対的です。
+
 ### Other sources（他のソース）
 
 Check out the [Cargo documentation](https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html) for more

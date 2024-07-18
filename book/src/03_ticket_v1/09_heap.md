@@ -202,7 +202,7 @@ but there is no general-purpose "API" to retrieve runtime heap usage in Rust.\
 You can, however, use a memory profiler tool (e.g. [DHAT](https://valgrind.org/docs/manual/dh-manual.html)
 or [a custom allocator](https://docs.rs/dhat/latest/dhat/)) to inspect the heap usage of your program.
 
-> 不運にも、ランタイムである値が割り当てられたヒープメモリの量を計測する`std::mem::size_of`と同等なモノはありません。
+> 不運にも、ランタイムである値が割り当てられたヒープメモリの量を計測する`std::mem::size_of`と同等なものはありません。
 > ある型は、それらのヒープ使用を調査するためのメソッド（例えば、`String`の`capacity`メソッド）を提供していますが、Rustではラインタイムでヒープ使用を取得する一般的な目的の「API」はありません。
 > しかし、メモリプロファイラーツールを使用するか、プログラムのヒープ使用を調査する、例えば`DHAT`またはカスタムアロケーターを使用できます。
 

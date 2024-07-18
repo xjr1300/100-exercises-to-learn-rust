@@ -3,7 +3,7 @@
 It took a bit of code to implement the `Error` trait for `TicketNewError`, didn't it?\
 A manual `Display` implementation, plus an `Error` impl block.
 
-> `TicketNewError`に対して`Error`トレイトを実装するために、少しのコードが必要でしたね。
+> `TicketNewError`に対して`Error`トレイトを実装するために、少しのコードが必要でしたか？
 > 手動の`Display`の実装は、`Error`の`impl`ブロックに加えられました。
 
 We can remove some of the boilerplate by using [`thiserror`](https://docs.rs/thiserror/latest/thiserror/),
@@ -15,7 +15,7 @@ But we're getting ahead of ourselves: `thiserror` is a third-party crate, it'd b
 
 Let's take a step back to talk about Rust's packaging system before we dive into dependencies.
 
-> 依存関係に深煎りする前にRustのパッケージシステムについて話すために、一歩後退しましょう。
+> 依存関係に深入りする前にRustのパッケージシステムについて話すために、一歩後退しましょう。
 
 ## What is a package?（パッケージとは？）
 
@@ -23,7 +23,7 @@ A Rust package is defined by the `[package]` section in a `Cargo.toml` file, als
 Within `[package]` you can set the package's metadata, such as its name and version.
 
 > Rustパッケージは、`Cargo.toml`ファイル内の`[package]`節によって定義され、**マニフェスト**としても知られています。
-> `[package]`内で、パッケージの名前やバージョンなどを、メタデータも設定できます。
+> `[package]`内で、パッケージの名前やバージョンなどのメタデータも設定できます。
 
 Go check the `Cargo.toml` file in the directory of this section's exercise!
 

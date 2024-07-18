@@ -5,8 +5,8 @@ there are only a few valid statuses for a ticket: `To-Do`, `InProgress` and `Don
 This is not obvious if we look at the `status` field in the `Ticket` struct or at the type of the `status`
 parameter in the `new` method:
 
-> 前の章で記述した検証ロジックに基づいて、チケットの有効な状態は、`To-Do`、`InProgress`そして`Done`のみがあります。
-> `Ticket`奥蔵帯の`status`フィールドや`new`メソッドの`status`の型を見ても、これは明確ではありません。
+> 前の章で記述した検証ロジックに基づいて、チケットの有効な状態は、`To-Do`、`InProgress`そして`Done`のみです。
+> `Ticket`構造体の`status`フィールドや`new`メソッドの`status`の型を見ても、これは明確ではありません。
 
 ```rust
 #[derive(Debug, PartialEq)]
@@ -30,11 +30,11 @@ if the status they provided is valid or not.
 
 > 両方のケースで、`status`フィールドを表現するために`String`を使用しています。
 > `String`はとても一般的な型で、`status`フィールドが可能な値の制限された集合を持っているという情報をすぐに伝えることができません。
-> さらに悪いことに、`Ticket::new`の呼び出し基は、提供した状態が有効かどうかを**ランタイム**でのみ知ります。
+> さらに悪いことに、`Ticket::new`の呼び出し元は、提供した状態が有効かどうかを**ランタイム**でのみ知ります。
 
 We can do better than that with **enumerations**.
 
-> **列挙型**を使用して、それよりもうまく行うことができます。
+> **列挙型**を使用して、それよりうまく行えます。
 
 ## `enum`
 

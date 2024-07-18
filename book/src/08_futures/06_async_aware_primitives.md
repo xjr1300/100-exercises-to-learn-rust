@@ -4,7 +4,7 @@ If you browse `tokio`'s documentation, you'll notice that it provides a lot of t
 that "mirror" the ones in the standard library, but with an asynchronous twist:
 locks, channels, timers, and more.
 
-> `tokio`ドキュメントを参照した場合、標準ライブラリのモノを「反映した」多くの方が提供されていることに気付くでしょうが、非同期になっています。ロック、チャネル、タイマー、その他。
+> `tokio`ドキュメントを参照した場合、標準ライブラリのものを「反映した」多くの方が提供されていることに気付くでしょうが、非同期になっています。ロック、チャネル、タイマー、その他。
 
 When working in an asynchronous context, you should prefer these asynchronous alternatives
 to their synchronous counterparts.

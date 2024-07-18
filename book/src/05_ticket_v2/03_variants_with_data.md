@@ -18,7 +18,7 @@ languages, like C, C++, Java, C#, Python, etc.
 
 Rust enums can go further though. We can **attach data to each variant**.
 
-> しかし、Rustの列挙型は進んでいます。**それぞれのバリアントにデータを付けれます。**。
+> しかし、Rustの列挙型は進んでいます。**それぞれのバリアントにデータを付属できます**。
 
 ## Variants（バリアント）
 
@@ -46,7 +46,7 @@ enum Status {
 The syntax mirrors, in fact, the one we used to define a struct—it's just "inlined" inside the enum, as a variant.
 
 > `InProgress`は、現在、**構造体のようなバリアント**です。
-> 実際、構文は、構造体を定義するときに使用したモノを反映しています。ちょうどそれはバリアントとして列挙型の内部を「インライン化」しています。
+> 実際、構文は、構造体を定義するときに使用したものを反映しています。ちょうどそれはバリアントとして列挙型の内部を「インライン化」しています。
 
 ## Accessing variant data（バリアントのデータにアクセスする）
 
@@ -99,7 +99,7 @@ If we wanted, we could bind the field to a different variable name:
 
 > `Status::InProgress { assigned_to }`のマッチングパターンにおいて、`assigned_to`は**バインディング**です。
 > `Status::InProgress`バリアントを**分割して**、新しい`assigned_to`変数に`assigned_to`フィールドをバインディングしています。
-> 必要であれば、フィールドを異なる変数名にバインドできます。
+> 必要であれば、フィールドを異なる変数名に束縛できます。
 
 ```rust
 match status {

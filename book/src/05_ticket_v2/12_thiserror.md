@@ -3,7 +3,7 @@
 That was a bit of detour, wasn't it? But a necessary one!\
 Let's get back on track now: custom error types and `thiserror`.
 
-> 少し回り道をしましたか？しかし必要でした！
+> 少し回り道をしましたか？しかしそれは必要でした！
 > ここで、カスタムエラー型と`thiserror`の追跡に戻りましょう。
 
 ## Custom error types（カスタムエラー型）
@@ -17,7 +17,7 @@ Imagine that you have to do this for most error types in your codebase. That's a
 We can remove some of the boilerplate by using [`thiserror`](https://docs.rs/thiserror/latest/thiserror/),
 a Rust crate that provides a **procedural macro** to simplify the creation of custom error types.
 
-> カスタムエラー型の作成を簡素化するための**手続きマクロ**を提供するRustクレートの`thiserror`を使用することで、いくつかの定型文を削除でき、
+> カスタムエラー型の作成を簡素化するための**手続きマクロ**を提供するRustクレートの`thiserror`を使用することで、いくつかの定型文を削除できます。
 
 ```rust
 #[derive(thiserror::Error, Debug)]
@@ -55,7 +55,7 @@ In the case of `thiserror`, we have:
 - `#[error("{0}")]`: this is the syntax to define a `Display` implementation for each variant of the custom error type.
   `{0}` is replaced by the zero-th field of the variant (`String`, in this case) when the error is displayed.
 
-> それぞれの手続マクロはそれ独自の構文を定義でき、それは普通クレートのドキュメントで説明されています。
+> それぞれの手続マクロはそれ独自の構文を定義でき、通常、それはクレートのドキュメントで説明されています。
 > `thiserror`の場合、次のようになります。
 >
 > - `#[derive(thiserror::Error)]`: これは、`thiserror`によって支援される、カスタムエラー型に`Error`トレイトを導出する構文です。

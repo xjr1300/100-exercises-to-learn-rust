@@ -4,7 +4,7 @@ Your solution to the previous exercise may have felt awkward: matching on string
 A colleague might rework the error messages returned by `Ticket::new` (e.g. to improve readability) and,
 all of a sudden, your calling code would break.
 
-> 前の演習の解答は、洗練されていないかもしれません。文字列にマッチングすることを理想的てはありません！
+> 前の演習の解答は、洗練されていないかもしれません。文字列にマッチングすることは理想的ではありません！
 > 同僚は、例えば可読性を改善するために`Ticket::new`によって返されたメッセージを再構築するかもしれず、突然コードの呼び出しは壊れます。
 
 You already know the machinery required to fix this: enums!
