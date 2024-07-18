@@ -25,7 +25,7 @@ The `Drop` trait is a mechanism for you to define _additional_ cleanup logic for
 beyond what the compiler does for you automatically.\
 Whatever you put in the `drop` method will be executed when the value goes out of scope.
 
-> `Drop`トレイトは、コンパイラーが自動的に行うことを超えて、型の _追加の_ クリーンアップロジックを定義するためのメカニズムです。
+> `Drop`トレイトは、コンパイラーが自動的に行うこと以上に、型の_追加の_クリーンアップロジックを定義するためのメカニズムです。
 > `drop`メソッド内に入れたものは何でも、値がスコープ外になったときに実行されます。
 
 ## `Drop` and `Copy`（DropとCopy）
@@ -41,8 +41,8 @@ If your type has an explicit `Drop` implementation, the compiler will assume
 that your type has additional resources attached to it and won't allow you to implement `Copy`.
 
 > 困惑しているかもしれません。コンパイラーは、型が追加リソースを管理していることをどのように知るのでしょうか？
-> そのとおりです。`Drop`トレイトをの実装です！
-> 型が明示的に`Drop`の実装がある場合、コンパイラーは型が型に付属する追加リソースを持っていると仮定して、`Copy`を実装することを許可しません。
+> そのとおりです。`Drop`トレイトの実装です！
+> 型が明示的に`Drop`実装を持っている場合、コンパイラーは型が型に付属する追加リソースを持っていると仮定して、`Copy`を実装することを許可しません。
 
 ```rust
 // This is a unit struct, i.e. a struct with no fields.

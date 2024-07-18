@@ -89,7 +89,7 @@ each client thread) and they will all push data into the same channel.
 `Receiver`, instead, is not clonable: there can only be a single receiver
 for a given channel.
 
-> 代わりに`Receiver`はクローンではありません。与えられたチャネルに単独の受信者のみ存在できます。
+> 代わりに`Receiver`はクローンではありません。特定のチャネルに単独の受信者のみ存在できます。
 
 That's what **mpsc** (multi-producer single-consumer) stands for!
 

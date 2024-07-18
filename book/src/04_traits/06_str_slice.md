@@ -4,14 +4,14 @@ Throughout the previous chapters you've seen quite a few **string literals** bei
 like `"To-Do"` or `"A ticket description"`.
 They were always followed by a call to `.to_string()` or `.into()`. It's time to understand why!
 
-> 前の章を通じて、コード内で使用された`"To-Do"`または`"A ticket description"`のような、**文字列リテラル**をいくつか見てきました。
-> それらは常に、`to_string()`または`into()`の呼び出しで続きました。それがなぜなのかを理解する時がきました！
+> 前の章を通じて、コード内で使用された`"To-Do"`または`"A ticket description"`のような、**文字列リテラル**をいくつか確認しました。
+> それらは常に、`to_string()`または`into()`の呼び出しが続きました。それがなぜなのかを理解する時がきました！
 
 ## String literals（文字列リテラル）
 
 You define a string literal by enclosing the raw text in double quotes:
 
-> ダブルウォート内に素のテキストを囲むことで、文字列リテラルを定義します。
+> ダブルクウォートで素のテキストを囲むことで、文字列リテラルを定義します。
 
 ```rust
 let s = "Hello, world!";
@@ -147,6 +147,7 @@ As a rule of thumb, use `&str` rather than `&String` whenever you need a referen
 `&str` is more flexible and generally considered more idiomatic in Rust code.
 
 > 経験則から、テキストデータへの参照が必要なときはいつでも、`&String`よりも`&str`を使用してください。
+> `&str`はより柔軟で、一般的にRustにおいてより慣習的であると考えられています。
 
 If a method returns a `&String`, you're promising that there is heap-allocated UTF-8 text somewhere that
 **matches exactly** the one you're returning a reference to.\
@@ -155,4 +156,4 @@ bunch of text data and that a subset of it matches what you need, therefore you'
 
 > メソッドが`&String`を返す場合、参照を返すモノと**完全に一致する**、ヒープに割り当てられたUTF-8テキストがどこかにあることを約束しています。
 > 代わりにメソッドが`&str`を返す場合、より自由度が高くなります。
-> どこかにテキストデータの束があり、そのサブセットが必要なものと一致することを単純に述べているため、それへの参照を返しています。
+> どこかにテキストデータの束があり、そのサブセットが必要なものと一致しているので、その参照を返すだけであることを単に言っています。

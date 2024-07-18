@@ -10,13 +10,13 @@ let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into(
 
 We now know enough to start unpacking what `.into()` is doing here.
 
-> ここで、`.into()`が何をしているのかを解明を始める十分な理解があります。
+> 現在、`.into()`が何をしているのかを解明を始める、十分な知識があります。
 
 ## The problem（課題）
 
 This is the signature of the `new` method:
 
-> これは、`new`meソッドのシグネチャーです。
+> これは、`new`メソッドのシグネチャーです。
 
 ```rust
 impl Ticket {
@@ -39,7 +39,7 @@ No magical coercion will come to save us this time; we need **to perform a conve
 The Rust standard library defines two traits for **infallible conversions**: `From` and `Into`,
 in the `std::convert` module.
 
-> Rust標準ライブラリは、**失敗しない変換**のための2つのトレイトである`From`と`Into`を`std::convert`モジュールで定義しています。
+> Rust標準ライブラリは、`From`と`Into`という**失敗しない変換**のための2つのトレイトを`std::convert`モジュールで定義しています。
 
 ```rust
 pub trait From<T>: Sized {
@@ -128,7 +128,7 @@ This syntax reads as "`T` may or may not be `Sized`", and it allows you to
 bind `T` to a DST (e.g. `Foo<str>`). It is a special case, though: negative trait bounds are exclusive to `Sized`,
 you can't use them with other traits.
 
-> この構文は、「`T`は`Sized`かもしれないし、そうでないかもしれない」と読みとれ、例えば`Foo<str>`のように、それは`T`をDSTに拘束できるようにしまう。
+> この構文は、「`T`は`Sized`かもしれないし、そうでないかもしれない」と読み取れ、例えば`Foo<str>`のように、それは`T`をDSTに束縛されるようにします。
 
 ## `&str` to `String`（&strからStringへ）
 

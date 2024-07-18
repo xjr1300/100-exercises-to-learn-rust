@@ -10,15 +10,15 @@ For example, the factorial of 20 is 2,432,902,008,176,640,000. That's already bi
 When the result of an arithmetic operation is bigger than the maximum value for a given integer type,
 we are talking about **an integer overflow**.
 
-> 算術操作の結果が与えられた整数型の最大値よりも大きくなるとき、それは**整数オーバーフロー**と呼ばれます。
+> 算術操作の結果が特定の整数型の最大値よりも大きくなるとき、それは**整数オーバーフロー**と呼ばれます。
 
 Integer overflows are an issue because they violate the contract for arithmetic operations.\
 The result of an arithmetic operation between two integers of a given type should be another integer of the same type.
 But the _mathematically correct result_ doesn't fit into that integer type!
 
 > 整数オーバーフローは、それらが算術操作の契約に違反するため問題です。
-> 型が与えられた2つの整数の算術演算の結果は、同じ型の別な値になるべきです。
-> しかし、*数学的に正確な結果*は、その整数型に収まりません！
+> 特定の型の2つの整数の算術演算の結果は、同じ型の別な値になるべきです。
+> しかし、_数学的に正確な結果_は、その整数型に収まりません！
 
 > If the result is smaller than the minimum value for a given integer type, we refer to the event as **an integer
 > underflow**.\
@@ -30,7 +30,7 @@ But the _mathematically correct result_ doesn't fit into that integer type!
 > E.g. if `end` is smaller than `start`, `end - start` will underflow the `u32` type since the result is supposed
 > to be negative but `u32` can't represent negative numbers.
 
-> 結果が与えられた整数型の最小値よりも小さい場合、そのイベントを**整数アンダーフロー**と呼びます。
+> 結果が特定の整数型の最小値よりも小さい場合、そのイベントを**整数アンダーフロー**と呼びます。
 > 簡潔にするために、この節の残りは整数オーバーフローについて話しますが、ここで話すすべてのことは整数アンダーフローにも適用することを心に留めておいてください。
 >
 > 「変数」節で記述した`speed`関数は、任意の入力の組み合わせでアンダーフローします。
@@ -82,7 +82,7 @@ choose to **wrap around**.\
 If you think of all the possible values for a given integer type as a circle, wrapping around means that when you
 reach the maximum value, you start again from the minimum value.
 
-> 算術操作の結果が与えられた整数型の最大値よりも大きくなったとき、**包み込む**ことを選択できます。
+> 算術操作の結果が特定の整数型の最大値よりも大きくなったとき、**包み込む**ことを選択できます。
 > 円として与えられた整数型ですべての可能性のある値を考えると、包み込みは最大値に到達したとき、最小値から再び開始することを意味します。
 
 For example, if you do a **wrapping addition** between 1 and 255 (=`u8::MAX`), the result is 0 (=`u8::MIN`).

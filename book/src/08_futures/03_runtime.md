@@ -38,7 +38,7 @@ at any given time.
 
 > 名前が暗に意味する通り、カレントスレッドランタイムは、タスクをスケジュールして実行するために起動されるOSスレッドに排他的に依存します。
 > カレントスレッドランタイムを使用したとき、**同時並行性**を得られますが、**並列性**は得られません。
-> 非同期タスクは、間をおいて交互に実行されますが、常に与えられた任意の時間に最大1つのタスクしが実行していません。
+> 非同期タスクは、間をおいて交互に実行されますが、常に特定の時間に最大1つのタスクしが実行していません。
 
 ### Multithreaded runtime（マルチスレッドランタイム）
 
@@ -46,7 +46,7 @@ When using the multithreaded runtime, instead, there can up to `N` tasks running
 _in parallel_ at any given time, where `N` is the number of threads used by the
 runtime. By default, `N` matches the number of available CPU cores.
 
-> マルチスレッドランタイムを使用したとき、任意の与えられた時間に_並列で_最大`N`コマでのタスクを実行でき、`N`はランタイムで使用されるスレッドの数です。
+> マルチスレッドランタイムを使用したとき、特定の時間に_並列で_最大`N`コマでのタスクを実行でき、`N`はランタイムで使用されるスレッドの数です。
 > デフォルトで、`N`は利用可能なCPUコアの数に一致します。
 
 There's more: `tokio` performs **work-stealing**.\

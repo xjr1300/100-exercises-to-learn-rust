@@ -52,13 +52,13 @@ and then passes that new instance to `consumer`. It all happens behind the scene
 Types must meet a few requirements in order to be allowed to implement `Copy`.
 
 > `Copy`は、「自動クローン」と同等ではありませんが、それを暗に意味します。
-> `Copy`を実装するために従わなくてはならないいくつかの要件を満たす必要があります。
+> `Copy`の実装を許可するために、型はいくつかの要件を満たさなければなりません。
 
 First of all, it must implement `Clone`, since `Copy` is a subtrait of `Clone`.
 This makes sense: if Rust can create a new instance of a type _implicitly_, it should
 also be able to create a new instance _explicitly_ by calling `.clone()`.
 
-> まず最初に、それは`Clone`を実装しなくてはならないため、`Copy`は`Clone`のサブトレイトです。
+> まず最初に、`Copy`は`Clone`のサブトレイトであるため、型は`Clone`を実装しなくてはなりません。
 > これには意味があります。Rustがある型の新しいインスタンスを**暗黙的に**作成できる場合、それは`.clone()`を呼び出すことで**明示的に**新しいインスタンスを作成できるべきです。
 
 That's not all, though. A few more conditions must be met:
@@ -67,10 +67,10 @@ That's not all, though. A few more conditions must be met:
    bytes that it occupies in memory.
 2. The type is not a mutable reference (`&mut T`).
 
-> ただし、それが全てではありません。いくつかの条件がみたされなければなりません。
+> ただし、それが全てではありません。いくつかの条件が満たされなければなりません。
 >
-> 1. その型は、メモリ内にそれが専有する`std::mem::size_of`で得られるバイトを超えて、例えばヒープメモリ、ファイルハンドルなど、任意の _追加_ リソースを管理できません。
-> 2. その型は、可変参照（`&mut T`）ではありません。
+> 1. その型は、メモリ内にそれが専有する`std::mem::size_of`で得られるバイトを超えて、例えばヒープメモリ、ファイルハンドルなど、任意の_追加_リソースを管理できません。
+> 2. その型は、可変参照（`&mut T`）であってはなりません。
 
 If both conditions are met, then Rust can safely create a new instance of the type by performing a **bitwise copy**
 of the original instance—this is often referred to as a `memcpy` operation, after the C standard library function
@@ -117,7 +117,7 @@ leading to a double-free error.
 You could also create two distinct `&mut String` references that point to the same memory buffer,
 violating Rust's borrowing rules.
 
-> これは悪いです！
+> これは良くないことです！
 > 両方の`String`インスタンスがスコープ外になったとき、両方の`String`インスタンスがメモリバッファーを開放することを試み、二重開放エラーを招きます。
 > また、同じメモリバッファーを指し示す2つの別の`&mut String`参照を作成でき、Rustの借用ルールに違反します。
 
@@ -128,10 +128,10 @@ An integer is "just" the bytes that represent the number in memory. There's noth
 If you copy those bytes, you get another perfectly valid integer instance.
 Nothing bad can happen, so Rust allows it.
 
-> `u32`は`Copy`を実装しています。実際、すべての整数型はそうです。
-> 整数は、メモリ内で数を表現する「単なる」バイトです。それ以上のことはありません。
-> それらのバイトをコピーして、他の完全に有効な整数インスタンスを得られます。
-> 何も悪いことは発生しないため、Rustはそれを許可します。
+> `u32`は`Copy`を実装しています。実際、すべての整数型が実装しています。
+> 整数は、数を表現するメモリ内の「単なる」バイトです。それ以上のものではありません！
+> それらのバイトをコピーした場合、完全に有効な別の整数インスタンスを得られます。
+> 良くないことは何も発生しないため、Rustはそれを許可します。
 
 ### Case study 3: `&mut u32`（事例解説3: &mut u32）
 
@@ -140,8 +140,8 @@ can only ever be _one_ mutable borrow of a value at any given time.\
 That's why `&mut u32` doesn't implement `Copy`, even though `u32` does.
 
 > 所有権と可変参照を導入したとき、とても明確な1つのルールを述べました。
-> 任意の時点で、ただ _1つ_ の値の可変参照のみが存在できます。
-> それが、`&mut u32`が`Copy`を実装しない理由で、ただし`u32`は実装しています。
+> 特定の時点で、値の可変参照がたった1つのみ存在できます。
+> それが、`u32`が実装しているにも関わらず、`&mut u32`が`Copy`を実装していない理由です。
 
 If `&mut u32` implemented `Copy`, you could create multiple mutable references to
 the same value and modify it in multiple places at the same time.
@@ -149,7 +149,7 @@ That'd be a violation of Rust's borrowing rules!
 It follows that `&mut T` never implements `Copy`, no matter what `T` is.
 
 > `&mut u32`が`Copy`を実装した場合、同じ値への複数の可変参照を作成でき、同時に複数の箇所でそれを修正できます。
-> それは、Rustの借用ルールを違反します！
+> それは、Rustの借用ルールに違反します！
 > それが、`&mut T`が`Copy`を実装しない理由で、`T`が何であれそうです。
 
 ## Implementing `Copy`（Copyの実装）
@@ -158,7 +158,7 @@ In most cases, you don't need to manually implement `Copy`.
 You can just derive it, like this:
 
 > ほとんどの場合で、手動で`Copy`を実装する必要はありません。
-> 次のように、単純にそれを導出できます。
+> 次のように、単にそれを導出できます。
 
 ```rust
 #[derive(Copy, Clone)]

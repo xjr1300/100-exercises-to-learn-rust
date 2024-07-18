@@ -101,7 +101,7 @@ error[E0119]: conflicting implementations of trait `IsEven` for type `u32`
 There can be no ambiguity as to what trait implementation should be used when `IsEven::is_even`
 is invoked on a `u32` value, therefore there can only be one.
 
-> `u32`値に対して`IsEven::is_even`が呼び出されたとき、どのトレイトの実装を仕様するべきかについて曖昧さがあってはなりません。
+> `u32`値に対して`IsEven::is_even`が呼び出されたとき、どのトレイトの実装を使用するべきかについて曖昧さがあってはなりません。
 > 従って、1つしか存在できません。
 
 ## Orphan rule（孤立ルール）
@@ -116,7 +116,7 @@ In particular, at least one of the following must be true:
 > 特に、次の内、少なくとも1つは成立しなくてはなりません。
 >
 > - トレイトが、現在のクレートで定義されている。
-> - 実装型（上記トレイトを実装する型）が、現在のクレートで定義されている。
+> - 実装型（トレイトを実装する型）が、現在のクレートで定義されている。
 
 This is known as Rust's **orphan rule**. Its goal is to make the method resolution
 process unambiguous.

@@ -4,7 +4,7 @@
 We've seen before how to access elements of arrays and vectors using Rust's
 indexing syntax:
 
-> `TicketStore::get`は、与えられた`TicketId`に対して`Option<&Ticket>`を返します。
+> `TicketStore::get`は、特定の`TicketId`に対して`Option<&Ticket>`を返します。
 > 前に、Rustのインデックス構文を使用して、配列とベクターの要素にアクセスする方法を確認しました。
 
 ```rust

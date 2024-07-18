@@ -35,8 +35,8 @@ If the definition of `Ticket` changes, the compiler will error out, complaining 
 destructuring is no longer exhaustive.\
 You can also rename struct fields, to avoid variable shadowing:
 
-> `Ticket`の定義が変更された場合、コンパイラーは、分割がもはや網羅的でないとしてエラーを出します。
-> 構造体のフィールドを変更して、変数のシャドーイングを防ぐこともできます。
+> `Ticket`の定義が変更された場合、コンパイラーは、分割がもはや網羅的でないとしてエラーを出力します。
+> また、変数のシャドーイングを防ぐために、構造体のフィールドの名前を変更できます。
 
 ```rust
 impl PartialEq for Ticket {
@@ -59,7 +59,7 @@ impl PartialEq for Ticket {
 Destructuring is a useful pattern to have in your toolkit, but
 there's an even more convenient way to do this: **derive macros**.
 
-> 分割はツールキット内にあると便利なパターンですが、これを行う更に便利な方法があります。
+> 分割はツールキット内にあると便利なパターンですが、実装するために、より便利な方法があります。
 > それは**導出マクロ**です。
 
 ## Macros（マクロ）
@@ -81,7 +81,7 @@ write your own. We won't be creating our own macro in this course, but you can f
 pointers in the ["Further reading" section](#further-reading参考資料)
 
 > Rustのマクロは**コードジェネレーター**です。
-> それらは、提供した入力に基づいて新しいRustコードを生成して、そして、生成されたコードはプログラムの残りと一緒にコンパイルされます。
+> それらは、提供した入力に基づいて新しいRustコードを生成して、生成されたコードはプログラムの残りと一緒にコンパイルされます。
 > いくつかのマクロは、Rust標準ライブラリ内に組み込まれていますが、独自に記述することもできます。
 > このコースで独自のマクロを作成するつもりはありませんが、参考資料の節にいくつかの有益な指針を見つけれます。
 
@@ -116,7 +116,7 @@ although a bit more cumbersome to read:
 
 > 導出マクロは、カスタム型に一般的なトレイトの実装を自動化するために使用されます。
 > 上記例において、`PartialEq`トレイトは`Ticket`に自動で実装されます。
-> マクロを展開した場合、読むのがより少し煩わしいですが、手動で記述したものと機能的に等価なコードが生成されることを確認します。
+> マクロを展開した場合、読むのがより少し煩わしいですが、手動で記述したものと機能的に等価なコードが生成されることを確認できます。
 
 ```rust
 #[automatically_derived]
@@ -131,7 +131,7 @@ impl ::core::cmp::PartialEq for Ticket {
 
 The compiler will nudge you to derive traits when possible.
 
-> コンパイラーは、可能な場合にトレイトを導出することを進めます。
+> コンパイラーは、可能な場合にトレイトを導出することを推奨します。
 
 ## Further reading（参考資料）
 

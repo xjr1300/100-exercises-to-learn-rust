@@ -9,7 +9,7 @@ to the pointer: the length of the slice it points to. Going back to the example 
 [a previous section](06_str_slice.md):
 
 > 参照外し型強制を調査した後でも、目に見える以上のことが`&str`にあります。
-> 前のメモリレイアウトで議論した内容から、それは`&str`がスタック上の単一の`usize`、つまりポインターとして表現されることを期待することは理由があります。
+> 前のメモリレイアウトで議論した内容から、それは`&str`がスタック上の単一の`usize`、つまりポインターとして表現されることを期待することは理由がありした。
 > しかし、この場合は違い、`&str`はポインターの隣にいくつかの**メタデータ**を保存しています。
 > それが指し示すスライスの長さです。
 > 前の節の例に戻ります。
@@ -76,7 +76,7 @@ pub trait Sized {
 
 A type is `Sized` if its size is known at compile time. In other words, it's not a DST.
 
-> コンパイル時にそのサイズが分かっている場合、その型は`Sized`です。言い換えれば、DSTではありません。
+> コンパイル時にそのサイズがわかっている場合、その型は`Sized`です。言い換えれば、DSTではありません。
 
 ### Marker traits（マーカートレイト）
 
@@ -87,7 +87,7 @@ The mark is then leveraged by the compiler to enable certain behaviors or optimi
 
 > `Sized`は**マーカートレイト**の最初の例です。
 > マーカートレイトは、実装されるメソッドを要求しないトレイトです。それは何の振る舞いも定義しません。
-> それは、特定の属性を持つ型として**マーク**することのみを提供します。
+> それは、特定の属性を持つ型として**マーク**することのみ提供します。
 > そして、マークは特定の振る舞いまたは最適化を有効にするためにコンパイラーによって利用されます。
 
 ### Auto traits（自動トレイト）
@@ -113,4 +113,4 @@ and one for the length.
 > ちょうど確認した通り、`str`は`Sized`ではありません。
 > しかし、`&str`は`Sized`です！
 > コンパイル時にそのサイズを知っています。
-> 2つの`usize`で、そのポインターとその長さです。
+> 2つの`usize`で、1つはポインターで、1つはその長さです。

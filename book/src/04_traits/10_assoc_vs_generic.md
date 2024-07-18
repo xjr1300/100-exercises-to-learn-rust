@@ -35,7 +35,7 @@ only deref to `str`.
 It's about avoiding ambiguity: if you could implement `Deref` multiple times for a type,
 which `Target` type should the compiler choose when you call a `&self` method?
 
-> 参照外し型強制が機能する方法により、与えられた型に対する1つの「目的」の型のみ存在できます。
+> 参照外し型強制が機能する仕組みにより、特定の型に対する1つの「目的」型が存在します。
 > 例えば、`String`は、`str`にのみ参照外しされます。
 > それは曖昧さを避けるためです。ある型に対して複数回`Deref`を実装した場合、`&self`メソッドを呼び出した時、コンパイラーはどの`Target`型を選択するべきでしょうか？
 
@@ -46,7 +46,7 @@ and there won't be any ambiguity.
 
 > それが、`Deref`が関連型`Target`を使用する理由です。
 > 関連型は、**トレイトの実装によって**一意に決定されます。
-> `Deref`を1つ以上実装できないため、与えられた型に対してたった1つの`Target`を指定することができ、曖昧さはありません。
+> `Deref`を1つ以上実装できないため、特定の型に対してたった1つの`Target`を指定することができ、曖昧さはありません。
 
 ## Generic traits（ジェネリックトレイト）
 
@@ -155,7 +155,7 @@ Why do we need `Output` in the first place? Can't we just use `Self` as output, 
 We could, but it would limit the flexibility of the trait. In the standard library, for example, you'll find
 this implementation:
 
-> なぜ、最初から`Output`が必要なのでしょうか？
+> なぜ、そもそも`Output`が必要なのでしょうか？
 > 出力として単に`Self`を使用できないのでしょうか？
 > できますが、そのトレイトの柔軟性を制限します。
 > 例えば、標準ライブラリにおいて、次の実装を見つけるでしょう。
@@ -195,7 +195,7 @@ To recap:
 
 > 要約します。
 >
-> - 与えられたトレイトの実装のために、型が一意に決定されなければならないとき、**関連型**を使用します。
+> - 特定のトレイトの実装のために、型が一意に決定されなければならないとき、**関連型**を使用します。
 > - 異なる入力型を持つ同じ型に対して複数のトレイトの実装できるようにしたいとき、**ジェネリックパラメーター**を使用します。
 
 [^flexible]: Flexibility is rarely free: the trait definition is more complex due to `Output`, and implementors have to reason about

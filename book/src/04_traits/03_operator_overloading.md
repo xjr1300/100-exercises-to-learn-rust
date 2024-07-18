@@ -13,8 +13,8 @@ For each operator, there is a corresponding trait that defines the behavior of t
 By implementing that trait for your type, you **unlock** the usage of the corresponding operators.
 
 > Rustにおいて、演算子はトレイトです。
-> それぞれの演算子には、その演算子の振る舞いを定義する対応したトレイトがあります。
-> 型にそのトレイトを実装することで、対応する演算子の仕様を**解除**します。
+> それぞれの演算子には、その演算子の振る舞いを定義するために、対応したトレイトがあります。
+> 型にそのトレイトを実装することで、対応する演算子の使用を**解除**します。
 
 For example, the [`PartialEq` trait](https://doc.rust-lang.org/std/cmp/trait.PartialEq.html) defines the behavior of
 the `==` and `!=` operators:
@@ -94,7 +94,7 @@ It's enough to implement `eq`:
 
 > それは期待したものです。`ne`は`eq`の否定です。
 > デフォルト実装が提供されているため、型に`PartialEq`を実装する時、`ne`の実装をスキップできます。
-> それは、`eq`の実装で十分です。
+> `eq`の実装で十分です。
 
 ```rust
 struct WrappingU8 {

@@ -49,7 +49,7 @@ note: an implementation of `PartialEq` might be missing for `Ticket`
 `Ticket` is a new type. Out of the box, there is **no behavior attached to it**.\
 Rust doesn't magically infer how to compare two `Ticket` instances just because they contain `String`s.
 
-> `Ticket`は新しい型です。組み込みで、**それには振る舞いが取り付けられていません**。
+> `Ticket`は新しい型です。組み込みで、**それには振る舞いが付属していません**。
 > Rustは、`Ticket`が`String`を含んでいるため、2つの`Ticket`インスタンスを比較する方法を魔法のように推測しません。
 
 The Rust compiler is nudging us in the right direction though: it's suggesting that we might be missing an implementation
@@ -159,7 +159,7 @@ This is not necessary if:
 >
 > - トレイトが、呼び出しが発生する同じモジュール内で定義されている。
 > - トレイトが、標準ライブラリの**prelude**に定義されている。
->   preludeは、すべてのRustプログラム内に自動的にインポートされるトレイトや型の集合です。
+>   `prelude`は、すべてのRustプログラム内に自動的にインポートされるトレイトや型の集合です。
 >   それは、`use::std::prelude:**;`として、すべてのRustモジュールの開始に追加されたかのようです。
 
 You can find the list of traits and types in the prelude in the

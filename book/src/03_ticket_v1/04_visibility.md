@@ -5,7 +5,7 @@ Visibility determines which regions of your code (or other people's code) can ac
 be it a struct, a function, a field, etc.
 
 > コードを複数のモジュールに分割し始めたとき、**可視性**について考え始めなければなりません。
-> 可視性は、コードまたは他の人のコードのどの領域が、構造体、関数、フィールドなどの与えられたエンティティにアクセスできるかを決定します。
+> 可視性は、コードまたは他の人のコードのどの領域が、構造体、関数、フィールドなど、特定のエンティティにアクセスできるかを決定します。
 
 ## Private by default（デフォルトでプライベート）
 

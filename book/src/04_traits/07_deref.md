@@ -31,7 +31,8 @@ impl Ticket {
 was all you needed to do to get the code to compile and the tests to pass.
 Some alarm bells should be ringing in your head though.
 
-> コンパイルできるようにコードを得て、テストにパスするために必要なことは、これだけでした。
+> コンパイルできるようにコードをして、テストにパスするために必要なことは、これだけでした。
+> しかし、頭の中で警報が鳴っているはずです。
 
 ## It shouldn't work, but it does（それは機能素べきではないが、動作します）
 
@@ -88,7 +89,7 @@ In particular, you get the following behavior:
 - References to `T` are implicitly converted into references to `U` (i.e. `&T` becomes `&U`)
 - You can call on `&T` all the methods defined on `U` that take `&self` as input.
 
-> 型`T`に対して`Deref<Target = U>`を実装することにより、`&T`と`&U`がある程度交換可能であることをコンパイラに伝えます。
+> 型`T`に対して`Deref<Target = U>`を実装することにより、`&T`と`&U`が交換可能であることをコンパイラに伝えます。
 > 特に、次のような振る舞いを得られます。
 >
 > - `T`への参照は、暗黙的に`U`への参照に変換されます（つまり、`&T`は`&U`になります）。
@@ -97,7 +98,7 @@ In particular, you get the following behavior:
 There is one more thing around the dereference operator, `*`, but we don't need it yet (see `std`'s docs
 if you're curious).
 
-> 参照外し演算子`*`のまわりには、もう1つのことがありますが、まだそれは必要ありません（好奇心が強いのであれば、`std`のドキュメントを参照してください）。
+> 参照外し演算子`*`には、もう1つありますが、まだそれは必要ありません（好奇心が強いのであれば、`std`のドキュメントを参照してください）。
 
 ## `String` implements `Deref`（StringはDerefを実装しています）
 

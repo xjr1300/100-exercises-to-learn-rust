@@ -26,7 +26,7 @@ Since there can be many more threads than there are CPU cores, the operating sys
 partitioning CPU time among them to maximize throughput and responsiveness.
 
 > スレッドは**論理的な**構造物です。最終的に、**物理的な**実行ユニットであるCPUコアで一度に1つの命令セットしか実行できません。
-> CPUコアよりも多くのスレッドが存在できるため、オペレーティングシステムの**スケジューラー**は、与えられた時間に実行するスレッドを決定する責任があり、最大のスループットと応答性を確保するために、スレッド間でCPU時間を分配します。
+> CPUコアよりも多くのスレッドが存在できるため、オペレーティングシステムの**スケジューラー**は、特定の時間に実行するスレッドを決定する責任があり、最大のスループットと応答性を確保するために、スレッド間でCPU時間を分配します。
 
 ## `main`
 
