@@ -42,8 +42,8 @@ let guard2 = lock.read().unwrap();
 On the surface, `RwLock<T>` seems like a no-brainer: it provides a superset of the functionality of `Mutex<T>`.
 Why would you ever use `Mutex<T>` if you can use `RwLock<T>` instead?
 
-> 表面上、`RwLock<T>`は考えるまでも無いように見えます。それは`Mutex<T>`の機能のスーパーセットを提供します。
-> `RwLock<T>`を使用する代わりに、なぜまだ`Mutex<T>`を使用するのでしょうか。
+> 表面上、`RwLock<T>`は考えるまでもないように見えます。それは`Mutex<T>`の機能のスーパーセットを提供します。
+> 代わって`RwLock<T>`を使用できるのに、なぜ`Mutex<T>`をまだ使用するのでしょうか。
 
 There are two key reasons:
 
@@ -62,9 +62,9 @@ There are two key reasons:
 > - `RwLock<T>`をロックすることは、`Mutex<T>`をロックするよりもコストが高いです。
 >   これは、`RwLock<T>`は有効なリーダーとライターの数を追跡する一方で、`Mutex<T>`はロックが保持されているかどうかを追跡するだけだからです。
 >   この性能のオーバーヘッドは、ライターよりもリーダーのほうが多い場合は問題になりませんが、ワークロードがライター重視の場合、`Mutex<T>`が良い選択かもしれません。
-> - `RwLock<T>`は**ライターの飢餓**を率い起こす可能性があります。
+> - `RwLock<T>`は**ライターの飢餓**を引き起こす可能性があります。
 >   ロックを獲得するために常にリーダーが待機している場合、ライターは実行する機会を得られないかもしれません。
->   `RwLock<T>`は、リーダとライターがロックにアクセスする権限を与えられる順序を保証しません。
+>   `RwLock<T>`は、リーダーとライターがロックにアクセスする権限を与える順序を保証しません。
 >   それは、基盤となるOSによって実装された方針に依存して、ライターにとって公平でないかもしれません。
 
 In our case, we can expect the workload to be read-heavy (since most clients will be reading tickets, not modifying them),

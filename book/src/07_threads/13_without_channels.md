@@ -2,7 +2,7 @@
 
 Let's take a moment to review the journey we've been through.
 
-> 少しの間、通過してきた旅をレビューしてみましょう。
+> 少しの間、これまでの旅をレビューしてみましょう。
 
 ## Lockless with channel serialization（チャネルのシリアライゼーションを使用したロックレス）
 
@@ -13,8 +13,8 @@ Our first implementation of a multithreaded ticket store used:
 
 > マルチスレッドなチケットストアの最初の実装は、次を使用しました。
 >
-> - 共有された状態を保持する単一な中息するスレッド（サーバー）
-> - 複数のクライアントが、それぞれ自身のスレッドからチャネルを介してリクエストを送信
+> - 共有された状態を保持する単一で長生きするスレッド（サーバー）
+> - それぞれ自身のスレッドからチャネルを介してリクエストを送信する複数のクライアント
 
 No locking of the state was necessary, since the server was the only one modifying the state. That's because
 the "inbox" channel naturally **serialized** incoming requests: the server would process them one by one.\
@@ -23,9 +23,9 @@ discuss the performance implications of the original design: the server could on
 including reads.
 
 > サーバーは状態を変更する唯一のものであったため、状態のロックは必要ありませんでした。
-> それは、「受診」チャネルが自然に入ってくるリクエストを**シリアライズ**したためです。サーバーはそれらを1つずつ処理しました。
-> パッチの振る舞いに来たときに、この振る舞いの制限をすでに議論しましたが、オリジナルの設計の性能の影響については議論しませんでした。
-> サーバーは、読み込みを含んで、一度に1つのリクエストしか処理できません。
+> それは、「受信」チャネルが自然に入ってくるリクエストを**シリアライズ**したからです。サーバーはそれらを1つずつ処理しました。
+> パッチの振る舞いに来たとき、この振る舞いの制限をすでに議論しましたが、オリジナルの設計の性能の影響については議論しませんでした。
+> サーバーは、読み込みを含めて一度に1つのリクエストしか処理できません。
 
 ## Fine-grained locking（適切な粒度のロック）
 
@@ -38,7 +38,7 @@ This design allows for better parallelism (i.e. multiple clients can read ticket
 still fundamentally **serial**: the server processes commands one by one. In particular, it hands out locks to clients
 one by one.
 
-> 例えば、複数クライアントが同時にチケットを読み込みできるように、この設計は良い並列処理を可能にしますが、それはまだ基本的に**シリアル**です。
+> 例えば、複数クライアントが同時にチケットを読み込めれるように、この設計は良い並列処理を可能にしますが、それはまだ基本的に**シリアル**です。
 
 Could we remove the channels entirely and allow clients to directly access the `TicketStore`, relying exclusively on
 locks to synchronize access?
@@ -63,7 +63,7 @@ We want all threads to refer to the same state, otherwise we don't really have a
 running multiple single-threaded systems in parallel.\
 We've already encountered this problem when we tried to share a lock across threads: we can use an `Arc`.
 
-> すべてのスレッドが同じ状態を参照したいと考えていて、そうでないと、本物のマルチスレッドなシステムを持てません。
+> すべてのスレッドが同じ状態を参照できるようにしたいです。そうでないと、本物のマルチスレッドなシステムではありません。
 > 単に並列で複数の単一スレッドなシステムを実行しているだけです。
 > スレッドをまたいでロックを共有することを試みたときに、この問題に遭遇しました。`Arc`を使用できます。
 
@@ -89,4 +89,4 @@ or removing a ticket.
 
 Let's go down this path and see where it leads us.
 
-> この未知を進んで、どこに導かれるか確認しましょう。
+> この道を進んで、どこに導かれるか確認しましょう。

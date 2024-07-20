@@ -3,7 +3,7 @@
 When introducing the heap, we mentioned that you're responsible for freeing the memory you allocate.\
 When introducing the borrow-checker, we also stated that you rarely have to manage memory directly in Rust.
 
-> ヒープを紹介したとき、割り当てたメモリを開放する責任があることを言及しました。
+> ヒープを紹介したとき、割り当てたメモリを解放する責任があることを言及しました。
 > 借用チェッカーを紹介したとき、Rustでは、メモリを直接管理する必要がほとんどないことも述べました。
 
 These two statements might seem contradictory at first.
@@ -147,7 +147,7 @@ When you transfer ownership of a value to a function, you're also **transferring
 This ensures that the destructor for a value is called **at most[^leak] once**, preventing
 [double free bugs](https://owasp.org/www-community/vulnerabilities/Doubly_freeing_memory) by design.
 
-> 値のためのデストラクターは、設計によって二重開放のバグを避けるために、**最大で一度**呼び出されます。
+> 値のためのデストラクターは、設計によって二重解放のバグを避けるために、**最大で一度**呼び出されます。
 
 ### Use after drop（ドロップのあとで使用する）
 
@@ -222,7 +222,7 @@ Rust's ownership system rules out these kinds of bugs by design.
 
 > これは、前述のことに戻ります：デストラクターを一度だけ呼び出したいだけです。
 > 同じ値への複数の参照を持つことができます。それらの1つがスコープ外になったときにその値のデストラクターを呼び出した場合、他に何が発生するでしょうか？
-> それらは、ダングリングポインターとも呼ばれる、もはや有効でないメモリ位置を参照して、開放した後に使用するバグに密接に関連します。
+> それらは、ダングリングポインターとも呼ばれる、もはや有効でないメモリ位置を参照して、解放した後に使用するバグに密接に関連します。
 > Rustの所有権システムは、設計によってこれらの種類のバグを排除します。
 
 [^leak]: Rust doesn't guarantee that destructors will run. They won't, for example, if

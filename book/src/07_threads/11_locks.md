@@ -4,9 +4,9 @@ The patching strategy you just implemented has a major drawback: it's racy.\
 If two clients send patches for the same ticket roughly at same time, the server will apply them in an arbitrary order.
 Whoever enqueues their patch last will overwrite the changes made by the other client.
 
-> ちょうど実装したパッチ戦略は大きな決定があります。それは際どいです。
+> ちょうど実装したパッチ戦略は大きな欠点があります。それは際どいです。
 > 2つのクライアントがほぼ同時に同じチケットにパッチを送信した場合、サーバーは任意の順序でそれらを適用します。
-> 最後にそれらのパッチをキューに入れた人が、他のクライアントによって行われた変更を上書きします。
+> 最後にそれらのパッチをキューに入れたクライアントが、他のクライアントによって行われた変更を上書きします。
 
 ## Version numbers（バージョン番号）
 
@@ -30,9 +30,9 @@ and it is known as **optimistic concurrency control**.\
 The idea is that most of the time, conflicts won't happen, so we can optimize for the common case.
 You know enough about Rust by now to implement this strategy on your own as a bonus exercise, if you want to.
 
-> この方法は、例えばクライアントとサーバーがメモリを共有していないなどの分散システムでとても一般的で、それは**楽観的同時実行制御**として知られています。
-> その愛では、ほとんどの時間で衝突が発生しないため、一般的なケースに最適化できます。
-> そろそれRustを十分に理解したため、希望する場合、ボーナスの演習として、自身でこの戦略を実装してください。
+> この方法は、例えばクライアントとサーバーがメモリを共有していないなどの分散システムでとても一般的で、**楽観的同時実行制御**として知られています。
+> そのアイデアは、ほとんどの時間で衝突が発生しないため、一般的なケースで最適化できます。
+> そろそろRustを十分に理解した頃であるため、希望する場合、ボーナスの演習として自身でこの戦略を実装してください。
 
 ## Locking（ロック）
 
@@ -49,7 +49,7 @@ Let's start with `Mutex<T>`. It stands for **mut**ual **ex**clusion, and it's th
 it allows only one thread to access the data, no matter if it's for reading or writing.
 
 > Rust標準ライブラリは、`Mutex<T>`と`RwLock<T>`の2つの異なるロックの構成要素を提供しています。
-> `Mutex<T>`から始めましょう。それは**可変**で、**排他**を表していて、それは最も単純な種類のロックです。
+> `Mutex<T>`から始めましょう。それは**可変**で**排他**を表していて、それは最も単純な種類のロックです。
 > それは、読み込みまたは書き込みに関わらず、データへのアクセスをたった1つのスレッドだけ許可します。
 
 `Mutex<T>` wraps the data it protects, and it's therefore generic over the type of the data.\
@@ -59,11 +59,11 @@ can't be acquired.\
 Both methods return a guard object that dereferences to the data, allowing you to modify it. The lock is released when
 the guard is dropped.
 
-> `Mutex<T>`は、それが保護するデータをラップして、そのためそれはデータの型に対してジェネリックです。
+> `Mutex<T>`は、それが保護するデータをラップするため、それはデータ型に対してジェネリックです。
 > 直接データにアクセスできません。型システムは、`Mutex::lock`または`Mutex::try_lock`のどちらかを使用して、最初にロックを獲得することを強制します。
 > 前者はロックが獲得されるまでブロックして、後者はロックが獲得できない場合、即座にエラーを返します。
 > 両方のメソッドは、データへの参照を外すガードオブジェクトを返し、それ（データ）を変更できるようにします。
-> ロックは、ガードがドロップされたときに、開放されます。
+> ロックは、ガードがドロップされたときに、解放されます。
 
 ```rust
 use std::sync::Mutex;
@@ -84,7 +84,7 @@ let mut guard = lock.lock().unwrap();
 // The lock is released when `data` goes out of scope
 // This can be done explicitly by dropping the guard
 // or happen implicitly when the guard goes out of scope
-// `data`がスコープ外になったとき、ロックは開放されます。
+// `data`がスコープ外になったとき、ロックは解放されます。
 // これは、ガードをドロップすることによって明示に行うか、ガードがスコープ外になったときに暗黙的に発生します。
 drop(guard)
 ```
@@ -121,10 +121,10 @@ This approach is more efficient, but it has a downside: `TicketStore` has to bec
 nature of the system; up until now, `TicketStore` has been blissfully ignoring the existence of threads.\
 Let's go for it anyway.
 
-> この方法はより効率的ですが、欠点があります。
-> `TicketStore`は、システムのマルチスレッド性に**気付く**ようにならなくてはなりません。
+> この方法はより効率的ですが欠点があります。
+> `TicketStore`はシステムのマルチスレッド性に**気付く**ようにならなくてはなりません。
 > これまで、`TicketStore`はスレッドの存在を穏やかに無視してきました。
-> とにかくやってみましょう。
+> とにかくそれをやってみましょう。
 
 ## Who holds the lock?（誰がロックを保持するのか？）
 
@@ -132,7 +132,7 @@ For the whole scheme to work, the lock must be passed to the client that wants t
 The client can then directly modify the ticket (as if they had a `&mut Ticket`) and release the lock when they're done.
 
 > 全体のスキームが機能するために、ロックはそのチケットを修正したいクライアントに渡されなければなりません。
-> そして、クライアントは、`&mut Ticket`を持っている場合、チケットを直接修正して、終了したときにロックを開放できます。
+> そして、クライアントは、`&mut Ticket`を持っている場合、チケットを直接修正して、終了したときにロックを解放できます。
 
 This is a bit tricky.\
 We can't send a `Mutex<Ticket>` over a channel, because `Mutex` is not `Clone` and
@@ -203,16 +203,15 @@ type is indeed safe to send between threads for reasons that the compiler can't 
 > `Send`は、あるスレッドから他のスレッドに安全に転送できる型を示すマーカートレイトです。
 > また`Send`は、ちょうど`Sized`と同様に自動トレイトです。
 > それ（`Send`）は、その（型）の定義に基づいて、コンパイラーによって自動的に実装されます（または実装されません）。
-> また、型に手動で`Send`を実装することもできますが、コンパイラーは自動て検証できない理由で、型が確実にスレッド間を安全に送信できることを保証しなくてはならないため、`unsafe`が要求されます。
+> また、型に手動で`Send`を実装することもできますが、コンパイラーは自動で検証できず、型が確実にスレッド間を安全に送信できることを保証しなくてはならないため、`unsafe`が要求されます。
 
 > `Send`を実装した型は、スレッド間で安全に移動（ムーブ）できる。
 > また、`Sync`を実装した型は、複数のスレッドから安全に参照できる。
 >
-> 例えば、`&T`が`Send`である場合、`T`は`Sync`である。
+> 例えば、`&T`が`Send`である場合、`T`は`Sync`である。例としては、`T`が不変な値な場合である。
 >
-> 型`T`が`Sync`である場合、複数のスレッドから安全に参照できるということは、`&T`が複数のスレッドで安全であることを意味する。
-> そして、`&T`が`Send`である場合、`&T`はスレッド間を移動（ムーブ）できる。
-> `&T`はスレッド間を移動できるということは、`T`が複数のスレッドで安全であり、`T`が`Sync`であることを意味する。
+> 型`T`が`Sync`である場合、複数のスレッドから安全に参照できるということは、`&T`が`Send`であることを意味する。
+> そして、`&T`が`Send`であれば、`&T`はスレッド間を移動（ムーブ）できる。
 
 ### Channel requirements（チャネルの要求事項）
 
@@ -231,8 +230,8 @@ If we were to send a `MutexGuard` to another thread, the lock would be released 
 lead to undefined behavior.
 
 > `MutexGuard`は、
-> `Mutex`がロックを実装するために使用する基盤となるオペレーティングシステムの構成要素は、（いくつかのプラットフォームで）ロックは、それを獲得した同じスレッドによって開放されなくてはならないことを要求します。
-> 他のスレッドに`MutexGuard`を送信した場合、ロックは異なるスレッドによって開放される音になり、それは未定義な動作を引き起こします。
+> `Mutex`がロックを実装するために使用する基盤となるオペレーティングシステムの構成要素は、（いくつかのプラットフォームで）ロックがそれを獲得した同じスレッドによって解放されなくてはならないことを要求します。
+> 他のスレッドに`MutexGuard`を送信した場合、ロックは異なるスレッドによって解放されることになり、それは未定義な動作を引き起こします。
 
 ## Our challenges（課題）
 
@@ -246,7 +245,7 @@ Summing it up:
 
 > まとめると・・・
 >
-> - チャネルを介して`MutexGuard`を送信できません。よって、サーバー側でロックできず、クライアント側でチケットを修正できません。
+> - チャネルを介して`MutexGuard`を送信できません。よって、サーバー側でロックして、クライアント側でチケットを修正できません。
 > - `Mutex`は、それが保護するデータが`Send`である限り`Send`で、それは`Ticket`の場合であり、チャネルを介して`Mutex`を送信できます。
 >   同時に、`TicketStore`の外側に`Mutex`を移動できず、それをクローンすることもできません。
 
@@ -306,10 +305,10 @@ It boils down to the way the reference count is implemented: `Rc` uses a "normal
 **atomic** integer, which can be safely shared and modified across threads.
 
 > デジャブを感じた場合、それは正しいです。
-> `Arc`は`Rc`にとてもにているように聞こえて、内部可変性について話していたときに導入した参照カウンターのポインターです。
+> `Arc`は`Rc`にとても似ているように聞こえて、`Rc`は内部可変性について話していたときに導入した参照カウンターのポインターです。
 > 違いはスレッドセーフです。`Rc`は`Send`ではなく、`Arc`は`Send`です。
 > それは、参照カウンターを実装する方法を要約しています。
-> `Rc`は「普通の」整数を使用している一方で、`Arc`は**アトミックな**整数を使用していて、それはスレッドをまたいで安全に共有と変更ができます。
+> `Rc`は「普通の」整数を使用している一方で、`Arc`は**アトミックな**整数を使用していて、それはスレッドをまたいで安全に共有して変更できます。
 
 ## `Arc<Mutex<T>>`
 

@@ -28,7 +28,7 @@ println!("Here's v: {v:?}");
 
 Let's unpack what's happening.
 
-> 何が起こっているか包を解いてみましょう。
+> 何が起こっているか調べてみましょう。
 
 ## `scope`
 
@@ -45,7 +45,10 @@ Unlike `std::thread::spawn`, all threads spawned using a `Scope` will be
 **automatically joined** when the scope ends.
 
 > `Scope`は`spawn`メソッドを公開します。
-> `std::thread::spawn`床となり、`Scope`を使用して生み出されたすべてのスレッドは、スコープが終了したとき**自動的に結合**されます。
+> `std::thread::spawn`と異なり、`Scope`を使用して生み出されたすべてのスレッドは、スコープが終了したとき**自動的に結合**されます。
+
+> `Scope`内で生み出されたスレッドは結合、つまりスレッドの終了を待つ。
+> よって、`Scope`と同じスコープにある変数は、`Scope`と同じだけ生存するため、`Scope`内で生み出されたスレッドで自由に参照できる。
 
 If we were to "translate" the previous example to `std::thread::spawn`,
 it'd look like this:
@@ -90,8 +93,8 @@ all threads spawned inside `scope` are guaranteed to finish _before_ `scope` ret
 therefore there is no risk of having dangling references.
 
 > 例において、`v`は生み出された地点の前に作成されます。
-> それは、`scope`が戻った_後_にのみドロップされます。
-> それと同時に、`scope`内で生成されたすべてのスレッドは、`scope`が戻る_前_に終了することが保養されているため、ダングリング参照を持つリスクはありません。
+> それは、`scope`が戻った _後_ にのみドロップされます。
+> それと同時に、`scope`内で生成されたすべてのスレッドは、`scope`が戻る _前_ に終了することが保証されているため、ダングリング参照を持つリスクはありません。
 
 The compiler won't complain!
 

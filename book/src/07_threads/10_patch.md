@@ -20,8 +20,8 @@ The same strategy won't work in the current multi-threaded version,
 because the mutable reference would have to be sent over a channel. The borrow checker would
 stop us, because `&mut Ticket` doesn't satisfy the `'static` lifetime requirement of `SyncSender::send`.
 
-> 同じ戦略は、可変参照はチャネルを通じて送信されなくてはならないため、現在のマルチスレッドバージョンでは機能しません。
-> `&mut Ticket`は`SyncSender::send`の`'static`ライフタイム要求を満足しないため、借用チェッカーは止めます。
+> 可変参照はチャネルを通じて送信されなくてはならないため、現在のマルチスレッドバージョンにおいて現在の戦略は機能しません。
+> `&mut Ticket`は`SyncSender::send`の`'static`ライフタイム要求を満足しないため、借用チェッカーは停止させます。
 
 There are a few ways to work around this limitation. We'll explore a few of them in the following exercises.
 
@@ -33,13 +33,13 @@ There are a few ways to work around this limitation. We'll explore a few of them
 We can't send a `&mut Ticket` over a channel, therefore we can't mutate on the client-side.\
 Can we mutate on the server-side?
 
-> チャネルで`&mut Ticket`を送信できないため、クライアント側で変更できません。
+> チャネルで`&mut Ticket`を送信できないため、クライアント側でチケットを変更できません。
 > サーバー側で変更できるでしょうか？
 
 We can, if we tell the server what needs to be changed. In other words, if we send a **patch** to the server:
 
-> サーバーに変更しなくてはならないものを伝えれば、できます。
-> 言い換えれば、**パッチ**をサーバーに送信すればできます。
+> サーバーに変更しなくてはならないものを伝えればできます。
+> 言い換えれば、**パッチ**をサーバーに送信する場合です。
 
 ```rust
 struct TicketPatch {
@@ -56,7 +56,7 @@ All other fields are optional:
 - If a field is `None`, it means that the field should not be changed.
 - If a field is `Some(value)`, it means that the field should be changed to `value`.
 
-> `id`フィールドは必須なため、それは更新される必要があるチケットを識別するために要求されます。
+> `id`フィールドは必須なため、それは更新されなければならないチケットを識別するために要求されます。
 > 他のフィールドすべてはオプションです。
 >
 > - フィールドが`None`の場合、それはそのフィールドが変更されるべきでないことを意味します。

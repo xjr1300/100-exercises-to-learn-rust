@@ -47,7 +47,7 @@ that references are not used after the value they refer to has been dropped, to 
 
 > ライフタイムは、可変または不変参照が有効な長さを追跡するためにRustコンパイラーによって使用されます。
 > 参照のライフタイムは、それが参照する値のスコープによって制限されます。
-> Rustは、ダングリングポインターと開放された後に使用するバグを避けるために、コンパイル時に、参照している値がドロップされた後で、参照が使用されないことを常に確認します。
+> Rustは、ダングリングポインターと解放された後に使用するバグを避けるために、コンパイル時に、参照している値がドロップされた後で、参照が使用されないことを常に確認します。
 
 This should sound familiar: we've already seen these concepts in action when we discussed ownership and borrowing.
 Lifetimes are just a way to **name** how long a specific reference is valid.

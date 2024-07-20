@@ -6,7 +6,7 @@ That's not ideal.
 
 > 現在のクライアントサーバーの実装において、通信の流れはクライアントからサーバーへ向かう一方向です。
 > サーバーがメッセージを受け取った場合、正常に実行されたかそれとも失敗したか、クライアントは知る方法がありません。
-> これは理想的てはありません。
+> これは理想的ではありません。
 
 To solve this issue, we can introduce a two-way communication system.
 

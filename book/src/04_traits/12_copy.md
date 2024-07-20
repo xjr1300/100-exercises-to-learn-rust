@@ -118,7 +118,7 @@ You could also create two distinct `&mut String` references that point to the sa
 violating Rust's borrowing rules.
 
 > これは良くないことです！
-> 両方の`String`インスタンスがスコープ外になったとき、両方の`String`インスタンスがメモリバッファーを開放することを試み、二重開放エラーを招きます。
+> 両方の`String`インスタンスがスコープ外になったとき、両方の`String`インスタンスがメモリバッファーを解放することを試み、二重開放エラーを招きます。
 > また、同じメモリバッファーを指し示す2つの別の`&mut String`参照を作成でき、Rustの借用ルールに違反します。
 
 ### Case study 2: `u32`（事例解説2: u32）

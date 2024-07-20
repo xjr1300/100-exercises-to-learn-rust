@@ -6,7 +6,7 @@ If you're working with heap-allocated data, you can avoid the issue by
 telling Rust that you'll never reclaim that memory: you choose to **leak memory**,
 intentionally.
 
-> 生み出したスレッドに参照を渡すことに関する主要な懸念は、すでに開放／割り当てを解除されたメモリ領域へのポインターを使用したデータアクセスという、「開放した後に使用する」バグです。
+> 生み出したスレッドに参照を渡すことに関する主要な懸念は、すでに解放／割り当てを解除されたメモリ領域へのポインターを使用したデータにアクセスする「開放した後に使用する」バグです。
 > ヒープに割り当てられたデータを扱っている場合、そのメモリを決して回収しないことをRustに伝えることで、その問題を回避できます。
 > つまり、**メモリーリーク**することを意図的に選択します。
 
@@ -20,7 +20,7 @@ This can be done, for example, using the `Box::leak` method from Rust's standard
 let x = Box::new(41u32);
 // Tell Rust that you'll never free that heap allocation
 // using `Box::leak`. You can thus get back a 'static reference.
-// `Box::leak`を使用して、そのヒープ割り当てを決して開放しないことをRustに伝えます。
+// `Box::leak`を使用して、そのヒープ割り当てを決して解放しないことをRustに伝えます。
 // よって、`'static参照を得られます。
 let static_ref: &'static mut u32 = Box::leak(x);
 ```

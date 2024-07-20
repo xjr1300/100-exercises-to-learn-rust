@@ -28,7 +28,7 @@ Doesn't it violate Rust's rules about borrowing? How are we performing mutations
 > それは、このクライアントサーバーアーキテクチャーを構築するために使用した重要な特徴です。
 > しかし、それはなぜ機能するのでしょうか？
 > それは、Rustの借用ルールを破っていませんか？
-> _不変_参照を介して、どのように変異を行っているのでしょうか？
+> _不変_ 参照を介して、どのように変異を行っているのでしょうか？
 
 ## Shared rather than immutable references（不変参照ではなく共有）
 
@@ -47,7 +47,7 @@ It would have been more accurate to name them:
 - shared references (`&T`)
 - exclusive references (`&mut T`)
 
-> それらはより的確な名前が付けられています。
+> それらはより正確な名前が付けられています。
 >
 > - 共有参照（`&T`）
 > - 排他参照（`&mut T`）
@@ -58,7 +58,7 @@ points to is immutable.\
 Don't worry, though: Rust is still keeping its promises.
 It's just that the terms are a bit more nuanced than they might seem at first.
 
-> 不変／可変は、ほとんどの大半のケースで機能する価値観であり、それはRustを始めるときに最適なものです。
+> 不変／可変は、ほとんどの大半のケースで機能する価値観（メンタルモデル）であり、Rustを始める最適なものです。
 > しかし、それは全体のストーリーではありません。ちょうど見たように、`&T`はそれが指し示すデータが不変であることを、実際に保証していません。
 > ただし、心配しないでください。Rustはまだその約束を守っています。
 > それらを最初に見たときよりも、用語が少しより微妙になっただけです。
@@ -81,8 +81,8 @@ Every time you see a type that allows interior mutability, you can be certain th
 either directly or indirectly.\
 Using `UnsafeCell`, raw pointers and `unsafe` code, you can mutate data through shared references.
 
-> `UnsafeCell`内にデータをラップすることで、「いいえ、これは共有参照で実際には変更可能です」とコンパイラーに伝えることができます。
-> 内部可変性を許可する型を見るたびに、`UnsafeCell`が関与していることを革新できます。
+> `UnsafeCell`内にデータをラップすることで、「いいえ、この共有参照は、実際には変更可能です」とコンパイラーに伝えることができます。
+> 内部可変性を許可する型を見るたびに、`UnsafeCell`が関与していることを確信できます。
 > `UnsafeCell`、生ポインターそして`unsafe`コードを使用して、共有参照を介してデータを変更できます。
 
 Let's be clear, though: `UnsafeCell` isn't a magic wand that allows you to ignore the borrow-checker!\
@@ -93,7 +93,7 @@ in Rust's type system. Whenever you use the `unsafe` keyword you're telling the 
 
 > ただし、明確にしましょう。`UnsafeCell`は、借用チェッカーを無視させる魔法の杖ではありません！
 > `unsafe`コードは、まだ借用とエイリアスに関するRustのルールの対象です。
-> それは、Rustの型システム内で、安全性を直接表現できない**安全な抽象**を構築するために利用できる高度なツールです。
+> それは、Rustの型システム内で、安全性を直接表現できない**安全な抽象化**を構築するために利用できる高度なツールです。
 > `unsafe`キーワードを使用するときはいつでも、コンパイラーに次を伝えています。
 > 「私は何をしているか理解しています。あなたの不変条件を破るつもりはありません。信じてください。」
 
@@ -109,7 +109,7 @@ But it's important to know that it's there, why it exists and how it relates to 
 every day in Rust.
 
 > このコースにおいて、`UnsafeCell`を直接使用しませんし、`unsafe`コードを書くこともありません。
-> しかし、Rust内にそれがなぜ存在して、それがどのように毎日使用する型に関連するのかを理解することは重要です。
+> しかし、Rust内になぜそれが存在して、それがどのように毎日使用する型に関連するのかを理解することは重要です。
 
 ## Key examples（鍵となる例）
 
@@ -118,7 +118,7 @@ These are types that you'll encounter somewhat often in Rust code, especially if
 some the libraries you use.
 
 > 内部可変性を利用する重要な`std`の型の組を確認しましょう。
-> 特に使用するライブラリの内部を除いた場合、Rustコードで少し頻繁に出会う方があります。
+> 特に使用するライブラリの内部を覗いた場合、Rustコードでかなり頻繁に遭遇する型があります。
 
 ### Reference counting（参照カウンター）
 
@@ -128,8 +128,8 @@ When the last reference is dropped, the value is deallocated.\
 The value wrapped in an `Rc` is immutable: you can only get shared references to it.
 
 > `Rc`は参照をカウントするポインターです。
-> それは値をラップして、その値を参照する参照が存在する数を追跡し続けます。
-> 最後の参照がドロップされたとき、その値は開放されます。
+> それは値をラップして、その値への参照が存在する数を追跡します。
+> 最後の参照がドロップされたとき、その値は解放されます。
 > `Rc`にラップされた値は不変です。それから共有参照のみ得られます。
 
 ```rust
@@ -154,7 +154,7 @@ assert_eq!(Rc::strong_count(&b), 2);
 
 `Rc` uses `UnsafeCell` internally to allow shared references to increment and decrement the reference count.
 
-> `Rc`は、共有参照に参照の数を増やしたり減らしたりするために、内部で`UnsafeCell`を使用しています。
+> `Rc`は、共有参照が参照の数を増やしたり減らしたりするために、内部で`UnsafeCell`を使用しています。
 
 > 上記例の`Rc`型の変数`a`と`b`は`mut`でないため不変である。
 > しかし、`a`と`b`が共有する参照カウンターを変更するために、内部で`UnsafeCell`を使用する必要がある。
@@ -165,7 +165,7 @@ assert_eq!(Rc::strong_count(&b), 2);
 It allows you to mutate the value wrapped in a `RefCell` even if you only have an
 immutable reference to the `RefCell` itself.
 
-> `RefCell`は、Rustにおいて内部可変性を最も一般的な例の1つです。
+> `RefCell`は、Rustにおいて内部可変性の最も一般的な例の1つです。
 > それは、`RefCell`自身への不変参照を持っていた場合でも、`RefCell`内にラップした値を変更させます。
 
 This is done via **runtime borrow checking**.
@@ -174,7 +174,7 @@ If you try to borrow the value mutably while it's already borrowed immutably,
 the program will panic, ensuring that Rust's borrowing rules are always enforced.
 
 > これは、**ランタイム借用チェッカー**を介して行われます。
-> `RefCell`は、ランタイムでそれが含む値への参照の数（と型）を追跡し続けます。
+> `RefCell`は、ランタイムでそれが含む値への参照の数（と型）を追跡します。
 > 値がすでに不変で借用されている間に、値を可変で借用することを試みた場合、プログラムはパニックして、Rustの借用ルールが常に強制されることを保証します。
 
 ```rust

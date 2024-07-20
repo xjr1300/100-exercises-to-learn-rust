@@ -15,7 +15,7 @@ Our recommendation is to **never** use an unbounded channel in a production syst
 You should always enforce an upper limit on the number of messages that can be enqueued using a
 **bounded channel**.
 
-> プロダクションシステムにおける推奨事項は、**決して**非制限チャネルを使用したいことです。
+> プロダクションシステムにおける推奨事項は、**決して**非制限チャネルを使用しないことです。
 > **制限されたチャネル**を使用して、常にキューに入れられるメッセージの上限を強制するべきです。
 
 ## Bounded channels（制限されたチャネル）
@@ -46,12 +46,12 @@ You have two different methods to send messages through a `SyncSender`:
 - `try_send`: if there is space in the channel, it will enqueue the message and return `Ok(())`.\
   If the channel is full, it will return `Err(TrySendError::Full(value))`, where `value` is the message that couldn't be sent.
 
-> `SyncSender`を介してメッセージを送信する2つの異なる方法があります。
+> `SyncSender`を介してメッセージを送信する2つの異なるメソッドがあります。
 >
-> - `send`: チャネル内にスペースがある場合、それはメッセージをキューに入れて`Ok(())`を返します。
->   チャネルがいっぱいの場合、それはブロックして、利用可能なスペースができるまで待機します。
-> - `try_send`: チャネル内にスペースがある場合、それはメッセージをキューに入れて`Ok(())`を返します。
->   チャネルがいっぱいの場合、それは`Err(TrySendError::Full(value))`を返して、その`value`は送信されなかったメッセージです。
+> - `send`: チャネル内に空きがある場合、それはメッセージをキューに入れて`Ok(())`を返します。
+>   チャネルがいっぱいの場合、それはブロックして、利用可能な空きができるまで待機します。
+> - `try_send`: チャネル内に空きがある場合、それはメッセージをキューに入れて`Ok(())`を返します。
+>   チャネルがいっぱいの場合、それは`Err(TrySendError::Full(value))`を返して、返される`value`は送信されなかったメッセージです。
 
 Depending on your use case, you might want to use one or the other.
 
@@ -65,5 +65,5 @@ The backpressure can then propagate through the system, potentially affecting th
 preventing end users from overwhelming the system with requests.
 
 > 制限されたチャネルを使用する主な利点は、それらが**逆圧**の形式を提供することです。
-> それら（逆圧）は、コンシューマーがついていけなくなった場合、遅くすることをプロデューサーに強制します。
+> それら（逆圧）は、コンシューマー（サーバー）がついていけなくなった場合、遅くすることをプロデューサー（クライアント）に強制します。
 > そして、逆圧はシステムを介して伝播でき、全体のアーキテクチャーに影響を与える可能性があり、エンドユーザーがリクエストでシステムを圧倒することを回避します。

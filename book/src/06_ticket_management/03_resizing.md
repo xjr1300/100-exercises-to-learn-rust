@@ -18,7 +18,7 @@ The `Vec` will **resize** itself.\
 It will ask the allocator for a new (larger) chunk of heap memory, copy the elements over, and deallocate the old memory.
 
 > `Vec`は自分自身で**リサイズ**します。
-> ヒープメモリの新しく大きな塊をアロケーターに要求して、要素をコピーして、古いメモリを開放します。
+> ヒープメモリの新しく大きな塊をアロケーターに要求して、要素をコピーして、古いメモリを解放します。
 
 This operation can be expensive, as it involves a new memory allocation and copying all existing elements.
 

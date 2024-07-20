@@ -10,8 +10,10 @@ and why we might want to use them.
 A **thread** is an execution context managed by the underlying operating system.\
 Each thread has its own stack, instruction pointer, and program counter.
 
-> **スレッド**は、オペレーティングシステムの下で、管理された実行文脈です。
-> それぞれのスレッドは独自のスタック、命令ポインターそしてプログラムカウンターを持ちます。
+> **スレッド**は、基礎となるオペレーティングシステムによって管理された実行コンテキストです。
+> それぞれのスレッドはそれ独自のスタック、命令ポインターそしてプログラムカウンターを持ちます。
+
+> 命令ポインター≒プログラムカウンター？
 
 A single **process** can manage multiple threads.
 These threads share the same memory space, which means they can access the same data.
@@ -25,7 +27,7 @@ Since there can be many more threads than there are CPU cores, the operating sys
 **scheduler** is in charge of deciding which thread to run at any given time,
 partitioning CPU time among them to maximize throughput and responsiveness.
 
-> スレッドは**論理的な**構造物です。最終的に、**物理的な**実行ユニットであるCPUコアで一度に1つの命令セットしか実行できません。
+> スレッドは**論理的な**構成要素です。最終的に、**物理的な**実行ユニットであるCPUコアで一度に1つの命令セットしか実行できません。
 > CPUコアよりも多くのスレッドが存在できるため、オペレーティングシステムの**スケジューラー**は、特定の時間に実行するスレッドを決定する責任があり、最大のスループットと応答性を確保するために、スレッド間でCPU時間を分配します。
 
 ## `main`
@@ -100,9 +102,9 @@ When the main thread finishes, the overall process will exit.\
 A spawned thread will continue running until it finishes or the main thread finishes.
 
 > メインスレッドが終了したとき、プロセス全体が終了します。
-> 生み出されたスレッドは、それが終了する、またはメインスレッドが終了するまで実行をつつけます。
+> 生み出されたスレッドは、それが終了する、またはメインスレッドが終了するまで実行を続けます。
 
-> 下のプログラムは、`main`関数末尾にある5秒間のスリープが終わると、`main`関数が終了するため、別スレッドも同時に終了する。
+> 次のプログラムは、`main`関数末尾にある5秒間のスリープが終わると、`main`関数が終了するため、無限ループに入る別スレッドも同時に終了する。
 
 ```rust
 use std::thread;
@@ -150,5 +152,5 @@ This introduces a form of **synchronization** between the two threads: you're gu
 until the spawned thread has finished.
 
 > この例において、メインスレッドは終了する前に生み出されたスレッドが終了するまで待ちます。
-> これは、2つのスレッド間の**同期**の構造を導入します。
+> これは、2つのスレッド間に**同期**の形式を導入します。
 > 生み出されたスレッドが終了するまで、メインスレッドが終了しないため、プログラムが終了する前に「Hello from a thread!」メッセージを見ることが保証されます。

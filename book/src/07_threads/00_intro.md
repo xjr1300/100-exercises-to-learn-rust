@@ -4,8 +4,8 @@ One of Rust's big promises is _fearless concurrency_: making it easier to write 
 We haven't seen much of that yet. All the work we've done so far has been single-threaded.
 Time to change that!
 
-> Rustの大きな約束は、_恐れを知らない同時並行_です。それは安全に並同時並行プログラムを記述できるようにします。
-> これまではあまり確認しませんでした。これまでに行ってきたすべての作業は単一スレッドでした。
+> Rustの大きな約束は、 _恐れを知らない同時並行_ です。それは安全に並同時並行プログラムを記述できるようにします。
+> これまであまり確認てきませんでした。これまでに行ってきたすべての作業は単一スレッドでした。
 > それを変える時がきました！
 
 In this chapter we'll make our ticket store multithreaded.\
@@ -17,7 +17,7 @@ We'll have the opportunity to touch most of Rust's core concurrency features, in
 - `Send` and `Sync`, the traits that encode Rust's concurrency guarantees
 
 > この章において、マルチスレッドなチケットストアを作成します。
-> 次のようなRustの主要な同時並行機能の殆どに触れる機会を持ちます。
+> 次のようなRustの主要な同時並行機能のほとんどに触れる機会を持ちます。
 >
 > - `std::thread`モジュールを使用したスレッド
 > - チャネルを使用したメッセージ送信

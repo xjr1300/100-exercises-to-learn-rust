@@ -45,7 +45,7 @@ From an operational point of view, stack allocation/de-allocation is **very fast
 We are always pushing and popping data from the top of the stack, so we don't need to search for free memory.
 We also don't have to worry about fragmentation: the stack is a single contiguous block of memory.
 
-> 操作の観点から、スタックの割り当て／開放は**とても早い**です。
+> 操作の観点から、スタックの割り当て／解放は**とても早い**です。
 > 常にスタックの最上部にデータを入れて、最上部からデータを取り出すため、空きメモリを探す必要はありません。
 > また、フラグメントについて心配する必要もありません。
 > スタックは、1つの連続したメモリブロックです。

@@ -20,7 +20,7 @@ If the allocation succeeds, the allocator will give you a **pointer** to the sta
 > ヒープにデータを保存する必要があるときはいつでも、ヒープの部分集合を予約するために**アロケーター**という特別なプログラムに依頼します。
 > 割り当てが成功した場合、アロケーターは予約されたブロックの開始を指す**ポインター**を与えます。
 
-## No automatic de-allocation（自動開放なし）
+## No automatic de-allocation（自動解放なし）
 
 The heap is structured quite differently from the stack.\
 Heap allocations are not contiguous, they can be located anywhere inside the heap.
@@ -39,7 +39,7 @@ The allocator won't automatically free the memory you allocated, though: you nee
 calling the allocator again to **free** the memory you no longer need.
 
 > ヒープのどの部分が使用中で、どこが空いているのかを追跡することは、アロケーターの仕事です。
-> アロケーターは、割り当てられたメモリを自動的に開放しませんが、再度アロケーターを呼び出して、もはや必要のないメモリを**開放**することを、意図的にしなければなりません。
+> アロケーターは、割り当てられたメモリを自動的に解放しませんが、再度アロケーターを呼び出して、もはや必要のないメモリを**開放**することを、意図的にしなければなりません。
 
 ## Performance（性能）
 

@@ -36,7 +36,7 @@ for `null` and thus trigger a runtime error.
 
 `Option`'s definition uses a Rust construct that you haven't seen before: **tuple-like variants**.
 
-> `Option`の定義は、**タプルのようなバリアント**という、前に確認していないRustの構造物を使用します。
+> `Option`の定義は、**タプルのようなバリアント**という、前に確認していないRustの構成要素を使用します。
 
 ### Tuple-like variants（タプルのようなバリアント）
 

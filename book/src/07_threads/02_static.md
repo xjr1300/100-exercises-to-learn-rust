@@ -3,7 +3,7 @@
 If you tried to borrow a slice from the vector in the previous exercise,
 you probably got a compiler error that looks something like this:
 
-> 前の演習において、ベクターからスライスを借用することを試みた場合、おそらく次のようなコンパイルエラーを得ます。
+> 前の演習において、ベクターからスライスを借用することを試みた場合、おそらく次のようなコンパイルエラーが発生しました。
 
 ```text
 error[E0597]: `v` does not live long enough
@@ -22,7 +22,7 @@ error[E0597]: `v` does not live long enough
 
 `argument requires that v is borrowed for 'static`, what does that mean?
 
-`argument requires that v is borrowed for 'static`は、何を意味しているのでしょうか？
+> `argument requires that v is borrowed for 'static`は、何を意味しているのでしょうか？
 
 The `'static` lifetime is a special lifetime in Rust.\
 It means that the value will be valid for the entire duration of the program.
@@ -64,9 +64,9 @@ its parent.
 > この例において、最初に生み出されたスレッドは、次々に毎秒メッセージを表示する子スレッドを生み出します。
 > そして、最初のスレッドは完了して終了します。
 > それが発生したとき、子スレッドは全体のプロセスが実行されている限り**継続して実行**します。
-> Rustの専門用語において、子スレッドはその親予備も**長生きしている**といいます。
+> Rustの専門用語において、子スレッドはその親よりも**長生きしている**といいます。
 
-> 関数`f`を`main`関数とした場合、親スレッドが終了しても、`main`関数が終了していない微小な時間がある。
+> 関数`f`を`main`関数にした場合、親スレッドが終了しても、`main`関数が終了していない微小な時間がある。
 > その微小時間内で、子スレッドは実行を継続する。
 
 ## `'static` lifetime（'staticライフタイム）
@@ -87,8 +87,8 @@ That's why `std::thread::spawn`'s signature requires that the closure passed to 
 has the `'static` lifetime:
 
 > それ（子スレッド）は、プログラムが終了する前にドロップされるかもしれない値を借用してはなりません。
-> この制約に違反することは、「開放された後に使用する」バグをさらけ出します。
-> それが、`std::thread::spawn`のシグネチャーが`'static`ライフタイムを持つそれ（値）を渡すクロージャーを要求している理由です。
+> この制約に違反することは、「解放された後に使用する」バグをさらけ出します。
+> それが、`std::thread::spawn`のシグネチャーが`'static`ライフタイムを持つそれ（値）を渡されるクロージャーを要求している理由です。
 
 ```rust
 pub fn spawn<F, T>(f: F) -> JoinHandle<T>
@@ -104,7 +104,7 @@ where
 
 All values in Rust have a lifetime, not just references.
 
-> Rustにおいて、参照だけでなく、すべての値をライフタイムを持っています。
+> Rustにおいて、参照だけでなく、すべての値がライフタイムを持っています。
 
 In particular, a type that owns its data (like a `Vec` or a `String`)
 satisfies the `'static` constraint: if you own it, you can keep working with it
@@ -113,6 +113,8 @@ has returned.
 
 > 特に、`Vec`または`String`のようなデータを所有する型は、`'static`制約を満たします。
 > それを所有した場合、それを作成した関数が戻った後でも、望むだけそれと一緒に作業を続けることができます。
+
+> `Vec`が`T`の参照である`&T`を格納する場合、`&T`自体の所有権をもち、`&T`が参照する`T`は`'static`である必要がある。
 
 You can thus interpret `'static` as a way to say:
 
@@ -128,7 +130,7 @@ The first approach is how you solved the issue in the previous exercise:
 by allocating new vectors to hold the left and right parts of the original vector,
 which were then moved into the spawned threads.
 
-> 最初の方法は、オリジナルのベクターの左と右の部分を保持するために新しいベクターを割り当て、それらを生み出されたスレッド内に移動した、前の演習の問題を解決した方法です。
+> 最初の方法は、以前の演習の問題を解決した方法と同じで、オリジナルのベクターの左と右の部分を保持するために新しいベクターを割り当て、それらを生み出されたスレッド内に移動しました。
 
 ## `'static` references（'static参照）
 
@@ -152,7 +154,7 @@ in a region known as **read-only data segment**.
 All references pointing to that region will therefore be valid for as long as
 the program runs; they satisfy the `'static` contract.
 
-> 文字列リテラルはコンパイル時に既知であるため、Rustは実行形式の_内部_である**読み込み専用データセグメント**として知られる領域にそれらを保存します。
+> 文字列リテラルはコンパイル時にわかるため、Rustは実行形式の _内部_ にある**読み込み専用データセグメント**として知られる領域にそれらを保存します。
 
 ## Further reading（参考資料）
 

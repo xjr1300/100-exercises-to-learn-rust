@@ -28,11 +28,11 @@ It isn't `Send` because the lock must be released on the same thread that acquir
 want `MutexGuard` to be dropped on a different thread.\
 But it is `Sync`, because giving a `&MutexGuard` to another thread has no impact on where the lock is released.
 
-> ロックは、それを獲得した同じスレッドで開放されなければならないため、`MutexGuard`が異なるスレッドでドロップされることを望んでないため、`MutexGuard`は`Send`ではありません。
-> しかし、`MutexGuard`は`Sync`で、それは`&MutexGuard`を他のスレッドに与えることは、ロックが開放される場所に影響を与えないからです。
+> ロックは、それを獲得した同じスレッドで解放されなければならないため、`MutexGuard`が異なるスレッドでドロップされることを望んでないため、`MutexGuard`は`Send`ではありません。
+> しかし、`MutexGuard`は`Sync`で、それは`&MutexGuard`を他のスレッドに与えることは、ロックが解放される場所に影響を与えないからです。
 
-> `MutexGuard`のロックを開放するためには、所有権または可変参照が必要になる。
-> よって、`&MutexGuard`では、ロックを開放できない。
+> `MutexGuard`のロックを解放するためには、所有権または可変参照が必要になる。
+> よって、`&MutexGuard`では、ロックを解放できない。
 
 ## `Send` doesn't imply `Sync`（SendはSyncを暗に意味しない）
 

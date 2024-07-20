@@ -99,7 +99,7 @@ All these things are true at the same time for Rust:
 >
 > 1. ランタイムなガベージコレクターはありません。
 > 2. 開発者として、まれに直接メモリを管理しなければならないとことがあります。
-> 3. ダングリングポインター、二重開放、そして他のメモリに関連するバグを引き起こせません。
+> 3. ダングリングポインター、二重解放、そして他のメモリに関連するバグを引き起こせません。
 
 Languages like Python, JavaScript, and Java give you 2. and 3., but not 1.\
 Language like C or C++ give you 1., but neither 2. nor 3.
@@ -113,7 +113,7 @@ Don't worry: we'll cover these concepts in more details during the rest of the c
 
 > バックグラウンドに依存して、3は少し難解に聞こえるかもしれません。
 > 「ダングリングポインター」とは何でしょうか？
-> 「二重開放」とは何でしょうか？
+> 「二重解放」とは何でしょうか？
 > なぜそれらは危険なのでしょうか？
 > 心配しないでください。コースの残りで、これらの概念をより詳細に説明します。
 
