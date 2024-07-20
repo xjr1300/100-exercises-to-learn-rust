@@ -4,7 +4,7 @@ Let's think again about our ticket management system.\
 Our ticket model right now looks like this:
 
 > チケット管理システムについて再び考えましょう。
-> チケットモデルは次のようになっています。
+> 現在、チケットモデルは次のようになっています。
 
 ```rust
 pub struct Ticket {
@@ -18,9 +18,9 @@ One thing is missing here: an **identifier** to uniquely identify a ticket.\
 That identifier should be unique for each ticket. That can be guaranteed by generating it automatically when
 a new ticket is created.
 
-> ここで1つの欠けています。チケットを一意に識別する**識別子**です。
+> ここで1つ欠けているものがあります。チケットを一意に識別する**識別子**です。
 > その識別子はそれぞれのチケットで一意になるべきです。
-> それは、新しいチケットが作成されたとき、自動的に生成されることによって保証されます。
+> それは、新しいチケットが作成されたとき、自動的に識別子が生成されることにより保証されます。
 
 ## Refining the model（モデルを洗練する）
 
@@ -42,7 +42,7 @@ pub struct Ticket {
 But we don't know the id before creating the ticket. So it can't be there from the get-go.\
 It'd have to be optional:
 
-> しかし、チケットを作成する前にIDはわかりません。よって、最初からそこに存在できません。
+> しかし、チケットを作成する前にIDはわかりません。よって、最初からそこにはありません。
 > それは、オプションでなければなりません。
 
 ```rust
@@ -57,7 +57,7 @@ pub struct Ticket {
 That's also not ideal—we'd have to handle the `None` case every single time we retrieve a ticket from the store,
 even though we know that the id should always be there once the ticket has been created.
 
-> それもまた理想的ではありません。チケットをストアから取得するたびに、一旦、チケットが作成されたら、IDが常にそこにあることを知っているにも関わらず、`None`のケースを処理しなければなりません。
+> それもまた理想的ではありません。チケットをストアから取得するたびに、一旦、チケットが作成されたら、IDが常に存在することを知っているにも関わらず、`None`のケースを処理しなければなりません。
 
 The best solution is to have two different ticket **states**, represented by two separate types:
 a `TicketDraft` and a `Ticket`:

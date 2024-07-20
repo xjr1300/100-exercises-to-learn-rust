@@ -4,12 +4,12 @@ As soon as we start talking about "ticket management" we need to think about a w
 In turn, this means we need to think about collections. In particular, homogeneous collections:
 we want to store multiple instances of the same type.
 
-> 「チケットの管理」について話し始めるとすぐに、_複数の_チケットを保存する方法について考える必要があります。
-> 次に、これはコレクションについて考える必要があることを意味します。特に、同種のコレクション、同じ型の複数のインスタンスを保存したいと考えています。
+> 「チケットの管理」について話し始めるとすぐに、_複数の_ チケットを保存する方法について考え始める必要があります。
+> 次に、これはコレクションについて考える必要があることを意味します。特に、同種のコレクション、同じ型の複数のインスタンスを保存したいと思います。
 
 What does Rust have to offer in this regard?
 
-> この考えに関してRustは何を提供するでしょうか？
+> この観点に関してRustは何を提供するでしょうか？
 
 ## Arrays（配列）
 
@@ -72,7 +72,7 @@ In some scenarios the Rust compiler can optimize away bounds checks, especially 
 more about this later on.
 
 > これは**境界チェック**を使用してランタイムで強制されます。
-> それは小さな性能に影響するオーバーヘッドを伴いますが、それはRustがバッファーオーバーフローを避ける方法です。
+> それは小さな性能のオーバーヘッドを伴いますが、それはRustがバッファーオーバーフローを避ける方法です。
 > いくつかのシナリオにおいて、特にイテレーターを含む場合、Rustコンパイラーは境界チェックを最適化できます。
 > この後で詳しく説明します。
 

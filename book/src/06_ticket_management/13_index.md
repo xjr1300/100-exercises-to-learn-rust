@@ -15,8 +15,8 @@ assert_eq!(v[0], 0);
 How can we provide the same experience for `TicketStore`?\
 You guessed right: we need to implement a trait, `Index`!
 
-> `TicketStore`に対して同じ経験を提供できるでしょうか？
-> 正しい推測です。`Index`トレイ地を実装する必要があります。
+> `TicketStore`に対して同じ経験をどのように提供できるでしょうか？
+> 正しい推測です。`Index`トレイトを実装する必要があります。
 
 ## `Index`
 

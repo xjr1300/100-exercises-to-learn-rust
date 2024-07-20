@@ -3,7 +3,7 @@
 Let's try to complete the previous exercise by adding an implementation of `IntoIterator` for `&TicketStore`, for
 maximum convenience in `for` loops.
 
-> `for`ループで最大限に便利にするために、`&TicketStore`に対して`IntoIterator`の実装を追加することで、前の演習を完成することを試みましょう。
+> `for`ループを最大限に便利にするために、`&TicketStore`に対して`IntoIterator`の実装を追加して、前の演習を完成することを試みましょう。
 
 Let's start by filling in the most "obvious" parts of the implementation:
 
@@ -45,7 +45,7 @@ immutable) is valid.\
 The lifetime of a reference is constrained by the scope of the value it refers to. Rust always makes sure, at compile-time,
 that references are not used after the value they refer to has been dropped, to avoid dangling pointers and use-after-free bugs.
 
-> ライフタイムは、可変または不変参照が有効な長さを追跡するためにRustコンパイラーによってい使用されます。
+> ライフタイムは、可変または不変参照が有効な長さを追跡するためにRustコンパイラーによって使用されます。
 > 参照のライフタイムは、それが参照する値のスコープによって制限されます。
 > Rustは、ダングリングポインターと開放された後に使用するバグを避けるために、コンパイル時に、参照している値がドロップされた後で、参照が使用されないことを常に確認します。
 
@@ -82,7 +82,7 @@ This is important because `Vec::iter`, as we discussed, returns an iterator over
 If the `Vec` is dropped, the references returned by the iterator would be invalid. Rust must make sure this doesn't happen,
 and lifetimes are the tool it uses to enforce this rule.
 
-> 議論したように`Vec::iter`は、`Vec`の要素への参照を返すイテレーターを返すため、これは重要です。
+> 議論したように`Vec::iter`は、`Vec`の要素への参照を返すイテレーターを返すため重要です。
 > `Vec`がドロップされた場合、そのイテレーターによって返された参照は無効になります。
 > Rustは、これが発生しないことを確実にしなければならず、ライフタイムはこのルールを強制するために使用されるツールです。
 
@@ -92,7 +92,7 @@ Rust has a set of rules, called **lifetime elision rules**, that allow you to om
 For example, `Vec::iter`'s definition looks like this in `std`'s source code:
 
 > Rustは**ライフタイムの省略ルール**と呼ばれるルールの集合を持っており、多くの場合で明示的なライフタイム注釈を省略することができます。
-> 例えば、`Vec::iter`のていぎは、`std`のソースコードでは次のようになります。
+> 例えば、`Vec::iter`の定義は、`std`のソースコードでは次のようになります。
 
 ```rust
 impl <T> Vec<T> {
@@ -114,7 +114,7 @@ See the [References](#references) section for a link to the official documentati
 In most cases, you can rely on the compiler telling you when you need to add explicit lifetime annotations.
 
 > ライフタイムの省略に関する公式ドキュメントへのリンクについては、参照節を参照してください。
-> 殆どの場合、明示的なライフタイム注釈を追加する必要があるときは、コンパイラーからの通知に頼ることができます。
+> ほとんどの場合、明示的なライフタイム注釈を追加する必要があるときは、コンパイラーからの通知に頼れます。
 
 ## References
 

@@ -6,7 +6,7 @@ It's not all roses, though. When iterating over a `Vec`-backed store, we could b
 would be returned in the order they were added.\
 That's not the case with a `HashMap`: you can iterate over the tickets, but the order is random.
 
-> `Vec`から`HashMap`に移動することにより、チケット管理システムの性能を改善して、その仮定でコードを簡素化しました。
+> `Vec`から`HashMap`への移行により、チケット管理システムの性能を改善して、その過程でコードを簡素化しました。
 > ただし、すべてがバラ色とは限りません。`Vec`に裏付けされたストアを反復操作するとき、チケットが追加された順番で返されることを確信できました。
 > `HashMap`ではそれは当てはまりません。チケットを反復操作できますが、順序はランダムです。
 
@@ -91,8 +91,8 @@ be compared.\
 For example, `f32` doesn't implement `Ord` because `NaN` values are not comparable,
 the same reason why `f32` doesn't implement `Eq`.
 
-> `PartialOrd::partial_cmp`は`Option`を返します。それは、2つの値が比較できることを保証していません。
-> 例えば、`f32`は、`NaN`値は比較可能でないため、`Ord`を実装しておらず、同じ理由で`f32`は`Eq`を実装していません。
+> `PartialOrd::partial_cmp`は`Option`を返します。それは、2つの値が比較できることを保証しません。
+> 例えば、`NaN`値は比較可能でないため、`f32`は`Ord`を実装しておらず、同じ理由で`f32`は`Eq`を実装していません。
 
 ## Implementing `Ord` and `PartialOrd`（OrdとPartialOrdの実装）
 

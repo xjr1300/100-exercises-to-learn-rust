@@ -3,8 +3,8 @@
 During the very first exercises, you learned that Rust lets you iterate over collections using `for` loops.
 We were looking at ranges at that point (e.g. `0..5`), but the same holds true for collections like arrays and vectors.
 
-> とてもはじめの方の演習の間、Rustは`for`ループを使用してコレクションを反復操作することを学びました。
-> その時、例えば`0..5`のような範囲を確認していましたが、配列やベクターのようなコレクションについても同じことが当てはまります。
+> とても前の方の演習の間、Rustが`for`ループを使用してコレクションを反復操作させることを学びました。
+> その時、例えば`0..5`のような範囲を確認しましたが、配列やベクターのようなコレクションについても同じことが当てはまります。
 
 ```rust
 // It works for `Vec`s
@@ -24,7 +24,7 @@ for n in a {
 
 It's time to understand how this works under the hood.
 
-> 内部でこれが機能する方法を理解する時間です。
+> 現在、内部でこれが機能する方法を理解する時間です。
 
 ## `for` desugaring（forの脱糖）
 
@@ -47,8 +47,8 @@ loop {
 `loop` is another looping construct, on top of `for` and `while`.\
 A `loop` block will run forever, unless you explicitly `break` out of it.
 
-> `loop`は`for`と`while`の上の他のループ構造です。
-> `loop`ブロッキは、それを明示的に`break`するまで、永遠に実行されます。
+> `loop`は`for`と`while`の上にある別のループ構造です。
+> `loop`ブロックは、それを明示的に`break`するまで、永遠に実行されます。
 
 ## `Iterator` trait（Iteratorトレイト）
 
@@ -56,7 +56,7 @@ The `next` method in the previous code snippet comes from the `Iterator` trait.
 The `Iterator` trait is defined in Rust's standard library and provides a shared interface for
 types that can produce a sequence of values:
 
-> 前のコードスニペットの`next`メソッドは`Iterator`トレイトが由来です。
+> 前のコードスニペットの`next`メソッドは`Iterator`トレイトから由来します。
 > `Iterator`トレイトはRust標準ライブラリに定義され、値のシーケンスを生成できる型に対して共有されたインターフェイスを提供します。
 
 ```rust
@@ -68,7 +68,7 @@ trait Iterator {
 
 The `Item` associated type specifies the type of the values produced by the iterator.
 
-> `Item`関連型は、イテレーターによって生成された値の型を指定します。
+> `Item`関連型は、イテレーターによって生成される値の型を指定します。
 
 `next` returns the next value in the sequence.\
 It returns `Some(value)` if there's a value to return, and `None` when there isn't.
@@ -108,7 +108,7 @@ A type can only have one implementation of `IntoIterator`: there can be no ambig
 One detail: every type that implements `Iterator` automatically implements `IntoIterator` as well.
 They just return themselves from `into_iter`!
 
-> 1つの詳細: `Iterator`を実装するすべての型は、自動的に`IntoIterator`も実装します。
+> 1つの詳細: `Iterator`を実装するすべての型は、自動的に`IntoIterator`も同様に実装します。
 > それらは単に、`into_iter`から返されたそれら自身を返します。
 
 ## Bounds checks（境界チェック）
@@ -146,5 +146,5 @@ with manual indexing, thus removing the bounds checks anyway. But in general, pr
 where possible.
 
 > このルールには例外があります。
-> コンパイラーは、手動でインデックスを作成しても境界を越えていないことを証明できるため、その場合は境界チェックが削除されます。
+> 時々、コンパイラーは、手動でインデックスで指定しても境界を越えていないことを証明できるため、その場合は境界チェックが削除されます。
 > ただし、可能であれば、インデックスよりも反復処理を優先してください。

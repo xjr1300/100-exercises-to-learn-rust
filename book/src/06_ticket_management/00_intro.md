@@ -7,7 +7,7 @@ store and retrieve tickets.
 
 > 前の章において、世間から孤立して`Ticket`をモデリングしました。
 > そのフィールドとそれらの制約を定義して、Rustでそれらを表現する最良の方法を学びましたが、大きなシステムに`Ticket`を適用する方法を考えていません。
-> チケットを保存そして取得するための基本的な管理システムを導入して、`Ticket`まわりの単純なワークフローを構築するためにこの章を使用します。
+> チケットを保存、そして取得するための基本的な管理システムを導入して、`Ticket`に関する単純なワークフローを構築するためにこの章を使用します。
 
 The task will give us an opportunity to explore new Rust concepts, such as:
 
@@ -21,13 +21,13 @@ The task will give us an opportunity to explore new Rust concepts, such as:
 - `Ord` and `PartialOrd`, to work with a `BTreeMap`
 - `Index` and `IndexMut`, to access elements in a collection
 
-> そのタスクは、次のような新しいRustの概念を探求する機械を与えてくれます。
+> そのタスクは、次のような新しいRustの概念を探求する機会を与えてくれます。
 >
 > - スタックに割り当てられた配列
 > - 成長可能な配列型である`Vec`とスライス
 > - コレクションを反復処理する`Iterator`と`IntoIterator`
 > - コレクションの一部で動作するスライス（`&[T]`）
-> - 参照が有効な長さを説明するライフタイム
+> - 参照が有効な期間を説明するライフタイム
 > - キーと値のデータ構造である2つの`HashMap`と`BTreeMap`
 > - `HashMap`内のキーを比較する`Eq`と`Hash`
 > - `BTreeMap`で必要な`Ord`と`PartialOrd`

@@ -4,7 +4,7 @@ Arrays' strength is also their weakness: their size must be known upfront, at co
 If you try to create an array with a size that's only known at runtime, you'll get a compilation error:
 
 > 配列の強みは、それらの弱点でもあります。それらのサイズは、コンパイル時に前もってわかっていなくてはなりません。
-> ランタイム時にわかるサイズをを持つ配列を作成することを試みた場合、コンパイルエラーを得ます。
+> ランタイム時しかわからないサイズを持つ配列を作成することを試みた場合、コンパイルエラーを得ます。
 
 ```rust
 let n = 10;
@@ -132,11 +132,11 @@ Heap:  | 1 | 2 | ? |
 - The **length** of the vector, i.e. how many elements are in the vector.
 - The **capacity** of the vector, i.e. the number of elements that can fit in the space reserved on the heap.
 
-> `Vec`は次の3つを追跡し続けませす。
+> `Vec`は次の3つを追跡します。
 >
 > - 予約したヒープ領域への**ポインター**
 > - 例えばベクター内にある要素の数である、ベクターの**長さ**
-> - 例えばヒープに予約された領域に収めれる要素の数である、ベクターの**容量**
+> - 例えばヒープに予約された領域に収められる要素の数である、ベクターの**容量**
 
 This layout should look familiar: it's exactly the same as `String`!\
 That's not a coincidence: `String` is defined as a vector of bytes, `Vec<u8>`, under the hood:

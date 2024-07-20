@@ -15,8 +15,8 @@ Quite often you want to iterate over a collection without consuming it, looking 
 In the case of `Vec<Ticket>`, you'd want to iterate over `&Ticket` values.
 
 > またこれには欠点があります。それに`.into_iter()`を呼び出した後、もはやオリジナルのコレクションを使用できなくなることです。
-> かなりの頻度で、コレクションを消費することなく、代わりに値の**参照**を確認するために、コレクションを反復操作することを望みます。
-> `Vec<Ticket>`の場合、`&Ticket`値を反復操作することを望みます。
+> かなりの頻度で、コレクションを消費することなく、代わりに値の**参照**を確認するために、コレクションを反復操作していときがあります。
+> `Vec<Ticket>`の場合、`&Ticket`値を反復操作したいと思います。
 
 Most collections expose a method called `.iter()` that returns an iterator over references to the collection's elements.
 For example:
@@ -38,7 +38,7 @@ The standard library does this, that's why the following code works:
 
 > このパターンは、**コレクションへの参照**に対して、`IntoIterator`を実装することで簡略化できます。
 > 上記例において、それは`&Vec<Ticket>`です。
-> 標準ライブラリはこれを行うため、次のコードが機能する理由になります。
+> 標準ライブラリはこれを行うため、次のコードは機能します。
 
 ```rust
 let numbers: Vec<u32> = vec![1, 2];
@@ -58,11 +58,11 @@ It's idiomatic to provide both options:
 - An implementation of `IntoIterator` for a reference to the collection.
 - An `.iter()` method that returns an iterator over references to the collection's elements.
 
-> それは次の両方の選択肢を提供する慣用句です。
+> それは次の両方の選択肢を提供することは慣用的です。
 >
 > - コレクションへの参照に対する`IntoIterator`の実装
-> - これクソんの要素への参照を返すイテレーターを返す`.iter()`メソッド
+> - コレクションの要素への参照に対するイテレーターを返す`.iter()`メソッド
 
 The former is convenient in `for` loops, the latter is more explicit and can be used in other contexts.
 
-前者は`for`ループで便利で、後者はより明示的で他の文脈で使用されます。
+> 前者は`for`ループで便利で、後者はより明示的に他の文脈で使用されます。

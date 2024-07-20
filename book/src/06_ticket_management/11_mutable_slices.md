@@ -3,7 +3,8 @@
 Every time we've talked about slice types (like `str` and `[T]`), we've used their immutable borrow form (`&str` and `&[T]`).\
 But slices can also be mutable!
 
-> `str`と`[T]`のしょうなスライス型について話すたびに、`&str`と`&[T]`のようなそれらの不変借用を使用してきました。
+> `str`と`[T]`のようなスライス型について話すたびに、`&str`と`&[T]`のようなそれらの不変借用を使用してきました。
+> しかし、スライスは可変にもなれます。
 
 Here's how you create a mutable slice:
 

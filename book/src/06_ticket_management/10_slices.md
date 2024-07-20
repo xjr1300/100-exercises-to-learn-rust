@@ -34,7 +34,7 @@ The similarity should prompt you to ask: "What's the equivalent of `&str` for `V
 `[T]` is a **slice** of a contiguous sequence of elements of type `T`.\
 It's most commonly used in its borrowed form, `&[T]`.
 
-> `[T]`は、型`T`の連続した要素の**スライス**です。
+> `[T]`は、型`T`の要素の連続したシーケンスの**スライス**です。
 > それは、その借用された形式である`&[T]`として最も一般的に使用されます。
 
 There are various ways to create a slice reference from a `Vec`:
@@ -75,6 +75,7 @@ A `&[T]` is a **fat pointer**, just like `&str`.\
 It consists of a pointer to the first element of the slice and the length of the slice.
 
 > `&[T]`は、ちょうど`&str`のように**ファットポインター**です。
+> それは、スライスの最初の要素を指し示すポインターと、スライスの長さで構成されています。
 
 If you have a `Vec` with three elements:
 
@@ -119,12 +120,13 @@ When you need to pass an immutable reference to a `Vec` to a function, prefer `&
 This allows the function to accept any kind of slice, not necessarily one backed by a `Vec`.
 
 > 関数に`Vec`への不変参照を渡す必要があるとき、`&Vec<T>`よりも`&[T]`を選択してください。
+> これは、必ず`Vec`によってサーポートされる物に限らず、関数に任意の種類のスライスにアクセスできるようにします。
 
 For example, you can then pass a subset of the elements in a `Vec`.
 But it goes further than that—you could also pass a **slice of an array**:
 
-> 例えば、`Vec`の要素の部分集合を渡す事ができます。
-> しかし、それはそれ以上の事です。**配列のスライス**も渡すことができます。
+> 例えば、`Vec`の要素の部分集合を渡すことができます。
+> しかし、それはそれ以上のことです。**配列のスライス**も渡すことができます。
 
 ```rust
 let array = [1, 2, 3];

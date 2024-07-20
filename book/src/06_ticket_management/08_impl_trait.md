@@ -102,4 +102,4 @@ If you read RFCs or deep-dives about Rust, you might come across the acronym **R
 It stands for **"Return Position Impl Trait"** and refers to the use of `impl Trait` in return position.
 
 > Rustに関するRFCまたは深い探求をを読んでいる場合、**RPIT**という頭字語に出くわすかもしれません。
-> それは、**「戻り値の位置のImpl Trait」**からなり、戻り値の位置で`impl Trait`を使用することを示しています。
+> それは、**「戻り値の位置のImpl Trait」** からなり、戻り値の位置で`impl Trait`を使用することを示しています。
