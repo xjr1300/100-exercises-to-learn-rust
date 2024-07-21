@@ -26,7 +26,7 @@
 trait Power<T> {
     type Output;
 
-    fn power(&self, n: T) -> Output;
+    fn power(&self, n: T) -> Self::Output;
 }
 
 impl Power<u32> for u32 {
