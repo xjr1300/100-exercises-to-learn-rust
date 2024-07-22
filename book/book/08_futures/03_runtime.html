@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Runtime - 100 Exercises To Learn Rust</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../01_intro/00_welcome.html"><strong aria-hidden="true">1.</strong> Welcome</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../01_intro/01_syntax.html"><strong aria-hidden="true">1.1.</strong> Syntax</a></li></ol></li><li class="chapter-item expanded "><a href="../02_basic_calculator/00_intro.html"><strong aria-hidden="true">2.</strong> A Basic Calculator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../02_basic_calculator/01_integers.html"><strong aria-hidden="true">2.1.</strong> Integers</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/02_variables.html"><strong aria-hidden="true">2.2.</strong> Variables</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/03_if_else.html"><strong aria-hidden="true">2.3.</strong> Branching: if/else</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/04_panics.html"><strong aria-hidden="true">2.4.</strong> Panics</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/05_factorial.html"><strong aria-hidden="true">2.5.</strong> Factorial</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/06_while.html"><strong aria-hidden="true">2.6.</strong> Loops: while</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/07_for.html"><strong aria-hidden="true">2.7.</strong> Loops: for</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/08_overflow.html"><strong aria-hidden="true">2.8.</strong> Overflow and underflow</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/09_saturating.html"><strong aria-hidden="true">2.9.</strong> Saturating arithmetic</a></li><li class="chapter-item expanded "><a href="../02_basic_calculator/10_as_casting.html"><strong aria-hidden="true">2.10.</strong> Conversions: as casting</a></li></ol></li><li class="chapter-item expanded "><a href="../03_ticket_v1/00_intro.html"><strong aria-hidden="true">3.</strong> Ticket v1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../03_ticket_v1/01_struct.html"><strong aria-hidden="true">3.1.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/02_validation.html"><strong aria-hidden="true">3.2.</strong> Validation</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/03_modules.html"><strong aria-hidden="true">3.3.</strong> Modules</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/04_visibility.html"><strong aria-hidden="true">3.4.</strong> Visibility</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/05_encapsulation.html"><strong aria-hidden="true">3.5.</strong> Encapsulation</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/06_ownership.html"><strong aria-hidden="true">3.6.</strong> Ownership</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/07_setters.html"><strong aria-hidden="true">3.7.</strong> Setters</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/08_stack.html"><strong aria-hidden="true">3.8.</strong> Stack</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/09_heap.html"><strong aria-hidden="true">3.9.</strong> Heap</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/10_references_in_memory.html"><strong aria-hidden="true">3.10.</strong> References in memory</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/11_destructor.html"><strong aria-hidden="true">3.11.</strong> Destructors</a></li><li class="chapter-item expanded "><a href="../03_ticket_v1/12_outro.html"><strong aria-hidden="true">3.12.</strong> Outro</a></li></ol></li><li class="chapter-item expanded "><a href="../04_traits/00_intro.html"><strong aria-hidden="true">4.</strong> Traits</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../04_traits/01_trait.html"><strong aria-hidden="true">4.1.</strong> Trait</a></li><li class="chapter-item expanded "><a href="../04_traits/02_orphan_rule.html"><strong aria-hidden="true">4.2.</strong> Orphan rule</a></li><li class="chapter-item expanded "><a href="../04_traits/03_operator_overloading.html"><strong aria-hidden="true">4.3.</strong> Operator overloading</a></li><li class="chapter-item expanded "><a href="../04_traits/04_derive.html"><strong aria-hidden="true">4.4.</strong> Derive macros</a></li><li class="chapter-item expanded "><a href="../04_traits/05_trait_bounds.html"><strong aria-hidden="true">4.5.</strong> Trait bounds</a></li><li class="chapter-item expanded "><a href="../04_traits/06_str_slice.html"><strong aria-hidden="true">4.6.</strong> String slices</a></li><li class="chapter-item expanded "><a href="../04_traits/07_deref.html"><strong aria-hidden="true">4.7.</strong> Deref trait</a></li><li class="chapter-item expanded "><a href="../04_traits/08_sized.html"><strong aria-hidden="true">4.8.</strong> Sized trait</a></li><li class="chapter-item expanded "><a href="../04_traits/09_from.html"><strong aria-hidden="true">4.9.</strong> From trait</a></li><li class="chapter-item expanded "><a href="../04_traits/10_assoc_vs_generic.html"><strong aria-hidden="true">4.10.</strong> Associated vs generic types</a></li><li class="chapter-item expanded "><a href="../04_traits/11_clone.html"><strong aria-hidden="true">4.11.</strong> Clone trait</a></li><li class="chapter-item expanded "><a href="../04_traits/12_copy.html"><strong aria-hidden="true">4.12.</strong> Copy trait</a></li><li class="chapter-item expanded "><a href="../04_traits/13_drop.html"><strong aria-hidden="true">4.13.</strong> Drop trait</a></li><li class="chapter-item expanded "><a href="../04_traits/14_outro.html"><strong aria-hidden="true">4.14.</strong> Outro</a></li></ol></li><li class="chapter-item expanded "><a href="../05_ticket_v2/00_intro.html"><strong aria-hidden="true">5.</strong> Ticket v2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../05_ticket_v2/01_enum.html"><strong aria-hidden="true">5.1.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/02_match.html"><strong aria-hidden="true">5.2.</strong> Branching: match</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/03_variants_with_data.html"><strong aria-hidden="true">5.3.</strong> Variants with data</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/04_if_let.html"><strong aria-hidden="true">5.4.</strong> Branching: if let and let/else</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/05_nullability.html"><strong aria-hidden="true">5.5.</strong> Nullability</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/06_fallibility.html"><strong aria-hidden="true">5.6.</strong> Fallibility</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/07_unwrap.html"><strong aria-hidden="true">5.7.</strong> Unwrap</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/08_error_enums.html"><strong aria-hidden="true">5.8.</strong> Error enums</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/09_error_trait.html"><strong aria-hidden="true">5.9.</strong> Error trait</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/10_packages.html"><strong aria-hidden="true">5.10.</strong> Packages</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/11_dependencies.html"><strong aria-hidden="true">5.11.</strong> Dependencies</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/12_thiserror.html"><strong aria-hidden="true">5.12.</strong> thiserror</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/13_try_from.html"><strong aria-hidden="true">5.13.</strong> TryFrom trait</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/14_source.html"><strong aria-hidden="true">5.14.</strong> Error::source</a></li><li class="chapter-item expanded "><a href="../05_ticket_v2/15_outro.html"><strong aria-hidden="true">5.15.</strong> Outro</a></li></ol></li><li class="chapter-item expanded "><a href="../06_ticket_management/00_intro.html"><strong aria-hidden="true">6.</strong> Ticket Management</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../06_ticket_management/01_arrays.html"><strong aria-hidden="true">6.1.</strong> Arrays</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/02_vec.html"><strong aria-hidden="true">6.2.</strong> Vectors</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/03_resizing.html"><strong aria-hidden="true">6.3.</strong> Resizing</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/04_iterators.html"><strong aria-hidden="true">6.4.</strong> Iterators</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/05_iter.html"><strong aria-hidden="true">6.5.</strong> Iter</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/06_lifetimes.html"><strong aria-hidden="true">6.6.</strong> Lifetimes</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/07_combinators.html"><strong aria-hidden="true">6.7.</strong> Combinators</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/08_impl_trait.html"><strong aria-hidden="true">6.8.</strong> impl Trait</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/09_impl_trait_2.html"><strong aria-hidden="true">6.9.</strong> impl Trait, pt.2</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/10_slices.html"><strong aria-hidden="true">6.10.</strong> Slices</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/11_mutable_slices.html"><strong aria-hidden="true">6.11.</strong> Mutable slices</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/12_two_states.html"><strong aria-hidden="true">6.12.</strong> Two states</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/13_index.html"><strong aria-hidden="true">6.13.</strong> Index trait</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/14_index_mut.html"><strong aria-hidden="true">6.14.</strong> IndexMut trait</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/15_hashmap.html"><strong aria-hidden="true">6.15.</strong> HashMap</a></li><li class="chapter-item expanded "><a href="../06_ticket_management/16_btreemap.html"><strong aria-hidden="true">6.16.</strong> BTreeMap</a></li></ol></li><li class="chapter-item expanded "><a href="../07_threads/00_intro.html"><strong aria-hidden="true">7.</strong> Threads</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../07_threads/01_threads.html"><strong aria-hidden="true">7.1.</strong> Threads</a></li><li class="chapter-item expanded "><a href="../07_threads/02_static.html"><strong aria-hidden="true">7.2.</strong> 'static lifetime</a></li><li class="chapter-item expanded "><a href="../07_threads/03_leak.html"><strong aria-hidden="true">7.3.</strong> Leaking memory</a></li><li class="chapter-item expanded "><a href="../07_threads/04_scoped_threads.html"><strong aria-hidden="true">7.4.</strong> Scoped threads</a></li><li class="chapter-item expanded "><a href="../07_threads/05_channels.html"><strong aria-hidden="true">7.5.</strong> Channels</a></li><li class="chapter-item expanded "><a href="../07_threads/06_interior_mutability.html"><strong aria-hidden="true">7.6.</strong> Interior mutability</a></li><li class="chapter-item expanded "><a href="../07_threads/07_ack.html"><strong aria-hidden="true">7.7.</strong> Ack pattern</a></li><li class="chapter-item expanded "><a href="../07_threads/08_client.html"><strong aria-hidden="true">7.8.</strong> Client</a></li><li class="chapter-item expanded "><a href="../07_threads/09_bounded.html"><strong aria-hidden="true">7.9.</strong> Bounded channels</a></li><li class="chapter-item expanded "><a href="../07_threads/10_patch.html"><strong aria-hidden="true">7.10.</strong> Patching</a></li><li class="chapter-item expanded "><a href="../07_threads/11_locks.html"><strong aria-hidden="true">7.11.</strong> Mutex, Send and Arc</a></li><li class="chapter-item expanded "><a href="../07_threads/12_rw_lock.html"><strong aria-hidden="true">7.12.</strong> RwLock</a></li><li class="chapter-item expanded "><a href="../07_threads/13_without_channels.html"><strong aria-hidden="true">7.13.</strong> Without channels</a></li><li class="chapter-item expanded "><a href="../07_threads/14_sync.html"><strong aria-hidden="true">7.14.</strong> Sync trait</a></li></ol></li><li class="chapter-item expanded "><a href="../08_futures/00_intro.html"><strong aria-hidden="true">8.</strong> Futures</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../08_futures/01_async_fn.html"><strong aria-hidden="true">8.1.</strong> Asynchronous functions</a></li><li class="chapter-item expanded "><a href="../08_futures/02_spawn.html"><strong aria-hidden="true">8.2.</strong> Spawning tasks</a></li><li class="chapter-item expanded "><a href="../08_futures/03_runtime.html" class="active"><strong aria-hidden="true">8.3.</strong> Runtime</a></li><li class="chapter-item expanded "><a href="../08_futures/04_future.html"><strong aria-hidden="true">8.4.</strong> Future trait</a></li><li class="chapter-item expanded "><a href="../08_futures/05_blocking.html"><strong aria-hidden="true">8.5.</strong> Blocking the runtime</a></li><li class="chapter-item expanded "><a href="../08_futures/06_async_aware_primitives.html"><strong aria-hidden="true">8.6.</strong> Async-aware primitives</a></li><li class="chapter-item expanded "><a href="../08_futures/07_cancellation.html"><strong aria-hidden="true">8.7.</strong> Cancellation</a></li><li class="chapter-item expanded "><a href="../08_futures/08_outro.html"><strong aria-hidden="true">8.8.</strong> Outro</a></li></ol></li><li class="chapter-item expanded "><a href="../going_further.html"><strong aria-hidden="true">9.</strong> Going further</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">100 Exercises To Learn Rust</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/mainmatter/100-exercises-to-learn-rust" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="runtime-architectureライフタイムアーキテクチャー"><a class="header" href="#runtime-architectureライフタイムアーキテクチャー">Runtime architecture（ライフタイムアーキテクチャー）</a></h1>
+<p>So far we've been talking about async runtimes as an abstract concept.
+Let's dig a bit deeper into the way they are implemented—as you'll see soon enough,
+it has an impact on our code.</p>
+<blockquote>
+<p>これまで、非同期ランタイムについて抽象化概念として話してきました。
+それらが実装された方法を少し深堀りしましょう。すぐに十分理解できるように、それはコードに影響を与えます。</p>
+</blockquote>
+<h2 id="flavors風味づけ"><a class="header" href="#flavors風味づけ">Flavors（風味づけ）</a></h2>
+<p><code>tokio</code> ships two different runtime <em>flavors</em>.</p>
+<blockquote>
+<p><code>tokio</code>は2つの異なるランタイム <em>フレーバー</em> を提供しています。</p>
+</blockquote>
+<p>You can configure your runtime via <code>tokio::runtime::Builder</code>:</p>
+<ul>
+<li><code>Builder::new_multi_thread</code> gives you a <strong>multithreaded <code>tokio</code> runtime</strong></li>
+<li><code>Builder::new_current_thread</code> will instead rely on the <strong>current thread</strong> for execution.</li>
+</ul>
+<blockquote>
+<p><code>tokio::runtime::Builder</code>を介してランタイムを構成できます。</p>
+<ul>
+<li><code>Builder::new_multi_thread</code>は、<strong>マルチスレッドな<code>tokio</code>ランタイム</strong>を提供します。</li>
+<li><code>Builder::new_current_thread</code>は、代わりに<strong>現在のスレッド</strong>に依存して実行されます。</li>
+</ul>
+</blockquote>
+<p><code>#[tokio::main]</code> returns a multithreaded runtime by default, while
+<code>#[tokio::test]</code> uses a current thread runtime out of the box.</p>
+<blockquote>
+<p><code>#[tokio::main]</code>は、デフォルトでマルチスレッドなランタイムを返す一方で、<code>#[tokio::test]</code>は現在のスレッドを使用します。</p>
+</blockquote>
+<h3 id="current-thread-runtimeカレントスレッドランタイム"><a class="header" href="#current-thread-runtimeカレントスレッドランタイム">Current thread runtime（カレントスレッドランタイム）</a></h3>
+<p>The current-thread runtime, as the name implies, relies exclusively on the OS thread
+it was launched on to schedule and execute tasks.<br />
+When using the current-thread runtime, you have <strong>concurrency</strong> but no <strong>parallelism</strong>:
+asynchronous tasks will be interleaved, but there will always be at most one task running
+at any given time.</p>
+<blockquote>
+<p>名前が暗に意味する通り、カレントスレッドランタイムは、タスクをスケジュールして実行するために起動されるOSスレッドのみに依存します。
+カレントスレッドランタイムを使用したとき、<strong>同時並行性</strong>を得られますが、<strong>並列性</strong>は得られません。
+非同期タスクは、間をおいて交互に実行されますが、常に特定の時間に最大1つのタスクしが実行していません。</p>
+</blockquote>
+<h3 id="multithreaded-runtimeマルチスレッドランタイム"><a class="header" href="#multithreaded-runtimeマルチスレッドランタイム">Multithreaded runtime（マルチスレッドランタイム）</a></h3>
+<p>When using the multithreaded runtime, instead, there can up to <code>N</code> tasks running
+<em>in parallel</em> at any given time, where <code>N</code> is the number of threads used by the
+runtime. By default, <code>N</code> matches the number of available CPU cores.</p>
+<blockquote>
+<p>マルチスレッドランタイムを使用したとき、特定の時間に <em>並列で</em> 最大<code>N</code>個までのタスクを実行でき、<code>N</code>はランタイムで使用されるスレッドの数です。
+デフォルトで、<code>N</code>は利用可能なCPUコアの数に一致します。</p>
+</blockquote>
+<p>There's more: <code>tokio</code> performs <strong>work-stealing</strong>.<br />
+If a thread is idle, it won't wait around: it'll try to find a new task that's ready for
+execution, either from a global queue or by stealing it from the local queue of another
+thread.<br />
+Work-stealing can have significant performance benefits, especially on tail latencies,
+whenever your application is dealing with workloads that are not perfectly balanced
+across threads.</p>
+<blockquote>
+<p>まだあります。<code>tokio</code>は<strong>ワークスチーリング</strong>を行います。
+スレッドがアイドル状態になった場合、それ（<code>tokio</code>）は待機しません。
+それ（<code>tokio</code>）は、グローバルキューまたは他のスレッドのローカルキューから盗むことで、実行の準備ができている新しいタスクを見つけることを試みます。
+アプリケーションが、スレッド間で完全にバランスが取れていないワークロードを処理しているときはいつでも、ワークスチーリングは、特にテールレイテンシーに対して、大きな性能の利点をもたらす可能性があります。</p>
+</blockquote>
+<blockquote>
+<p>テールレイテンシー（<code>tail latency</code>）とは、システムにおいて最も遅いリクエストの応答時間を指す。
+具体的には、応答時間の分布における上位のパーセンタイル、例えば95パーセンタイルや99パーセンタイルの応答時間を示す。
+応答時間の長いタスクがある場合、その長いタスクがアイドル状態になったときに、他のタスクを実行することで、全体の応答時間を短くすることができる。</p>
+</blockquote>
+<h2 id="implications関連事項"><a class="header" href="#implications関連事項">Implications（関連事項）</a></h2>
+<p><code>tokio::spawn</code> is flavor-agnostic: it'll work no matter if you're running on the multithreaded
+or current-thread runtime. The downside is that the signature assume the worst case
+(i.e. multithreaded) and is constrained accordingly:</p>
+<blockquote>
+<p><code>tokio::spawn</code>はフレーバーに依存しません。
+それは、マルチスレッドまたはカレントスレッドランタイムで実行されているかどうかに関わらず機能します。
+その欠点は、シグネチャーが最悪のケース（つまりマルチスレッド）を仮定して、それに応じて制約されることです。</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub fn spawn&lt;F&gt;(future: F) -&gt; JoinHandle&lt;F::Output&gt;
+where
+    F: Future + Send + 'static,
+    F::Output: Send + 'static,
+{ /* */ }
+<span class="boring">}</span></code></pre></pre>
+<p>Let's ignore the <code>Future</code> trait for now to focus on the rest.<br />
+<code>spawn</code> is asking all its inputs to be <code>Send</code> and have a <code>'static</code> lifetime.</p>
+<blockquote>
+<p>現時点では、<code>Future</code>トレイトを無視して、残りに焦点を当てましょう。
+<code>spawn</code>は、その入力に対して、<code>Send</code>であり、<code>'static</code>ライフタイムを持つことを要求しています。</p>
+</blockquote>
+<p>The <code>'static</code> constraint follows the same rationale of the <code>'static</code> constraint
+on <code>std::thread::spawn</code>: the spawned task may outlive the context it was spawned
+from, therefore it shouldn't depend on any local data that may be de-allocated
+after the spawning context is destroyed.</p>
+<blockquote>
+<p><code>'static</code>制約は、<code>std::thread::spawn</code>の<code>'static</code>制約と同じ論理的根拠に従っています。
+生み出されたタスクは、それが生み出されたコンテキストよりも長生きするかもしれず、そのため、それは生み出したコンテキストが破壊された後で、解放されてしまうかもしれない任意のローカルデータに依存するべきではありません。</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn spawner() {
+    let v = vec![1, 2, 3];
+    // This won't work, since `&amp;v` doesn't
+    // live long enough.
+    // `&amp;v`は十分に長生きしないため、これは機能しません。
+    tokio::spawn(async {
+        for x in &amp;v {
+            println!("{x}")
+        }
+    })
+    // `spawn`したタスクが終了する前に、`spawner`関数が終了して、
+    // `v`が解放される可能性があるため、Rustはこのコードをコンパイルさせない。
+}
+<span class="boring">}</span></code></pre></pre>
+<p><code>Send</code>, on the other hand, is a direct consequence of <code>tokio</code>'s work-stealing strategy:
+a task that was spawned on thread <code>A</code> may end up being moved to thread <code>B</code> if that's idle,
+thus requiring a <code>Send</code> bound since we're crossing thread boundaries.</p>
+<blockquote>
+<p>一方、<code>Send</code>は<code>tokio</code>のワークスチール戦略の直接な結果です。
+スレッド<code>A</code>で生み出されたタスクは、それがアイドル状態になった場合、最終的にスレッド<code>B</code>にムーブされるかもしれず、そのためスレッド境界を超えるために<code>Send</code>境界が要求されます。</p>
+</blockquote>
+<blockquote>
+<p>スレッド<code>A</code>が生み出されたタスクが、IO待ちなどでブロックされた場合、そのタスクはキューに配置される。
+スレッド<code>A</code>が他のタスクを実行している間、キューに入ったタスクが要求したIO処理が完了して、タスクを実行できる状態になる。
+このとき、スレッド<code>A</code>がまだ他のタスクを実行していて、スレッド<code>B</code>が実行していたタスクがブロックまたは終了した場合、
+スレッド<code>B</code>は、スレッド<code>A</code>のキューに入ったタスクを<strong>盗んで</strong>実行する。
+ただし、これはスレッド自身が行うのではなく、ランタイムのエグゼキューターがタスクの割り当てを行う。</p>
+</blockquote>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn spawner(input: Rc&lt;u64&gt;) {
+    // This won't work either, because
+    // `Rc` isn't `Send`.
+    // `Rc`は`Send`でないため、これも機能しません。
+    tokio::spawn(async move {
+        println!("{}", input);
+    })
+}
+<span class="boring">}</span></code></pre></pre>
+<blockquote>
+<p><code>Rc</code>はそのスレッド間で共有できない。
+<code>Rc</code>が持つ参照カウンターは<code>usize</code>型でアトミックに参照カウンターを増減できない。</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[repr(C)]
+struct RcBox&lt;T: ?Sized&gt; {
+    strong: Cell&lt;usize&gt;,
+    weak: Cell&lt;usize&gt;,
+    value: T,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>もし、<code>Rc</code>が<code>Send</code>な場合、クローンして別のスレッドに渡すことができ、このときそれぞれのスレッドで参照カウンターを増減することになる。
+その場合、参照カウンターはアトミックな操作ができないため、参照カウンターは正しい値を保持できない。
+よって、<code>Rc</code>は<code>Send</code>でない。</p>
+</blockquote>
+<h2 id="exercise"><a class="header" href="#exercise">Exercise</a></h2>
+<p>The exercise for this section is located in <a href="https://github.com/mainmatter/100-exercises-to-learn-rust/tree/main/exercises/08_futures/03_runtime"><code>08_futures/03_runtime</code></a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../08_futures/02_spawn.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../08_futures/04_future.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../08_futures/02_spawn.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../08_futures/04_future.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
