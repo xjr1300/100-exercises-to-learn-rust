@@ -5,13 +5,13 @@ Let's dig a bit deeper into the way they are implemented—as you'll see soon en
 it has an impact on our code.
 
 > これまで、非同期ランタイムについて抽象化概念として話してきました。
-> それらが実装された方法を少し深堀りしましょう。十分すぐわからうように、それはコードに影響を与えます。
+> それらが実装された方法を少し深堀りしましょう。すぐに十分理解できるように、それはコードに影響を与えます。
 
 ## Flavors（風味づけ）
 
 `tokio` ships two different runtime _flavors_.
 
-> `tokio`は2つの異なるランタイム_フレーバー_を提供しています。
+> `tokio`は2つの異なるランタイム _フレーバー_ を提供しています。
 
 You can configure your runtime via `tokio::runtime::Builder`:
 
@@ -21,7 +21,7 @@ You can configure your runtime via `tokio::runtime::Builder`:
 > `tokio::runtime::Builder`を介してランタイムを構成できます。
 >
 > - `Builder::new_multi_thread`は、**マルチスレッドな`tokio`ランタイム**を提供します。
-> - 代わりに`Builder::new_current_thread`は、実行に対して**現在のスレッド**を依存させます。
+> - `Builder::new_current_thread`は、代わりに**現在のスレッド**に依存して実行されます。
 
 `#[tokio::main]` returns a multithreaded runtime by default, while
 `#[tokio::test]` uses a current thread runtime out of the box.
@@ -36,7 +36,7 @@ When using the current-thread runtime, you have **concurrency** but no **paralle
 asynchronous tasks will be interleaved, but there will always be at most one task running
 at any given time.
 
-> 名前が暗に意味する通り、カレントスレッドランタイムは、タスクをスケジュールして実行するために起動されるOSスレッドに排他的に依存します。
+> 名前が暗に意味する通り、カレントスレッドランタイムは、タスクをスケジュールして実行するために起動されるOSスレッドのみに依存します。
 > カレントスレッドランタイムを使用したとき、**同時並行性**を得られますが、**並列性**は得られません。
 > 非同期タスクは、間をおいて交互に実行されますが、常に特定の時間に最大1つのタスクしが実行していません。
 
@@ -46,7 +46,7 @@ When using the multithreaded runtime, instead, there can up to `N` tasks running
 _in parallel_ at any given time, where `N` is the number of threads used by the
 runtime. By default, `N` matches the number of available CPU cores.
 
-> マルチスレッドランタイムを使用したとき、特定の時間に_並列で_最大`N`コマでのタスクを実行でき、`N`はランタイムで使用されるスレッドの数です。
+> マルチスレッドランタイムを使用したとき、特定の時間に _並列で_ 最大`N`個までのタスクを実行でき、`N`はランタイムで使用されるスレッドの数です。
 > デフォルトで、`N`は利用可能なCPUコアの数に一致します。
 
 There's more: `tokio` performs **work-stealing**.\
@@ -66,7 +66,7 @@ across threads.
 > 具体的には、応答時間の分布における上位のパーセンタイル、例えば95パーセンタイルや99パーセンタイルの応答時間を示す。
 > 応答時間の長いタスクがある場合、その長いタスクがアイドル状態になったときに、他のタスクを実行することで、全体の応答時間を短くすることができる。
 
-## Implications（実装）
+## Implications（関連事項）
 
 `tokio::spawn` is flavor-agnostic: it'll work no matter if you're running on the multithreaded
 or current-thread runtime. The downside is that the signature assume the worst case
@@ -74,7 +74,7 @@ or current-thread runtime. The downside is that the signature assume the worst c
 
 > `tokio::spawn`はフレーバーに依存しません。
 > それは、マルチスレッドまたはカレントスレッドランタイムで実行されているかどうかに関わらず機能します。
-> その欠点は、シグネチャーが最悪のケース（つまりマルチスレッド）を仮定して、それに応じて成約されることです。
+> その欠点は、シグネチャーが最悪のケース（つまりマルチスレッド）を仮定して、それに応じて制約されることです。
 
 ```rust
 pub fn spawn<F>(future: F) -> JoinHandle<F::Output>
@@ -96,7 +96,7 @@ from, therefore it shouldn't depend on any local data that may be de-allocated
 after the spawning context is destroyed.
 
 > `'static`制約は、`std::thread::spawn`の`'static`制約と同じ論理的根拠に従っています。
-> 生み出されたタスクは、それが生み出された文脈よりも長生きするかもしれず、そのため、それは生み出したコンテキストが破壊された後で、解放されてしまうかもしれない任意のローカルデータに依存するべきではありません。
+> 生み出されたタスクは、それが生み出されたコンテキストよりも長生きするかもしれず、そのため、それは生み出したコンテキストが破壊された後で、解放されてしまうかもしれない任意のローカルデータに依存するべきではありません。
 
 ```rust
 fn spawner() {

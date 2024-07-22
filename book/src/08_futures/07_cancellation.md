@@ -11,7 +11,7 @@ In other words, its execution has been **cancelled**.
 In the wild, this often happens when working with timeouts.
 For example:
 
-> これは、タイムアウトを使用したときに、野放しでよく発生します。
+> 実際に、これはタイムアウトを使用したときによく発生します。
 > 例えば・・・
 
 ```rust
@@ -36,7 +36,7 @@ async fn run() {
 When the timeout expires, the future returned by `http_call` will be cancelled.
 Let's imagine that this is `http_call`'s body:
 
-> タイムアウトが期限切れしたとき、`http_call`で返されたフューチャーはキャンセルされます。
+> 時間切れになったとき、`http_call`によって返されたフューチャーはキャンセルされます。
 > 次が`http_call`の本体であると想像しましょう。
 
 ```rust
@@ -57,11 +57,11 @@ yield points in its implementation. It is perfectly possible to see `http_call` 
 a _partial_ request before being cancelled, thus dropping the connection and never
 finishing transmitting the body.
 
-> それぞれの`yield`ポイントは、**キャンセルポイント**になります。
-> `http_call`はランタイムによってプリエンプトされることはないため、それは`.await`を介してエグゼキューターに制御を移譲した後にのみ破棄される可能性があります。
+> それぞれの移譲ポイントは、**キャンセルポイント**になります。
+> `http_call`はランタイムによってプリエンプトされることはないため、それは`.await`を介してエグゼキューターに制御を移譲した後にのみ、破棄されるます。
 > これは、再帰的に適用されます。
-> 例えば、`stream.write_all(&request)`は、その実装内に複数の`yield`ポイントを持つ可能性が高いです。
-> それは、キャンセルされる前に_部分的な_リクエストを押入れ、接続が切断されて、本体の送信が終了しない可能性が十分にあります。
+> 例えば、`stream.write_all(&request)`は、その実装内に複数の移譲ポイントを持つ可能性が高いです。
+> `http_call`がキャンセルされる前に _部分的な_ リクエストを押入れ、接続が切断されて、本体の送信が終了しない可能性が十分にあります。
 
 > **プリエンプト**: プロセスに与えられたCPU時間を消費したときに、そのプロセスの実行を中断して、他のプロセスにCPUを割り当てること。
 
@@ -74,7 +74,7 @@ At the same time, this can be quite dangerous. It may be desirable to perform a
 before aborting the operation.
 
 > Rustのキャンセルのメカニズムはとても強力です。
-> それは、タスク自身からのいかなる形式の強力を必要としないで、呼び出し側に実行中のタスクをキャンセルできるようにします。
+> それは、タスク自身からのいかなる形式の協力を必要としないで、呼び出し側に実行中のタスクをキャンセルできるようにします。
 > それと同時に、これはとても危険になる可能性があります。
 > それは、操作を中止する前に、いくつかのクリーンアップタスクを実行することを確実にするために、**優雅なキャンセル**を実行することが望ましいかもしれません。
 
@@ -101,7 +101,7 @@ than leaving it hanging.
 Rust, unfortunately, doesn't provide a bullet-proof mechanism for this kind of
 **asynchronous** clean up operations.
 
-> キャンセルにおいて、保留中のトランザクションを明示的に中止することが、その応答がないまま残しておくよりも理想的です。
+> キャンセルする場合、保留中のトランザクションを明示的に中止することが、その応答がないまま残しておくよりも理想的です。
 > 不運にも、Rustはこの種の**非同期**クリーンアップ操作を行うための強固なメカニズムを提供していません。
 
 The most common strategy is to rely on the `Drop` trait to schedule the required

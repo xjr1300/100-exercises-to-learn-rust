@@ -4,9 +4,9 @@ All the functions and methods you've written so far were eager.\
 Nothing happened until you invoked them. But once you did, they ran to
 completion: they did **all** their work, and then returned their output.
 
-> これまで記述してきたすべての関数とメソッドは**熱心**でした。
+> これまで記述してきたすべての関数とメソッドは熱心でした。
 > それらを呼び出すまで何も起こりません。しかし、一旦、呼び出すと、それらは完了するまで実行しました。
-> それらは、それらの仕事を**すべて**行い、そしてそれらの出力を返しました。
+> それらは仕事を**すべて**行い、出力を返しました。
 
 Sometimes that's undesirable.\
 For example, if you're writing an HTTP server, there might be a lot of
@@ -14,8 +14,7 @@ For example, if you're writing an HTTP server, there might be a lot of
 database to respond, waiting for a downstream service to reply, etc.
 
 > 時々、それは望ましくありません。
-> 例えば、HTTPサーバーを記述している場合、多くの**待機**があるかもしれません。
-> リクエスト本体の到着を待つ、データベースの反応を待つ、下流サービスの応答を待つ、などです。
+> 例えば、HTTPサーバーを記述している場合、リクエスト本体の到着を待つ、データベースの反応を待つ、下流サービスの応答を待つなど、多くの**待機**があるかもしれません。
 
 What if you could do something else while you're waiting?\
 What if you could choose to give up midway through a computation?\
@@ -71,7 +70,7 @@ because they implement the `Future` trait, an interface that we'll examine in
 detail later on in this chapter.
 
 > 何も起こりません！
-> Rustは、`bind_random`を呼び出したときに、それの実行を開始せず、バックグラウンドタスクとしても開始しません（他の言語の経験に基づいて予想したように）。
+> Rustは、`bind_random`を呼び出したときに、それの実行を開始せず、他の言語の経験に基づいて予想したように、バックグラウンドタスクとしても開始しません。
 > Rustにおける非同期関数は**怠惰**です。
 > それらは、明示的にそれらに問い合わせするまで、何の作業も行いません。
 > Rustの専門用語を使用して、`bind_random`は**フューチャー**を返すといいます。
@@ -116,10 +115,10 @@ is that they don't do **all** their work at once. We then introduced `.await`, w
 doesn't return until the asynchronous function has run to completion. Haven't we
 just re-introduced the problem we were trying to solve? What's the point?
 
-> もし戸惑っているなら、それは正しいことです！
-> 非同期関数の活性は、それらが一度にそれらの仕事を**すべて**行わないことと言いました。
-> `.await`を導入して、それは非同期関数が完了まで実行されるまで戻りません。
-> 解決することを試みる問題を再度導入しただけでしょうか？
+> もし戸惑っているなら、それは当然です！
+> 非同期関数の利点は、それらが一度に**すべて**の仕事を行わないことだと言いました。
+> `.await`を導入したとき、それは非同期関数が完了まで実行されるまで戻りません。
+> 解決しようとしていた問題を再度持ち出しただけでしょうか？
 > 何がポイントなのでしょうか？
 
 Not quite! A lot happens behind the scenes when you call `.await`!\
@@ -132,13 +131,13 @@ ongoing asynchronous **tasks**. In particular, they balance two different goals:
   another task can run in the meantime, fully utilising the available resources.
 
 > 全くそうではありません！`.await`を呼び出したとき、多くのことが背後で発生します！
-> **非同期エグゼキューター**として知られる、**非同期ランタイム**に制御を譲っています。
+> **非同期エグゼキューター**として知られる、**非同期ランタイム**に制御を移譲しています。
 > エグゼキューターは、そこで魔法を起こします。
 > エグゼキューターは、実行中の非同期タスクをすべて管理する責任があります。
 > 特に、2つの異なる目的のバランスを取ります。
 >
 > - **進捗**: エグゼキューターは、タスクが可能なときはいつでも、タスクを進めます。
-> - **効率性**: タスクが何かを待っている場合、エグゼキューターは、その間に他のタスクを実行できるようにすることを試み、利用可能な資源を十分に活用します。
+> - **効率性**: タスクが何かを待っている場合、エグゼキューターは、その間に他のタスクを実行することを試みて、利用可能な資源を十分に活用します。
 
 ### No default runtime（デフォルトランタイムはない）
 
@@ -146,7 +145,7 @@ Rust is fairly unique in its approach to asynchronous programing: there is
 no default runtime. The standard library doesn't ship with one. You need to
 bring your own!
 
-> Rustは、非同期プログラミングに対する方法がかなり独特です。
+> Rustは、非同期プログラミングへのアプローチがかなり独特です。
 > デフォルトのランタイムはありません。
 > 標準ライブラリは、それを一緒に提供していません。
 > 独自に持ってくる必要があります！
@@ -156,16 +155,15 @@ Some runtimes are designed to be broadly applicable, a solid option for most app
 `tokio` and `async-std` belong to this category. Other runtimes are optimised for
 specific use cases—e.g. `embassy` for embedded systems.
 
-> ほとんどの場合、エコシステムに利用できる選択肢の1つを選択することになります。
+> ほとんどの場合、エコシステムに存在する1つを選択します。
 > いくつかのランタイムは、広く適用できるように設計されており、ほとんどのアプリケーションにとって堅実な選択となります。
 > `tokio`と`async-std`は、このカテゴリに属しています。
-> 他のランタイムは、特定のユースケースのために最適化されています。
-> 例えば、`embassy`は組み込みシステム用です。
+> 例えば、`embassy`は組み込みシステム用であるなど、他のランタイムは特定のユースケースのために最適化されています。
 
 Throughout this course we'll rely on `tokio`, the most popular runtime for general-purpose
 asynchronous programming in Rust.
 
-> このコースを通じて、`tokio`に依存する予定で、Rustにおける一般的な目的の非同期プログラミングで、最も人気のあるランタイムです。
+> このコースは一貫として`tokio`に依存する予定で、Rustにおいて、それは一般的な目的の非同期プログラミングで、最も人気のあるランタイムです。
 
 ### `#[tokio::main]`
 
@@ -174,6 +172,8 @@ That's where you're supposed to set up and launch your chosen async runtime.
 
 > 実行形式のエントリポイントは、`main`関数で、それは非同期関数でなくてはなりません。
 > それは、選択した非同期ランタイムを準備して起動することを支援されるところです。
+
+> 「それは選択した非同期ランタイムが準備して起動することを支援します。」の誤り？
 
 Most runtimes provides a macro to make this easier. For `tokio`, it's `tokio::main`:
 
@@ -210,9 +210,10 @@ in your tests.\
 `tokio` provides a `#[tokio::test]` macro to make this easier:
 
 > テストについても同様です。それらは同期関数でなくてはなりません。
-> （記述ミス？）「それらは**非**同期関数でなくてはなりません」の誤り？
-> それぞれのテスト関数は、それ自身のスレッドで実行され、テスト内で非同期コードを実行する日通用がある場合、開発者が非同期ランタイムを準備して起動する責任があります。
+> それぞれのテスト関数は、それ自身のスレッドで実行され、テスト内で非同期コードを実行する必要がある場合、開発者が非同期ランタイムを準備して起動する責任があります。
 > `tokio`はこれを簡単にするために`#[tokio::test]`マクロを提供しています。
+
+> 「それらは**非**同期関数でなくてはなりません」の誤り？
 
 ```rust
 #[tokio::test]

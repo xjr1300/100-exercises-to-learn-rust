@@ -2,7 +2,7 @@
 
 Your solution to the previous exercise should look something like this:
 
-> 前の塩釉の解答は次のようになるはずです。
+> 前の演習の解答は次のようになるはずです。
 
 ```rust
 pub async fn echo(listener: TcpListener) -> Result<(), anyhow::Error> {
@@ -20,7 +20,7 @@ If a long time passes between two incoming connections, the `echo` function will
 to run other tasks in the meantime.
 
 > それは悪くありません！
-> 2つの入力接続間で長い時間が経過すると、`TcpListener::accept`が非同期関数であるため、`echo`関数はアイドル状態になり、その間、エグゼキューターに他のタスクを実行させます。
+> 2つの着信接続の間で長い時間が経過すると、`TcpListener::accept`が非同期関数であるため、`echo`関数はアイドル状態になり、その間、エグゼキューターに他のタスクを実行させます。
 
 But how can we actually have multiple tasks running concurrently?\
 If we always run our asynchronous functions until completion (by using `.await`), we'll never
@@ -40,7 +40,7 @@ Whenever you invoke `tokio::spawn`, you're telling `tokio` to continue running
 the spawned task, in the background, **concurrently** with the task that spawned it.
 
 > `tokio::spawn`は、**タスクが完了することを待たずに**タスクをエグゼキューターに渡します。
-> いつでも`tokio::spawn`を呼び出すと、生成されたタスクとそのタスクを生成したタスクを、**同時並行**でバックグラウンドで実行を継続するように`tokio`に伝えます。
+> `tokio::spawn`を呼び出すときはいつでも、生成されたタスクとそのタスクを生成したタスクを、**同時並行**でバックグラウンドで実行を継続するように`tokio`に伝えます。
 
 Here's how you can use it to process multiple connections concurrently:
 
@@ -74,7 +74,7 @@ Asynchronous blocks are a quick way to mark a region of code as asynchronous wit
 to define a separate async function.
 
 > この例において、`tokio::spawn`に`async move { /* */ }`の**非同期ブロック**を渡しました。
-> 非同期ブロックは、分離した非同期関数を定義する必要なく、非同期としてコードの領域をマークする簡単な方法です。
+> 非同期ブロックは、分離した非同期関数を定義する必要なく、非同期としてコード領域をマークする簡単な方法です。
 
 ### `JoinHandle`
 
@@ -83,7 +83,7 @@ You can use `JoinHandle` to `.await` the background task, in the same way
 we used `join` for spawned threads.
 
 > `tokio::spawn`は`JoinHandle`を返します。
-> 生み出したスレッドに対して`join`を使用したのと同じ方法で、バックグラウンドタスクを`.await`するために`JoinHandle`を使用できます。
+> 生み出したスレッドに対して`join`を使用した同じ方法で、バックグラウンドタスクを`.await`するために`JoinHandle`を使用できます。
 
 ```rust
 // 測定データをリモートサーバーに運搬して、その間に、自分の他の仕事をする。
@@ -111,7 +111,7 @@ pub async fn do_work() {
 }
 ```
 
-### Panic boundary
+### Panic boundary（パニック境界）
 
 If a task spawned with `tokio::spawn` panics, the panic will be caught by the executor.\
 If you don't `.await` the corresponding `JoinHandle`, the panic won't be propagated to the spawner.
@@ -124,7 +124,7 @@ choose what to do with the panic—either log it, ignore it, or propagate it.
 > 対応する`JoinHandle`を`.await`しない場合、そのパニックは（タスクの）生み出し元には伝播しません。
 > `JoinHandle`を`.await`したとしても、そのパニックは自動的に伝播しません。
 > `JoinHandle`を`.await`すると、そのエラー型として`JoinError`を持つ`Result`が返されます。
-> そして、`JoinError::is_panic`を呼び出すことで、タスクがパニックしたか確認して、それをログに記録するか、またはそれを伝播するか、パニックですることを選択できます。
+> そして、`JoinError::is_panic`を呼び出すことで、タスクがパニックしたか確認して、それをログに記録するか、またはそれを伝播するか、パニックに対して行うことを選択できます。
 
 ```rust
 use tokio::task::JoinError;
@@ -150,7 +150,7 @@ pub async fn work() {
 
 > `panic`を`unwind`するとは、`panic`が発生したスレッドのスタックフレームを巻き戻して、クリーンアップコードを実行して、リソースを適切に解放する処理を示す。
 
-### `std::thread::spawn` vs `tokio::spawn`
+### `std::thread::spawn` vs `tokio::spawn`（std::thread::spawnとtokio::spawn）
 
 You can think of `tokio::spawn` as the asynchronous sibling of `std::thread::spawn`.
 

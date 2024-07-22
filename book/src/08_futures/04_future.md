@@ -18,7 +18,7 @@ What does it _actually_ mean for `F` to be `Send`?\
 It implies, as we saw in the previous section, that whatever value it captures from the
 spawning environment has to be `Send`. But it goes further than that.
 
-> `F`が`Send`であるとは_実際に_何を意味しているのでしょうか？
+> `F`が`Send`であるとは _実際に_ 何を意味しているのでしょうか？
 > それは、前の節で確認した通り、生み出した環境からキャプチャーされた値が`Send`でなければならないことを暗示しています。
 > しかし、それはそれ以上のことを意味しています。
 
@@ -27,6 +27,8 @@ Let's look at an example:
 
 > _`.await`ポイントをまたがって保持される_ 任意の値は、`Send`でなければなりません。
 > 例を確認しましょう。
+
+> 値はスレッド2を生み出すスレッド1で作成され、その後その値がスレッド2で作成され、生み出すスレッド1で生み出したスレッド2を`.await`した後に、その値を使用することは、スレッド間をまたがっているため、当然`Send`でなければならない。
 
 ```rust
 use std::rc::Rc;
@@ -82,7 +84,7 @@ note: required by a bound in `tokio::spawn`
 To understand why that's the case, we need to refine our understanding of
 Rust's asynchronous model.
 
-> そのケースを理由を理解するために、Rustの非同期モデルの理解を洗練させる必要があります。
+> なぜ拒否されるかを理解するために、Rustの非同期モデルの理解を洗練させる必要があります。
 
 ## The `Future` trait（Futureトレイト）
 
@@ -93,7 +95,7 @@ It's in one of two states:
 - **pending**: the computation has not finished yet.
 - **ready**: the computation has finished, here's the output.
 
-> `async`関数が、`Future`トレイトを実装した型である**フューチャー**を返すと述べました。
+> `async`関数が、`Future`トレイトを実装した型である**フューチャー**を返すと前に述べました。
 > フューチャーを**状態マシン**と考えることができます。
 > それは２つの状態を持ちます。
 >
@@ -125,8 +127,8 @@ When you call `poll`, you're asking the future to do some work.
 - `Poll::Ready(value)`: the future has finished. `value` is the result of the computation,
   of type `Self::Output`.
 
-> `poll`メソッドは、`Future`トレイドの心臓です。
-> フューチャーそれ自身は、何もしません。それはするメルために**ポーリング**される必要があります。
+> `poll`メソッドは、`Future`トレイトの心臓です。
+> フューチャーそれ自身は、何もしません。それは進捗するために**ポーリング**される必要があります。
 > `poll`を呼び出したとき、何か作業を行うことをフューチャーに要求します。
 > `poll`は、進めようと試み、そして、次の1つを返します。
 >
@@ -211,10 +213,10 @@ When you look at its state machine representation, `ExampleFuture`,
 it is now clear why `example` is not `Send`: it holds an `Rc`, therefore
 it cannot be `Send`.
 
-> その状態マシンの表現である`ExampleFuture`を確認したとき、`example`が`Send`出ない理由を明確にしています。
-> それは`Rc`を保持しているため、それは`Send`になりえません。
+> その状態マシンを表現する`ExampleFuture`を確認したとき、`example`が`Send`でない理由を明確にしています。
+> それは`Rc`を保持しているため、それは`Send`になりません。
 
-## Yield points（yieldポイント）
+## Yield points（移譲ポイント）
 
 As you've just seen with `example`, every `.await` point creates a new intermediate
 state in the lifecycle of a future.\
@@ -223,10 +225,10 @@ back to the runtime that was polling it, allowing the runtime to pause it and (i
 schedule another task for execution, thus making progress on multiple fronts concurrently.
 
 > `example`で確認した通り、すべての`.await`ポイントはフューチャーのライフサイクル内に、新しい中間状態を作成します。
-> それが`.await`ポイントが**yieldポイント**として知られる理由です。
+> それが`.await`ポイントが**移譲ポイント**として知られる理由です。
 > フューチャーは、それ（フューチャー）をポーリングしていたランタイムに**制御を移譲して**、ランタイムがそれ（フューチャー）を停止して、さらに必要があれば他のタスクの実行をスケジュールできるようにします。
 > これにより、複数を同時並行で進めるようにします。
 
 We'll come back to the importance of yielding in a later section.
 
-> 後半の節で、移譲することの重要性に戻ります。
+> 後半の節で、移譲する重要性に戻ります。
